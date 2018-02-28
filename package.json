@@ -1,0 +1,45 @@
+{
+  "name": "bright_events_react",
+  "version": "1.0.0",
+  "description": "Bright events UI using react ",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --mode development",
+    "build": "./node_modules/.bin/webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodgers-M/bright_events_react.git"
+  },
+  "keywords": [
+    "react",
+    "bright",
+    "events",
+    "ui",
+    "javascript"
+  ],
+  "author": "Rodgers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rodgers-M/bright_events_react/issues"
+  },
+  "homepage": "https://github.com/Rodgers-M/bright_events_react#readme",
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.10",
+    "style-loader": "^0.20.2",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.1.0"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
