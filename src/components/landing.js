@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchIcon from 'react-icons/lib/fa/search'
+import { Link } from 'react-router-dom'
 
 const Landing = () => (
     <header id='backgroundimg'>
@@ -13,10 +14,10 @@ const Landing = () => (
                 <ul className='navbar-right navbar-nav'></ul>
                 <ul className='nav navbar-nav navbar-right'>
                     <li>
-                      <a href='#login'>Login</a>
+                      <Link to='auth/login'>Login</Link>
                     </li>
                     <li>
-                      <a href='#register'>Register</a>
+                      <Link to='auth/register'>Register</Link>
                     </li>
                 </ul>
             </div>
