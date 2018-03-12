@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Landing from './landing'
+import Landing from './pages/landing'
 
 export default class App extends Component{
     constructor(props){
