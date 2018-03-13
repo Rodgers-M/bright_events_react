@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
-    "semantic-ui-css": "^2.3.0"
+    "semantic-ui-css": "^2.3.0",
+    "semantic-ui-react": "^0.78.3",
+    "validator": "^9.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
