@@ -4,19 +4,24 @@ import { Link } from 'react-router-dom'
 const Landing = () => (
     <header id='backgroundimg'>
         <div className='ui inverted menu'>
-            <a className='item'>
+            <li className='item'>
                  Bright Events
-            </a>
+            </li>
             <div className='right menu'>
-                <a className='item'>
-                    <i className='tasks icon' /> Dashboard
-                </a>
-                <a className='item'>
-                    <i className='sign in icon' /> Login
-                </a>
-                <a className='item'>
+                <li className='item'>
+                    <Link to='/events/dashboard'>
+                       <i className='tasks icon' /> Dashborad 
+                    </Link>
+                </li>
+                <li className='item'>
+                    <Link to='/auth/login'>
+                    <i className='sign in icon' />
+                     Login  
+                    </Link>
+                </li>
+                <li className='item'>
                     Logout   <i className='sign out icon' />
-                </a>
+                </li>
             </div>
         </div>
         <div className='text-box'>
@@ -38,5 +43,4 @@ const Landing = () => (
     );
 
 export default Landing;
-
 
