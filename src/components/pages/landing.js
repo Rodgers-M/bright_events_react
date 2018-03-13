@@ -1,5 +1,4 @@
 import React from 'react'
-import SearchIcon from 'react-icons/lib/fa/search'
 import { Link } from 'react-router-dom'
 
 const Landing = () => (
@@ -10,13 +9,13 @@ const Landing = () => (
             </a>
             <div className='right menu'>
                 <a className='item'>
-                    <i className='tasks icon'></i> Dashboard
+                    <i className='tasks icon' /> Dashboard
                 </a>
                 <a className='item'>
-                    <i className='sign in icon'></i> Login
+                    <i className='sign in icon' /> Login
                 </a>
                 <a className='item'>
-                    Logout   <i className='sign out icon'></i>
+                    Logout   <i className='sign out icon' />
                 </a>
             </div>
         </div>
@@ -28,7 +27,7 @@ const Landing = () => (
                     </div>
                     <div className='three wide column centered'>
                         <button className='ui icon button'>
-                            <i className='rocket icon'></i>
+                            <i className='rocket icon' />
                             <Link to='/auth/register'>Get Started</Link>
                         </button>
                     </div>
