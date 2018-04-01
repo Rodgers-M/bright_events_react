@@ -21,9 +21,10 @@ class LoginForm extends Component{
     onSubmit = () => {
         const errors = this.validate(this.state.data);
         this.setState({ errors });
+        this.setState({loading : true});
         if(Object.keys(errors).length===0){
             this.props.submit(this.state.data)
-            .catch(err=> this.setState({errors : err.response.data}));
+            .catch(err=> this.setState({errors : err.response.data, loading : false }));
         }
     };
 
@@ -35,9 +36,9 @@ class LoginForm extends Component{
     }
 
     render(){
-        const { data, errors } = this.state;
+        const { data, errors, loading } = this.state;
         return(
-            <Form onSubmit={this.onSubmit}>
+            <Form onSubmit={this.onSubmit}loading={loading}>
                 {errors.message && <Message negative>
                     <Message.Header> Something went wrong </Message.Header>
                     <p> {errors.message} </p>
