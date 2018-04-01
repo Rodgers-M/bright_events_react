@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default{
     user : {
-        login : (credentials)=> axios.post('api/v2/auth/login', {credentials})
+        login : (credentials)=> axios.post('/auth/login', credentials)
         .then(res => res.data.user)
     }
 }
