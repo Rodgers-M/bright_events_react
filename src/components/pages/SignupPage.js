@@ -11,10 +11,17 @@ submit=data => this.props.signup(data).then(()=> this.props.history.push("/auth/
     render(){
         return(
             <div>
-                <h1> Signup Page </h1>
-                <SignupForm submit={this.submit}/>
+                <div className='ui  grid'>
+                  <div className="six wide column"></div>
+                  <div className="four wide column"><h1>Signup Page </h1></div>
+                </div>
+                <div className='ui  grid'>
+                  <div className="five wide column"></div>
+                  <div className="six wide column">
+                    <SignupForm submit={this.submit} />
+                  </div>
+                </div>
             </div>
-
         );
     }
 }

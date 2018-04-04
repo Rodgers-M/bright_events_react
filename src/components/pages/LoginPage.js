@@ -11,8 +11,16 @@ class LoginPage extends Component{
     render(){
         return(
             <div>
-                <h1> Login Page </h1>
-                <LoginForm submit={this.submit} />
+                <div className='ui  grid'>
+                  <div className="six wide column"></div>
+                  <div className="four wide column"><h1> Login Page </h1></div>
+                </div>
+                <div className='ui  grid'>
+                  <div className="five wide column"></div>
+                  <div className="six wide column">
+                    <LoginForm submit={this.submit} />
+                  </div>
+                </div>
             </div>
         );
     }
