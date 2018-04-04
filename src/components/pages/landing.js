@@ -1,7 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import  PropTypes from 'prop-types';
+import * as actions from '../../actions/auth';
 
-const Landing = () => (
+const Landing = ({isAuthenticated, logout }) => (
     <header id='backgroundimg'>
         <div className='ui inverted menu'>
             <li className='item'>
@@ -13,15 +16,19 @@ const Landing = () => (
                        <i className='tasks icon' /> Dashborad 
                     </Link>
                 </li>
+                {!isAuthenticated? /*if a user is not authenticated, show login button*/
                 <li className='item'>
                     <Link to='/auth/login'>
                     <i className='sign in icon' />
                      Login  
                     </Link>
                 </li>
+                 ://else show a logout button
                 <li className='item'>
-                    Logout   <i className='sign out icon' />
-                </li>
+                    <button onClick={()=> logout()}>
+                        Logout   <i className='sign out icon' />
+                    </button>
+                </li>}
             </div>
         </div>
         <div className='text-box'>
@@ -42,5 +49,16 @@ const Landing = () => (
     </header>
     );
 
-export default Landing;
+Landing.propTypes = {
+    isAuthenticated : PropTypes.bool.isRequired,
+    logout : PropTypes.func.isRequired
+};
+
+function mapStateToProps(state){
+    return{
+        isAuthenticated : !!state.user.access_token
+    }
+}
+
+export default connect(mapStateToProps, {logout : actions.logout })(Landing);
 

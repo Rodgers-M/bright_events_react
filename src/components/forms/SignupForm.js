@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import  PropTypes from 'prop-types';
 import {Form, Button } from 'semantic-ui-react';
 
 class SignupForm extends Component {
@@ -17,7 +18,7 @@ class SignupForm extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        console.log(this.state.data);
+        this.props.submit(this.state.data);
     }
 
 
@@ -57,10 +58,14 @@ class SignupForm extends Component {
                         onChange={this.onChange}
                     />
                 </Form.Field>
-            <Button primary> Login </Button>
+            <Button primary> Signup </Button>
             </Form>
         );
     }
 }
+
+SignupForm.propTypes ={
+    submit: PropTypes.func.isRequired
+};
 
 export default SignupForm;
