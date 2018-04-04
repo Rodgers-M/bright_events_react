@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
+import  Validator from 'validator';
 import {Form, Button } from 'semantic-ui-react';
+import InLineError from '../messages/InLineError';
 
 class SignupForm extends Component {
     state = {
@@ -8,7 +10,8 @@ class SignupForm extends Component {
             username : '',
             email : '',
             password : '',
-            cnfpassword : ''
+            cnfpassword : '',
+            loading : false
         }
     }
 
@@ -16,11 +19,23 @@ class SignupForm extends Component {
         data : {...this.state.data, [e.target.name]: e.target.value}
         });
 
-    onSubmit = e => {
-        e.preventDefault();
-        this.props.submit(this.state.data);
-    }
+    onSubmit = () => {
+        const errors = this.validate(this.state.data);
+        this.setState({ errors });
+        this.setState({loading : true});
+        if(Object.keys(errors).length===0){
+            this.props.submit(this.state.data)
+            .catch(err=> this.setState({errors : err.response.data, loading : false }));
+        }
+    };
 
+    validate=(data) => {
+        const errors = {};
+        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
+        if(!Validator.isEmail(data.email) || Validator.isEmpty(data.email)) errors.email = 'please provide a valid email';
+        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
+        return errors;
+    }
 
     render(){
         const { data} = this.state;
