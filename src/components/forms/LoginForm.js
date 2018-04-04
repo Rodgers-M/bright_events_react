@@ -21,8 +21,8 @@ class LoginForm extends Component{
     onSubmit = () => {
         const errors = this.validate(this.state.data);
         this.setState({ errors });
-        this.setState({loading : true});
         if(Object.keys(errors).length===0){
+            this.setState({loading : true});
             this.props.submit(this.state.data)
             .catch(err=> this.setState({errors : err.response.data, loading : false }));
         }
@@ -50,7 +50,7 @@ class LoginForm extends Component{
                         value={data.username}
                         onChange={this.onChange}
                     />
-                {errors.email && <InLineError message={errors.email} /> }
+                {errors.username && <InLineError message={errors.username} /> }
                 </Form.Field>
                 <Form.Field error={!!errors.password}>
                     <label htmlFor='password' > password </label>
