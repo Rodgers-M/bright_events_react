@@ -8,7 +8,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {userLoggedIn} from './actions/auth';
 import 'semantic-ui-css/semantic.min.css';
 import './stylesheets/index.css';
-import App from './app';   
+import App from './components/app';   
 import rootReducer from './rootReducer';
 import registerServiceWorker from './registerServiceWorker'; 
 
