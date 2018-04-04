@@ -50,7 +50,7 @@ class LoginForm extends Component{
                         value={data.username}
                         onChange={this.onChange}
                     />
-                {errors.password && <InLineError message={errors.password} /> }
+                {errors.username && <InLineError message={errors.username} /> }
                 </Form.Field>
                 <Form.Field error={!!errors.password}>
                     <label htmlFor='password' > password </label>
