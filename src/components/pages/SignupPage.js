@@ -3,10 +3,17 @@ import  PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import SignupForm from '../forms/SignupForm';
 import {signup} from '../../actions/auth';
+import {addFlashMessage} from '../../actions/flashMessages';
 
 class SignupPage extends Component {
 
-submit=data => this.props.signup(data).then(()=> this.props.history.push("/auth/login"));
+submit=data => this.props.signup(data).then(()=>{ 
+    this.props.addFlashMessage({
+        type : 'success',
+        text : 'registration successful, now login'
+    })
+    this.props.history.push("/auth/login")
+});
 
     render(){
         return(
@@ -30,7 +37,8 @@ SignupPage.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
-    signup: PropTypes.func.isRequired
+    signup: PropTypes.func.isRequired,
+    addFlashMessage : PropTypes.func.isRequired
 }
 
-export default connect(null, {signup})(SignupPage);
+export default connect(null, {signup, addFlashMessage})(SignupPage);
