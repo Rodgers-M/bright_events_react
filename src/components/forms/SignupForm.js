@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
 import  Validator from 'validator';
-import {Form, Button } from 'semantic-ui-react';
+import {Form, Button, Message } from 'semantic-ui-react';
 import InLineError from '../messages/InLineError';
+import passwordValidator from 'password-validator';
 
+const validpassword = new passwordValidator();
+validpassword.is().min(6)
+.is().max(20)
+.has().uppercase()
+.has().lowercase()
+.has().digits()
+.has().not().spaces()
+ 
 class SignupForm extends Component {
     state = {
         data : {
@@ -32,12 +41,17 @@ class SignupForm extends Component {
 
     validate=(data) => {
         const errors = {};
+        if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
         if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
+        if(Validator.isNumeric(data.username)) errors.username = 'username can\'t be numbers';
+        if(!Validator.isAlphanumeric(data.username)) errors.username =
+            'username can only contain letters and numbers';
         if(!Validator.isEmail(data.email) || Validator.isEmpty(data.email)) errors.email
             = 'please provide a valid email';
         if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
-        if(Validator.isLength(data.password, {min : 6, max : 16})) errors.password 
-            = 'Password must be more than 6 characters';
+        if(!validpassword.validate(data.password)) errors.password = 
+            `password should not have spaces, must more than 6 characters contain
+             numbers and both lower and uppercase letters`;
         if(!Validator.equals(data.password , data.cnfpassword)) errors.password
             = 'passwords do not match'
         return errors;
@@ -47,6 +61,10 @@ class SignupForm extends Component {
         const { data, errors, loading} = this.state;
         return(
             <Form onSubmit={this.onSubmit} loading={loading}>
+                {errors.message && <Message negative>
+                    <Message.Header> Something went wrong </Message.Header>
+                    <p> {errors.message} </p>
+                </Message>}
                 <Form.Field error={!!errors.username} >
                     <label htmlFor='username' > username </label>
                     <input type='text' name='username' id='username'
@@ -81,7 +99,6 @@ class SignupForm extends Component {
                         value={data.cnfpassword}
                         onChange={this.onChange}
                     /> 
-                {errors.password && <InLineError message={errors.password} /> }
                 </Form.Field>
             <Button primary> Signup </Button>
             </Form>
