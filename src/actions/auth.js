@@ -20,4 +20,4 @@ export const logout = () => (dispatch) => {
         dispatch(userLoggedOut())};
 
 export const signup = credentials => () => 
-    api.user.signup(credentials).then(res =>console.log(res));
+    api.user.signup(credentials).then(res =>res);
