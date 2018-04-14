@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import  PropTypes from 'prop-types';
 import * as actions from '../../actions/auth';
 
-const Landing = ({isAuthenticated, logout }) => (
+export const Landing = ({isAuthenticated, logout }) => (
     <header id='backgroundimg'>
         <div className='ui inverted menu'>
             <li className='item'>
@@ -16,18 +16,18 @@ const Landing = ({isAuthenticated, logout }) => (
                        <i className='tasks icon' /> Dashborad 
                     </Link>
                 </li>
-                {!isAuthenticated? /*if a user is not authenticated, show login button*/
+                {!isAuthenticated? /*if a user is not authenticated, show login icon*/
                 <li className='item'>
                     <Link to='/auth/login'>
                     <i className='sign in icon' />
                      Login  
                     </Link>
                 </li>
-                 ://else show a logout button
+                 ://else show a logout icon
                 <li className='item'>
-                    <button onClick={()=> logout()}>
+                    <a href="#logout" className='logout'  onClick={()=> logout()}>
                         Logout   <i className='sign out icon' />
-                    </button>
+                    </a>
                 </li>}
             </div>
         </div>
