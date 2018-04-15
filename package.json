@@ -26,7 +26,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha --compilers babel-core/register --reporter spec \"src/**/*.test.js\"",
+    "test": "NODE_ENV=test mocha --compilers babel-core/register --reporter spec \"src/**/*.test.js\"",
     "eject": "react-scripts eject",
     "lint": "eslint src"
   },
