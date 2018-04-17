@@ -40,7 +40,7 @@ export const Landing = ({isAuthenticated, logout }) => (
                     <div className='three wide column centered'>
                         <button className='ui icon button'>
                             <i className='rocket icon' />
-                            <Link to='/auth/register'>Get Started</Link>
+                            <Link to='/auth/signup'>Get Started</Link>
                         </button>
                     </div>
                 </div>
