@@ -15,8 +15,15 @@ class NotFound extends Component {
                                <i className='home icon' /> Home 
                             </Link>
                         </h1>
+                       <Link to='/'>
                       <span className="circle med"></span>
+                       </Link>
+                       <Link to='/'>
                       <span className="circle small"></span>
+                       </Link>
+                       <Link to='/'>
+                      <span className="circle big"></span>
+                       </Link>
                     </div>
             </div>
         );
