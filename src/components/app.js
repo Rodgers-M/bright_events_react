@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
 import Landing from './pages/landing';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/auth/LoginPage';
+import SignupPage from './pages/auth/SignupPage';
 import FlashMessagesList from './messages/flasshMessagesList';
 
 const App = () => <div className='ui'>
