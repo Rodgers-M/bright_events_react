@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
 import  Validator from 'validator';
 import {Form, Button, Message } from 'semantic-ui-react';
-import InLineError from '../messages/InLineError';
+import InLineError from '../../messages/InLineError';
 import passwordValidator from 'password-validator';
 
 const validpassword = new passwordValidator();
@@ -19,7 +19,7 @@ class SignupForm extends Component {
             username : '',
             email : '',
             password : '',
-            cnfpassword : '',
+            confirm_password : '',
         },
         loading : false,
         errors : {}
@@ -52,7 +52,7 @@ class SignupForm extends Component {
         if(!validpassword.validate(data.password)) errors.password = 
             `password should not have spaces, must more than 6 characters contain
              numbers and both lower and uppercase letters`;
-        if(!Validator.equals(data.password , data.cnfpassword)) errors.password
+        if(!Validator.equals(data.password , data.confirm_password)) errors.password
             = 'passwords do not match'
         return errors;
     }
@@ -94,7 +94,7 @@ class SignupForm extends Component {
                 </Form.Field>
                 <Form.Field error={!!errors.password}>
                     <label htmlFor='cnfpassword' > confirm password </label>
-                    <input type='password' name='cnfpassword' id='cnfpassword'
+                    <input type='password' name='confirm_password' id='cnfpassword'
                         placeholder='Password'
                         value={data.cnfpassword}
                         onChange={this.onChange}
