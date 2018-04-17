@@ -41,4 +41,13 @@ describe('Login form component', () => {
         usernameInput.simulate('change');
         expect(wrapper.instance().state.data.username).toEqual('myname')
     }) ;
+    it('should have a submit prop', ()=> {
+        let wrapper = setup();
+        expect(wrapper.prop('submit')).toBeDefined();
+        });
+    it('should call validate on submit', ()=> {
+        let wrapper = setup();
+        const validateMock = () => {};
+        wrapper.instance().validate = validateMock;
+        });
 });
