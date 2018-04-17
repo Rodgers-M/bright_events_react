@@ -40,4 +40,8 @@ describe('Landing page component', () => {
         expect(wrapper.find('button').length).toEqual(1);
         expect(wrapper.find('button').children().length).toEqual(2);
      });
+    it('should have a get started button that points to signup', () => {
+        const wrapper = setup(true);
+        expect(wrapper.find('Link').last().props().to).toEqual('/auth/signup')
+     });
   });
