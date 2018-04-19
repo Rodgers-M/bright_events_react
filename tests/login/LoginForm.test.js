@@ -5,7 +5,7 @@ import expect from 'expect';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import {mount, shallow} from 'enzyme';
-import LoginForm from './LoginForm';
+import LoginForm from '../../src/components/login/LoginForm';
     
  
 Enzyme.configure({ adapter: new Adapter() });
@@ -44,14 +44,5 @@ describe('Login form component', () => {
     it('should have a submit prop', ()=> {
         let wrapper = setup();
         expect(wrapper.prop('submit')).toBeDefined();
-        });
-    it('should call validate on submit', ()=> {
-        let props = {
-            submit : () => {}
-        };
-        const wrapper = shallow(<LoginForm {...props} />);
-        const validateMock = () => {};
-        wrapper.instance().validate = validateMock;
-        wrapper.simulate('submit')
         });
 });

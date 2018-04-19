@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import expect from 'expect';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, {mount, shallow} from 'enzyme';
-import {Landing} from './landing';
+import {Landing} from '../../src/components/home/landing';
 
 Enzyme.configure({ adapter: new Adapter() });
 

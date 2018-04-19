@@ -5,7 +5,7 @@ import expect from 'expect';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import {mount, shallow} from 'enzyme';
-import SignupForm from './SignupForm';
+import SignupForm from '../../src/components/signup/SignupForm';
     
  
 Enzyme.configure({ adapter: new Adapter() });
