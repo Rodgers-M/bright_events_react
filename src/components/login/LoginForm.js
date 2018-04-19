@@ -4,6 +4,13 @@ import {Form, Button, Message } from 'semantic-ui-react';
 import  PropTypes from 'prop-types';
 import InLineError from '../messages/InLineError';
 
+export const validate = data => {
+        const errors = {};
+        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
+        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
+        return errors;
+    }
+ 
 class LoginForm extends Component{
     state = {
         data: { 
@@ -19,7 +26,7 @@ class LoginForm extends Component{
         });
 
     onSubmit = () => {
-        const errors = this.validate(this.state.data);
+        const errors = validate(this.state.data);
         this.setState({ errors });
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
@@ -28,12 +35,6 @@ class LoginForm extends Component{
         }
     };
 
-    validate=(data) => {
-        const errors = {};
-        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
-        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
-        return errors;
-    }
 
     render(){
         const { data, errors, loading } = this.state;

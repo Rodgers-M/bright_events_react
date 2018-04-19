@@ -12,6 +12,24 @@ validpassword.is().min(6)
 .has().lowercase()
 .has().digits()
 .has().not().spaces()
+
+export const validate=(data) => {
+        const errors = {};
+        if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
+        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
+        if(Validator.isNumeric(data.username)) errors.username = 'username can\'t be numbers';
+        if(!Validator.isAlphanumeric(data.username)) errors.username =
+            'username can only contain letters and numbers';
+        if(!Validator.isEmail(data.email) || Validator.isEmpty(data.email)) errors.email
+            = 'please provide a valid email';
+        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
+        if(!validpassword.validate(data.password)) errors.password = 
+            `password should not have spaces, must be more than 6 characters contain
+             numbers and both lower and uppercase letters`;
+        if(!Validator.equals(data.password , data.confirm_password)) errors.password
+            = 'passwords do not match'
+        return errors;
+    }
  
 class SignupForm extends Component {
     state = {
@@ -30,7 +48,7 @@ class SignupForm extends Component {
         });
 
     onSubmit = () => {
-        const errors = this.validate(this.state.data);
+        const errors = validate(this.state.data);
         this.setState({ errors });
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
@@ -39,23 +57,6 @@ class SignupForm extends Component {
         }
     };
 
-    validate=(data) => {
-        const errors = {};
-        if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
-        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
-        if(Validator.isNumeric(data.username)) errors.username = 'username can\'t be numbers';
-        if(!Validator.isAlphanumeric(data.username)) errors.username =
-            'username can only contain letters and numbers';
-        if(!Validator.isEmail(data.email) || Validator.isEmpty(data.email)) errors.email
-            = 'please provide a valid email';
-        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
-        if(!validpassword.validate(data.password)) errors.password = 
-            `password should not have spaces, must more than 6 characters contain
-             numbers and both lower and uppercase letters`;
-        if(!Validator.equals(data.password , data.confirm_password)) errors.password
-            = 'passwords do not match'
-        return errors;
-    }
 
     render(){
         const { data, errors, loading} = this.state;
