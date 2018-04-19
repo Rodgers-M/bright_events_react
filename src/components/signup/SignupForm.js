@@ -60,48 +60,59 @@ class SignupForm extends Component {
     render(){
         const { data, errors, loading} = this.state;
         return(
-            <Form onSubmit={this.onSubmit} loading={loading}>
-                {errors.message && <Message negative>
-                    <Message.Header> Something went wrong </Message.Header>
-                    <p> {errors.message} </p>
-                </Message>}
-                <Form.Field error={!!errors.username} >
-                    <label htmlFor='username' > username </label>
-                    <input type='text' name='username' id='username'
-                        placeholder='username'
-                        value={data.username}
-                        onChange={this.onChange}
-                    />
-                {errors.username && <InLineError message={errors.username} /> }
-                </Form.Field>
-                <Form.Field error={!!errors.email} >
-                    <label htmlFor='email' > Email </label>
-                    <input type='email' name='email' id='email'
-                        placeholder='example@example.com'
-                        value={data.email}
-                        onChange={this.onChange}
-                    />
-                {errors.email && <InLineError message={errors.email} /> }
-                </Form.Field>
-                <Form.Field error={!!errors.password} >
-                    <label htmlFor='password' > password </label>
-                    <input type='password' name='password' id='password'
-                        placeholder='Password'
-                        value={data.password}
-                        onChange={this.onChange}
-                    />
-                {errors.password && <InLineError message={errors.password} /> }
-                </Form.Field>
-                <Form.Field error={!!errors.password}>
-                    <label htmlFor='cnfpassword' > confirm password </label>
-                    <input type='password' name='confirm_password' id='cnfpassword'
-                        placeholder='Password'
-                        value={data.cnfpassword}
-                        onChange={this.onChange}
-                    /> 
-                </Form.Field>
-            <Button primary> Signup </Button>
-            </Form>
+            <div >
+                <div className='ui  grid'>
+                  <div className="six wide column"></div>
+                  <div className="four wide column"><h1>Signup Page </h1></div>
+                </div>
+                <div className='ui  grid'>
+                  <div className="five wide column"></div>
+                  <div className="six wide column">
+                    <Form onSubmit={this.onSubmit} loading={loading}>
+                        {errors.message && <Message negative>
+                            <Message.Header> Something went wrong </Message.Header>
+                            <p> {errors.message} </p>
+                        </Message>}
+                        <Form.Field error={!!errors.username} >
+                            <label htmlFor='username' > username </label>
+                            <input type='text' name='username' id='username'
+                                placeholder='username'
+                                value={data.username}
+                                onChange={this.onChange}
+                            />
+                        {errors.username && <InLineError message={errors.username} /> }
+                        </Form.Field>
+                        <Form.Field error={!!errors.email} >
+                            <label htmlFor='email' > Email </label>
+                            <input type='email' name='email' id='email'
+                                placeholder='example@example.com'
+                                value={data.email}
+                                onChange={this.onChange}
+                            />
+                        {errors.email && <InLineError message={errors.email} /> }
+                        </Form.Field>
+                        <Form.Field error={!!errors.password} >
+                            <label htmlFor='password' > password </label>
+                            <input type='password' name='password' id='password'
+                                placeholder='Password'
+                                value={data.password}
+                                onChange={this.onChange}
+                            />
+                        {errors.password && <InLineError message={errors.password} /> }
+                        </Form.Field>
+                        <Form.Field error={!!errors.password}>
+                            <label htmlFor='cnfpassword' > confirm password </label>
+                            <input type='password' name='confirm_password' id='cnfpassword'
+                                placeholder='Password'
+                                value={data.cnfpassword}
+                                onChange={this.onChange}
+                            /> 
+                        </Form.Field>
+                    <Button primary> Signup </Button>
+                    </Form>
+                  </div>
+                </div>
+            </div>
         );
     }
 }

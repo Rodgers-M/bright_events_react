@@ -38,31 +38,42 @@ class LoginForm extends Component{
     render(){
         const { data, errors, loading } = this.state;
         return(
-            <Form onSubmit={this.onSubmit}loading={loading}>
-                {errors.message && <Message negative>
-                    <Message.Header> Something went wrong </Message.Header>
-                    <p> {errors.message} </p>
-                </Message>}
-                <Form.Field error={!!errors.username}>
-                    <label htmlFor='username' > username </label>
-                    <input type='text' name='username' id='username'
-                        placeholder='username'
-                        value={data.username}
-                        onChange={this.onChange}
-                    />
-                {errors.username && <InLineError message={errors.username} /> }
-                </Form.Field>
-                <Form.Field error={!!errors.password}>
-                    <label htmlFor='password' > password </label>
-                    <input type='password' name='password' id='password'
-                        placeholder='Password'
-                        value={data.password}
-                        onChange={this.onChange}
-                    />
-                {errors.password && <InLineError message={errors.password} /> }
-                </Form.Field>
-            <Button primary> Login </Button>
-            </Form>
+            <div >
+                <div className='ui  grid'>
+                  <div className="six wide column"></div>
+                  <div className="four wide column"><h1>Login Page</h1></div>
+                </div>
+                <div className='ui  grid'>
+                  <div className="five wide column"></div>
+                  <div className="six wide column">
+                    <Form onSubmit={this.onSubmit}loading={loading}>
+                        {errors.message && <Message negative>
+                            <Message.Header> Something went wrong </Message.Header>
+                            <p> {errors.message} </p>
+                        </Message>}
+                        <Form.Field error={!!errors.username}>
+                            <label htmlFor='username' > username </label>
+                            <input type='text' name='username' id='username'
+                                placeholder='username'
+                                value={data.username}
+                                onChange={this.onChange}
+                            />
+                        {errors.username && <InLineError message={errors.username} /> }
+                        </Form.Field>
+                        <Form.Field error={!!errors.password}>
+                            <label htmlFor='password' > password </label>
+                            <input type='password' name='password' id='password'
+                                placeholder='Password'
+                                value={data.password}
+                                onChange={this.onChange}
+                            />
+                        {errors.password && <InLineError message={errors.password} /> }
+                        </Form.Field>
+                    <Button primary> Login </Button>
+                    </Form>
+                  </div>
+                </div>
+            </div>
         );
     }
 }
