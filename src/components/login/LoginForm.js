@@ -10,7 +10,7 @@ export const validate = data => {
         if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
         return errors;
     }
- 
+
 class LoginForm extends Component{
     state = {
         data: { 
@@ -31,7 +31,13 @@ class LoginForm extends Component{
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
             this.props.submit(this.state.data)
-            .catch(err=> this.setState({errors : err.response.data, loading : false }));
+            .catch(err=> {
+                if (err.request.status === 500){ 
+                    this.setState({errors: {message: "Service is unavailable, please try again later"},loading : false})
+                }else {
+                this.setState({errors: err.response.data, loading : false})
+            }
+        });
         }
     };
 
