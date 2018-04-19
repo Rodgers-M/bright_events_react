@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom';
-import Landing from './pages/landing';
-import LoginPage from './pages/auth/LoginPage';
-import SignupPage from './pages/auth/SignupPage';
-import NotFound from './pages/NotFound';
+import Landing from './home/landing';
+import LoginPage from './login/LoginPage';
+import SignupPage from './signup/SignupPage';
+import NotFound from './home/NotFound';
 import FlashMessagesList from './messages/flasshMessagesList';
 
 const App = () => <div className='ui'>

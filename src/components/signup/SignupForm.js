@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
 import  Validator from 'validator';
 import {Form, Button, Message } from 'semantic-ui-react';
-import InLineError from '../../messages/InLineError';
+import InLineError from '../messages/InLineError';
 import passwordValidator from 'password-validator';
 
 const validpassword = new passwordValidator();

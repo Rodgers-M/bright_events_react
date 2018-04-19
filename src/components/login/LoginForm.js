@@ -2,7 +2,7 @@ import  React, {Component} from 'react';
 import  Validator from 'validator';
 import {Form, Button, Message } from 'semantic-ui-react';
 import  PropTypes from 'prop-types';
-import InLineError from '../../messages/InLineError';
+import InLineError from '../messages/InLineError';
 
 class LoginForm extends Component{
     state = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import  PropTypes from 'prop-types';
-import * as actions from '../../actions/auth';
+import * as actions from '../../redux/actions/auth';
 
 export const Landing = ({isAuthenticated, logout }) => (
     <header id='backgroundimg'>

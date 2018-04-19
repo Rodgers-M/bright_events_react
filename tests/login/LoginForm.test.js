@@ -46,8 +46,12 @@ describe('Login form component', () => {
         expect(wrapper.prop('submit')).toBeDefined();
         });
     it('should call validate on submit', ()=> {
-        let wrapper = setup();
+        let props = {
+            submit : () => {}
+        };
+        const wrapper = shallow(<LoginForm {...props} />);
         const validateMock = () => {};
         wrapper.instance().validate = validateMock;
+        wrapper.simulate('submit')
         });
 });

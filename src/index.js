@@ -5,11 +5,11 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {userLoggedIn} from './actions/auth';
+import {userLoggedIn} from './redux/actions/auth';
 import 'semantic-ui-css/semantic.min.css';
 import './stylesheets/index.css';
 import App from './components/app';   
-import rootReducer from './rootReducer';
+import rootReducer from './redux/rootReducer';
 import registerServiceWorker from './registerServiceWorker'; 
 
 const store = createStore(
