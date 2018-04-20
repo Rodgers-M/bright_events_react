@@ -16,7 +16,6 @@ validpassword.is().min(6)
 export const validate=(data) => {
         const errors = {};
         if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
-        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
         if(Validator.isNumeric(data.username)) errors.username = 'username can\'t be numbers';
         if(!Validator.isAlphanumeric(data.username)) errors.username =
             'username can only contain letters and numbers';
