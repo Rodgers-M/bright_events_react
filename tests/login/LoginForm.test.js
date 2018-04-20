@@ -1,5 +1,5 @@
 import '../helpers'
-import LoginForm from '../../src/components/login/LoginForm';
+import LoginForm, {validate} from '../../src/components/login/LoginForm';
     
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -38,4 +38,16 @@ describe('Login form component', () => {
         let wrapper = setup();
         expect(wrapper.prop('submit')).toBeDefined();
         });
+});
+
+describe('login validate function',()=>{
+    it('should return an error object when the input fields have no data', ()=>{
+       const  data = { 
+            username: '',
+            password: ''
+        };
+        let errors = validate(data)
+        expect(errors.username).toBe('username can\'t be blank');
+        expect(errors.password).toBe('Password can\'t be blank');
+    });
 });

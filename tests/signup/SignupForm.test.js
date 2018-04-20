@@ -1,5 +1,5 @@
 import '../helpers'
-import SignupForm from '../../src/components/signup/SignupForm';
+import SignupForm,{validate} from '../../src/components/signup/SignupForm';
     
  
 Enzyme.configure({ adapter: new Adapter() });
@@ -34,3 +34,49 @@ describe('SignupForm form component', () => {
         expect(wrapper.prop('submit')).toBeDefined();
         });
 });
+ 
+describe('signup validate function',()=>{
+    it('should return an error object when the input fields have no data', ()=>{
+       const  data = {
+            username :'',
+            email :'',
+            password :'',
+            confirm_password :'',
+        };
+        let errors = validate(data)
+        expect(errors.username).toBe('username can only contain letters and numbers');
+        expect(errors.email).toBe('please provide a valid email');
+        expect(errors.password).toBe(`password should not have spaces, must be more than 6 characters contain
+             numbers and both lower and uppercase letters`);
+    });
+    it('should return an error when a valid email is not supplied', ()=>{
+       const  data = {
+            username :'rodger',
+            email :'rodger',
+            password :'',
+            confirm_password :'',
+        };
+        let errors = validate(data)
+        expect(errors.email).toBe('please provide a valid email');
+    });
+    it('should return an error when username is not only alphanumeric', ()=>{
+       const  data = {
+            username :'rod*',
+            email :'',
+            password :'',
+            confirm_password :'',
+        };
+        let errors = validate(data)
+        expect(errors.username).toBe('username can only contain letters and numbers');
+    });
+    it('should return an error when provided passwords do not match', ()=>{
+       const  data = {
+            username :'',
+            email :'',
+            password :'HeLloworldwar1',
+            confirm_password :'HeLloworldwar2',
+        };
+        let errors = validate(data)
+        expect(errors.username).toBe('username can only contain letters and numbers');
+    });
+ });
