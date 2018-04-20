@@ -26,12 +26,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "NODE_ENV=test mocha --require babel-core/register --reporter spec --require ignore-styles  \"tests/**/*.test.js\"",
+    "test": "NODE_ENV=test mocha --require babel-core/register babel-polyfill --reporter spec --require ignore-styles  \"tests/**/*.test.js\"",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "coveralls": "NODE_ENV=nyc babel src --out-dir instrumented-src && nyc --reporter=text-summary --reporter=lcov npm run test"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.1.1",
