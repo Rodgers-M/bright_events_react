@@ -51,6 +51,9 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+#vim buffer files
+*.swp
+
 # Yarn Integrity file
 .yarn-integrity
 
@@ -64,6 +67,7 @@ typings/
 
 # testing
 /coverage
+/instrumented-src
 
 # production
 /build
