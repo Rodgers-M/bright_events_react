@@ -1,13 +1,6 @@
-import 'jsdom-global/register';
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
-import expect from 'expect';
-import Adapter from 'enzyme-adapter-react-16';
-import Enzyme from 'enzyme';
-import {mount, shallow} from 'enzyme';
+import '../helpers'
 import LoginForm from '../../src/components/login/LoginForm';
     
- 
 Enzyme.configure({ adapter: new Adapter() });
 
 function setup(){
