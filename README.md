@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Rodgers-M/bright_events_react.svg?branch=https://travis-ci.org/Rodgers-M/bright_events_react.svg?branch=ft-login-%23155927917)](https://travis-ci.org/Rodgers-M/bright_events_react) [![Coverage Status](https://coveralls.io/repos/github/Rodgers-M/bright_events_react/badge.svg?branch=https://travis-ci.org/Rodgers-M/bright_events_react.svg?branch=ft-login-%23155927917)](https://coveralls.io/github/Rodgers-M/bright_events_react?branch=master)
+[![Build Status](https://travis-ci.org/Rodgers-M/bright_events_react.svg?branch=ft-login-%23155927917)](https://travis-ci.org/Rodgers-M/bright_events_react) [![Coverage Status](https://coveralls.io/repos/github/Rodgers-M/bright_events_react/badge.svg?branch=master)](https://coveralls.io/github/Rodgers-M/bright_events_react?branch=master)  
  # Bright_events_react
  A web application that provides a platform for event organizers to create and manage different types of events.
 
