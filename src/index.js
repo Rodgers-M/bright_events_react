@@ -9,7 +9,7 @@ import {userLoggedIn} from './redux/actions/auth';
 import 'semantic-ui-css/semantic.min.css';
 import './stylesheets/index.css';
 import App from './components/app';   
-import rootReducer from './redux/rootReducer';
+import rootReducer from './redux/reducers/rootReducer';
 import registerServiceWorker from './registerServiceWorker'; 
 
 const store = createStore(
