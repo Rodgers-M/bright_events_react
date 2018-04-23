@@ -54,6 +54,7 @@
     "jsdom-global": "3.0.2",
     "mocha": "^5.0.5",
     "prettier": "^1.11.1",
+    "react-router-enzyme-context": "^1.2.0",
     "react-test-renderer": "^16.3.1"
   },
   "proxy": "http://localhost:8000/api/v2"
