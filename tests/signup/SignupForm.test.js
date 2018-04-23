@@ -1,15 +1,18 @@
 import '../helpers'
+import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 import SignupForm,{validate} from '../../src/components/signup/SignupForm';
     
  
 Enzyme.configure({ adapter: new Adapter() });
 
 function setup(){
+    const options = new ReactRouterEnzymeContext();
     let props = {
         submit : () => {}
     };
     return mount(
-        <SignupForm {...props} />
+        <SignupForm {...props} />,
+        options.get()
     );
 };
 
