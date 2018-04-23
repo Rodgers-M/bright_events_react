@@ -119,7 +119,7 @@ class SignupForm extends Component {
                             /> 
                         </Form.Field>
                     <Button primary> Signup </Button>
-                    <p style={formInputStyle}>Already registered? <Link to='/auth/login'>Login </Link></p>
+                    <p style={formInputStyle}>Already registered? <Link className='auth' to='/auth/login'>Login </Link></p>
                     </Form>
                   </div>
                 </div>

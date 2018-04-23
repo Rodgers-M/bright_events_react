@@ -18,7 +18,6 @@ var formInputStyle = {
     letterSpacing : '1px'
 };
 
-
 class LoginForm extends Component{
     state = {
         data: { 
@@ -82,7 +81,7 @@ class LoginForm extends Component{
                         {errors.password && <InLineError message={errors.password} /> }
                         </Form.Field>
                     <Button primary> Login </Button>
-                    <p style={formInputStyle}>Don't have an account? <Link to='/auth/signup'>Register here </Link></p>
+                    <p style={formInputStyle}>Don't have an account? <Link className='auth'  to='/auth/signup'>Register here </Link></p>
                     </Form>
                   </div>
                 </div>
