@@ -2,6 +2,7 @@ import  React, {Component} from 'react';
 import  Validator from 'validator';
 import {Form, Button, Message } from 'semantic-ui-react';
 import  PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import InLineError from '../messages/InLineError';
 
 export const validate = data => {
@@ -10,6 +11,13 @@ export const validate = data => {
         if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
         return errors;
     }
+
+var formInputStyle = {
+    color : 'white',
+    fontSize : '15px',
+    letterSpacing : '1px'
+};
+
 
 class LoginForm extends Component{
     state = {
@@ -45,21 +53,18 @@ class LoginForm extends Component{
     render(){
         const { data, errors, loading } = this.state;
         return(
-            <div >
-                <div className='ui  grid'>
-                  <div className="six wide column"></div>
-                  <div className="four wide column"><h1>Login Page</h1></div>
-                </div>
+            <div id='backgroundimg'>
                 <div className='ui  grid'>
                   <div className="five wide column"></div>
-                  <div className="six wide column">
-                    <Form onSubmit={this.onSubmit}loading={loading}>
+                  <div className="six wide column formBackground" >
+                        <h1>Login Page</h1>
+                    <Form onSubmit={this.onSubmit}loading={loading} >
                         {errors.message && <Message negative>
                             <Message.Header> Something went wrong </Message.Header>
                             <p> {errors.message} </p>
                         </Message>}
                         <Form.Field error={!!errors.username}>
-                            <label htmlFor='username' > username </label>
+                            <label htmlFor='username' style={formInputStyle}> username </label>
                             <input type='text' name='username' id='username'
                                 placeholder='username'
                                 value={data.username}
@@ -67,8 +72,8 @@ class LoginForm extends Component{
                             />
                         {errors.username && <InLineError message={errors.username} /> }
                         </Form.Field>
-                        <Form.Field error={!!errors.password}>
-                            <label htmlFor='password' > password </label>
+                        <Form.Field error={!!errors.password} >
+                            <label htmlFor='password' style={formInputStyle}> password </label>
                             <input type='password' name='password' id='password'
                                 placeholder='Password'
                                 value={data.password}
@@ -77,6 +82,7 @@ class LoginForm extends Component{
                         {errors.password && <InLineError message={errors.password} /> }
                         </Form.Field>
                     <Button primary> Login </Button>
+                    <p style={formInputStyle}>Don't have an account? <Link to='/auth/signup'>Register here </Link></p>
                     </Form>
                   </div>
                 </div>
