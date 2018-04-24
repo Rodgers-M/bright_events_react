@@ -7,10 +7,10 @@ import {addFlashMessage} from '../../redux/actions/flashMessages';
 
 class SignupPage extends Component {
 
-submit=data => this.props.signup(data).then(()=>{ 
+submit=data => this.props.signup(data).then((data)=>{ 
     this.props.addFlashMessage({
         type : 'success',
-        text : 'registration successful, now login'
+        text : data.message
     })
     this.props.history.push("/auth/login")
 });
