@@ -4,10 +4,8 @@ import Landing from './home/landing';
 import LoginContainer from './login/LoginContainer';
 import SignupContainer from './signup/SignupContainer';
 import NotFound from './home/NotFound';
-import FlashMessagesList from './messages/flasshMessagesList';
 
 const App = () => <div className='ui'>
-        <FlashMessagesList />
         <Switch>
             <Route path='/' exact component={Landing} />
             <Route path='/auth/login' exact component={LoginContainer} />
