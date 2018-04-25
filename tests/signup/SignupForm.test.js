@@ -1,6 +1,7 @@
 import '../helpers'
 import ReactRouterEnzymeContext from 'react-router-enzyme-context';
-import SignupForm,{validate} from '../../src/components/signup/SignupForm';
+import SignupForm from '../../src/components/signup/SignupForm';
+import {validate} from '../../src/components/signup/SignupContainer';
     
  
 Enzyme.configure({ adapter: new Adapter() });
@@ -8,7 +9,18 @@ Enzyme.configure({ adapter: new Adapter() });
 function setup(){
     const options = new ReactRouterEnzymeContext();
     let props = {
-        submit : () => {}
+        state : {
+            data : {
+                username : '',
+                email : '',
+                password : '',
+                confirm_password : '',
+            },
+            loading : false,
+            errors : {}
+        },
+        onSubmit : () => {},
+        onChange : () => {}
     };
     return mount(
         <SignupForm {...props} />,
@@ -25,16 +37,9 @@ describe('SignupForm form component', () => {
         const wrapper = setup();
         expect(wrapper.find('button').length).toEqual(1);
     });
-    it('should have no data in state', ()=> {
-        const wrapper = setup()  
-        const usernameInput = wrapper.find('#username');
-        usernameInput.instance().value = "myname";
-        usernameInput.simulate('change');
-        expect(wrapper.instance().state.data.username).toEqual('myname')
-    });
     it('should have a submit prop', ()=> {
         let wrapper = setup();
-        expect(wrapper.prop('submit')).toBeDefined();
+        expect(wrapper.prop('onSubmit')).toBeDefined();
         });
 });
  

@@ -1,19 +1,31 @@
 import '../helpers'
 import ReactRouterEnzymeContext from 'react-router-enzyme-context';
-import LoginForm, {validate} from '../../src/components/login/LoginForm';
+import LoginForm from '../../src/components/login/LoginForm';
+import {validate} from '../../src/components/login/LoginContainer';
     
 Enzyme.configure({ adapter: new Adapter() });
 
 function setup(){
     const options = new ReactRouterEnzymeContext();
     let props = {
-        submit : () => {}
+        state : {
+            data: { 
+                username: '',
+                password: ''
+            },
+            loading: false,
+            errors: {}
+        },
+        onSubmit : () => {},
+        onChange : () => {}
     };
     return mount(
-        <LoginForm {...props} />,
+        <LoginForm {...props} /> ,
         options.get()
+
     );
 };
+
 
 describe('Login form component', () => {
     it('should have two input fields', ()=> {
@@ -26,20 +38,12 @@ describe('Login form component', () => {
     });
     it('should have no data in state', ()=> {
         let wrapper = setup();
-        const wrap = wrapper.instance();
-        expect(wrap.state.data.username).toBe('');
-        expect(wrap.state.data.password).toBe('');
+        expect(wrapper.prop('state').data.username).toBe('');
+        expect(wrapper.prop('state').data.password).toBe('');
     });
-    it('change state when user types values', ()=> {
-        const wrapper = setup()  
-        const usernameInput = wrapper.find('#username');
-        usernameInput.instance().value = "myname";
-        usernameInput.simulate('change');
-        expect(wrapper.instance().state.data.username).toEqual('myname')
-    }) ;
     it('should have a submit prop', ()=> {
         let wrapper = setup();
-        expect(wrapper.prop('submit')).toBeDefined();
+        expect(wrapper.prop('onSubmit')).toBeDefined();
         });
 });
 
