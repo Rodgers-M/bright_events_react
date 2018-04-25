@@ -3,7 +3,7 @@ import {Form, Button, Message } from 'semantic-ui-react';
 import  PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import InLineError from '../messages/InLineError';
-
+import FlashMessagesList from '../messages/flasshMessagesList';
 
 var formInputStyle = {
     color : 'white',
@@ -20,6 +20,7 @@ const LoginForm = (props) =>{
                   <div className="five wide column"></div>
                   <div className="six wide column formBackground" >
                         <h1>Login Page</h1>
+                    <FlashMessagesList />
                     <Form onSubmit={props.onSubmit} loading={loading} >
                         {errors.message && <Message negative>
                             <Message.Header> Something went wrong </Message.Header>
