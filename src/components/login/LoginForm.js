@@ -1,16 +1,9 @@
-import  React, {Component} from 'react';
-import  Validator from 'validator';
+import  React  from 'react';
 import {Form, Button, Message } from 'semantic-ui-react';
 import  PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import InLineError from '../messages/InLineError';
 
-export const validate = data => {
-        const errors = {};
-        if(Validator.isEmpty(data.username)) errors.username = 'username can\'t be blank';
-        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
-        return errors;
-    }
 
 var formInputStyle = {
     color : 'white',
@@ -18,46 +11,16 @@ var formInputStyle = {
     letterSpacing : '1px'
 };
 
-class LoginForm extends Component{
-    state = {
-        data: { 
-            username: '',
-            password: ''
-        },
-        loading: false,
-        errors: {}
-    };
+const LoginForm = (props) =>{
 
-    onChange = e => this.setState({
-        data : {...this.state.data, [e.target.name]: e.target.value}
-        });
-
-    onSubmit = () => {
-        const errors = validate(this.state.data);
-        this.setState({ errors });
-        if(Object.keys(errors).length===0){
-            this.setState({loading : true});
-            this.props.submit(this.state.data)
-            .catch(err=> {
-                if (err.request.status === 500){ 
-                    this.setState({errors: {message: "Service is unavailable, please try again later"},loading : false})
-                }else {
-                this.setState({errors: err.response.data, loading : false})
-            }
-        });
-        }
-    };
-
-
-    render(){
-        const { data, errors, loading } = this.state;
+        const { data, errors, loading } = props.state;
         return(
             <div id='backgroundimg'>
                 <div className='ui  grid'>
                   <div className="five wide column"></div>
                   <div className="six wide column formBackground" >
                         <h1>Login Page</h1>
-                    <Form onSubmit={this.onSubmit}loading={loading} >
+                    <Form onSubmit={props.onSubmit} loading={loading} >
                         {errors.message && <Message negative>
                             <Message.Header> Something went wrong </Message.Header>
                             <p> {errors.message} </p>
@@ -67,7 +30,7 @@ class LoginForm extends Component{
                             <input type='text' name='username' id='username'
                                 placeholder='username'
                                 value={data.username}
-                                onChange={this.onChange}
+                                onChange={props.onChange}
                             />
                         {errors.username && <InLineError message={errors.username} /> }
                         </Form.Field>
@@ -76,11 +39,11 @@ class LoginForm extends Component{
                             <input type='password' name='password' id='password'
                                 placeholder='Password'
                                 value={data.password}
-                                onChange={this.onChange}
+                                onChange={props.onChange}
                             />
                         {errors.password && <InLineError message={errors.password} /> }
                         </Form.Field>
-                    <Button primary> Login </Button>
+                    <Button type="submit" primary> Login </Button>
                     <p style={formInputStyle}>Don't have an account? <Link className='auth'  to='/auth/signup'>Register here </Link></p>
                     </Form>
                   </div>
@@ -88,10 +51,11 @@ class LoginForm extends Component{
             </div>
         );
     }
-}
 
 LoginForm.propTypes ={
-    submit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    state : PropTypes.object.isRequired
 };
 
 export default LoginForm;
