@@ -7,6 +7,7 @@ import Enzyme from 'enzyme';
 import {mount, shallow} from 'enzyme';
 import configureStore from '../src/redux/store/configureStore';
 import {Provider} from 'react-redux';
+import sinon from 'sinon';
 
 const store = configureStore();
  
@@ -19,4 +20,5 @@ global.mount = mount;
 global.shallow = shallow;
 global.store = store;
 global.Provider = Provider;
+global.sinon = sinon;
 
