@@ -8,8 +8,10 @@ import {mount, shallow} from 'enzyme';
 import configureStore from '../src/redux/store/configureStore';
 import {Provider} from 'react-redux';
 import sinon from 'sinon';
+import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 
 const store = configureStore();
+const options = new ReactRouterEnzymeContext();
  
 global.React = React;
 global.Router = Router;
@@ -21,4 +23,5 @@ global.shallow = shallow;
 global.store = store;
 global.Provider = Provider;
 global.sinon = sinon;
+global.options = options;
 
