@@ -17,7 +17,7 @@ body {
     z-index : 99;
 }
 .formBackground{
-   	background:linear-gradient(rgba(107, 107, 71,0.7),rgba(107, 107, 71,0.7));
+   	background:linear-gradient(rgba(107, 107, 71,0.9),rgba(107, 107, 71,0.8));
 	margin-top: 5%;
 	border: 1px solid white;
 	padding: 1%;
