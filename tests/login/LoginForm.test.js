@@ -1,12 +1,10 @@
 import '../helpers'
-import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 import LoginForm from '../../src/components/login/LoginForm';
 import {validate} from '../../src/components/login/LoginContainer';
     
 Enzyme.configure({ adapter: new Adapter() });
 
 function setup(){
-    const options = new ReactRouterEnzymeContext();
     let props = {
         state : {
             data: { 
