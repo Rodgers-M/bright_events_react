@@ -3,7 +3,7 @@ import {Form, Button, Message } from 'semantic-ui-react';
 import  PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import InLineError from '../messages/InLineError';
-import FlashMessagesList from '../messages/flasshMessagesList';
+import FlashMessagesList from '../messages/FlashMessagesList';
 
 var formInputStyle = {
     color : 'white',
