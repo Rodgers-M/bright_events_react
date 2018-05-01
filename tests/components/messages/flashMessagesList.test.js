@@ -1,5 +1,5 @@
-import '../helpers'
-import {FlashMessagesList} from '../../src/components/messages/FlashMessagesList';
+import '../../helpers'
+import {FlashMessagesList} from '../../../src/components/messages/FlashMessagesList';
 
 const messages = [
     {id : '1', type : 'error', text : 'your action failed, please try again later'},

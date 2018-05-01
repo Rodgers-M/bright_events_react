@@ -1,6 +1,6 @@
-import '../helpers'
-import * as actions from '../../src/redux/actions/auth';
-import * as types from '../../src/redux/actions/types';
+import '../../helpers'
+import * as actions from '../../../src/redux/actions/auth';
+import * as types from '../../../src/redux/actions/types';
 
 describe ('user actions', ()=> {
     describe('userLoggedIn  action creator', ()=> {

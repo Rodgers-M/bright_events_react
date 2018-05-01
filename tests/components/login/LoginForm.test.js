@@ -1,6 +1,6 @@
-import '../helpers'
-import LoginForm from '../../src/components/login/LoginForm';
-import {validate} from '../../src/components/login/LoginContainer';
+import '../../helpers'
+import LoginForm from '../../../src/components/login/LoginForm';
+import {validate} from '../../../src/components/login/LoginContainer';
     
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -1,7 +1,7 @@
-import '../helpers'
+import '../../helpers'
 import ReactRouterEnzymeContext from 'react-router-enzyme-context';
-import SignupForm from '../../src/components/signup/SignupForm';
-import {validate} from '../../src/components/signup/SignupContainer';
+import SignupForm from '../../../src/components/signup/SignupForm';
+import {validate} from '../../../src/components/signup/SignupContainer';
     
  
 Enzyme.configure({ adapter: new Adapter() });
