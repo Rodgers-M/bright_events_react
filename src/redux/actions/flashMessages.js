@@ -1,4 +1,4 @@
-import {ADD_FLASH_MEASSAGE, DELETE_FLASH_MESSAGE} from '../types'
+import {ADD_FLASH_MEASSAGE, DELETE_FLASH_MESSAGE} from './types'
 
 export const  addFlashMessage = (message) => ({
     type : ADD_FLASH_MEASSAGE,

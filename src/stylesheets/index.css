@@ -13,6 +13,22 @@ body {
     height : 100vh;
     background-attachment: fixed;
     background-position: center;
+    position : relative;
+    z-index : 99;
+}
+.formBackground{
+   	background:linear-gradient(rgba(107, 107, 71,0.9),rgba(107, 107, 71,0.8));
+	margin-top: 5%;
+	border: 1px solid white;
+	padding: 1%;
+	margin-top: 20vh;
+    color: #f2f2f2;
+}
+.auth{
+    color : #99ffff;
+}
+.auth:hover{
+    color : #ffffb3;
 }
 .text-box{
     position: relative;

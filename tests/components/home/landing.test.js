@@ -1,10 +1,5 @@
-import 'jsdom-global/register';
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
-import expect from 'expect';
-import Adapter from 'enzyme-adapter-react-16';
-import Enzyme, {mount, shallow} from 'enzyme';
-import {Landing} from './landing';
+import '../../helpers'
+import {Landing} from '../../../src/components/home/landing';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -39,5 +34,9 @@ describe('Landing page component', () => {
         const wrapper = setup(true);
         expect(wrapper.find('button').length).toEqual(1);
         expect(wrapper.find('button').children().length).toEqual(2);
+     });
+    it('should have a get started button that points to signup', () => {
+        const wrapper = setup(true);
+        expect(wrapper.find('Link').last().props().to).toEqual('/auth/signup')
      });
   });

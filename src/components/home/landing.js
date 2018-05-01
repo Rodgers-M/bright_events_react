@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import  PropTypes from 'prop-types';
-import * as actions from '../../actions/auth';
+import * as actions from '../../redux/actions/auth';
 
 export const Landing = ({isAuthenticated, logout }) => (
     <header id='backgroundimg'>
@@ -40,7 +40,7 @@ export const Landing = ({isAuthenticated, logout }) => (
                     <div className='three wide column centered'>
                         <button className='ui icon button'>
                             <i className='rocket icon' />
-                            <Link to='/auth/register'>Get Started</Link>
+                            <Link to='/auth/signup'>Get Started</Link>
                         </button>
                     </div>
                 </div>
