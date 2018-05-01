@@ -1,16 +1,17 @@
-import React, { Component } from 'react'
-import Landing from './pages/landing'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom';
+import Landing from './home/landing';
+import LoginContainer from './login/LoginContainer';
+import SignupContainer from './signup/SignupContainer';
+import NotFound from './home/NotFound';
 
-export default class App extends Component{
-    constructor(props){
-        super(props)
-        this.state = {name: 'Bright Events'}
-    }
-    render(){
-        return(
-            <div className='app'>
-            <Landing />
-            </div>
-        )
-    }
-}
+const App = () => <div className='ui'>
+        <Switch>
+            <Route path='/' exact component={Landing} />
+            <Route path='/auth/login' exact component={LoginContainer} />
+            <Route path='/auth/signup' exact component={SignupContainer} />
+            <Route component={NotFound} />
+        </Switch>
+    </div>
+
+export default App;
