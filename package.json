@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
     "es2015": "0.0.0",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.5",
     "nyc": "^11.7.1",
     "password-validator": "^4.0.0",
