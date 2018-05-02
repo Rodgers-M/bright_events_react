@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import jwtDecode from 'jwt-decode';
 import  PropTypes from 'prop-types';
 import * as actions from '../../redux/actions/auth';
 
@@ -16,6 +17,10 @@ export const Landing = ({isAuthenticated, logout }) => (
                        <i className='tasks icon' /> Dashborad 
                     </Link>
                 </li>
+                {!isAuthenticated?
+                    console.log("status is", isAuthenticated)
+                    : console.log("no way")
+                }
                 {!isAuthenticated? /*if a user is not authenticated, show login icon*/
                 <li className='item'>
                     <Link to='/auth/login'>
@@ -54,9 +59,18 @@ Landing.propTypes = {
     logout : PropTypes.func.isRequired
 };
 
+const isTokenExpired = token => {
+    let currentTime = new Date() / 1000;
+    if(jwtDecode(token).exp < currentTime){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function mapStateToProps(state){
     return{
-        isAuthenticated : !!state.user.access_token
+        isAuthenticated : !!state.user.access_token && !isTokenExpired(state.user.access_token)
     }
 }
 
