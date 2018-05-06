@@ -33,7 +33,10 @@ class LoginContainer extends Component{
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
             this.props.login(this.state.data)
-            .then(()=> this.props.history.push("/"))
+            .then(()=>{
+                var {from} = this.props.location.state || {from: {pathname: '/events/create'}}
+                this.props.history.push(from)
+            })
             .catch(err=> {
                 if (err.request.status === 500){ 
                     this.setState({errors: {message: "Service is unavailable, please try again later"},loading : false})
