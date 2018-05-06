@@ -1,5 +1,5 @@
-import {EVENT_CREATED} from '../types';
-import api from '../api';
+import {EVENT_CREATED} from './types';
+import api from '../../api';
 
 
 export const eventCreated = (createdEvent) => ({
@@ -8,6 +8,7 @@ export const eventCreated = (createdEvent) => ({
 });
  
 export const create = details => (dispatch) => 
-    api.event.create(details).then(event =>{
-        console.log(event)
-        dispatch(eventCreated(event))});
+    api.events.create(details).then(event =>{
+        console.log('this is the event from backend', event)
+        dispatch(eventCreated(event))
+    });
