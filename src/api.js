@@ -19,5 +19,9 @@ export default{
         .then(res => res.data.user),
         signup : (credentials)=> instance.post('/auth/register', credentials)
         .then(res => res.data)
+    },
+    events : {
+        create : (details) => instance.post('/events/create', details)
+        .then(response => response.data)
     }
 }
