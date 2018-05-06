@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import jwtDecode from 'jwt-decode';
 import  PropTypes from 'prop-types';
 import * as actions from '../../redux/actions/auth';
+import {isTokenExpired} from '../helpers/helpers';
 
 export const Landing = ({isAuthenticated, logout }) => (
     <header id='backgroundimg'>
@@ -12,15 +12,6 @@ export const Landing = ({isAuthenticated, logout }) => (
                  Bright Events
             </li>
             <div className='right menu'>
-                <li className='item'>
-                    <Link to='/events/dashboard'>
-                       <i className='tasks icon' /> Dashborad 
-                    </Link>
-                </li>
-                {!isAuthenticated?
-                    console.log("status is", isAuthenticated)
-                    : console.log("no way")
-                }
                 {!isAuthenticated? /*if a user is not authenticated, show login icon*/
                 <li className='item'>
                     <Link to='/auth/login'>
@@ -30,10 +21,18 @@ export const Landing = ({isAuthenticated, logout }) => (
                 </li>
                  ://else show a logout icon
                 <li className='item'>
-                    <a href="#logout" className='logout'  onClick={()=> logout()}>
-                        Logout   <i className='sign out icon' />
-                    </a>
-                </li>}
+                    <Link to='/events/create'>
+                       <i className='tasks icon' /> Dashborad 
+                    </Link>
+                </li>
+                 };
+                {isAuthenticated ?
+                <li className='item'>
+                   <a href="#logout" className='logout'  onClick={()=> logout()}>
+                       Logout   <i className='sign out icon' />
+                   </a>
+                </li>
+                : null }
             </div>
         </div>
         <div className='text-box'>
@@ -58,15 +57,6 @@ Landing.propTypes = {
     isAuthenticated : PropTypes.bool.isRequired,
     logout : PropTypes.func.isRequired
 };
-
-const isTokenExpired = token => {
-    let currentTime = new Date() / 1000;
-    if(jwtDecode(token).exp < currentTime){
-        return true;
-    }else{
-        return false;
-    }
-}
 
 function mapStateToProps(state){
     return{
