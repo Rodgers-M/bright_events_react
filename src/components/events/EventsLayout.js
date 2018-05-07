@@ -4,27 +4,30 @@ import { connect } from 'react-redux';
 import  PropTypes from 'prop-types';
 import EventsNavBar from './EventsNavBar';
 import * as actions from '../../redux/actions/auth';
+import {addFlashMessage} from '../../redux/actions/flashMessages';
 import {isTokenExpired, getUsername} from '../helpers/helpers';
 
 const EventsLayout = ({component : Component, ...rest}) =>{
-    const {page,isAuthenticated,username, logout} = rest;
+    const {page,isAuthenticated,username, logout, addFlashMessage} = rest;
     return(
         <Route {...rest} render={matchProps => isAuthenticated ? (
             <div >
                 <EventsNavBar page={page} username={username} logout={logout}/>
-                <div className='ui grid'>
-                  <div className="ten wide centered column">
+                <div className='ui grid' style={{backgroundColor : '#f1f1f1'}}>
+                  <div className="twelve wide centered column">
                      <Component  {...matchProps}   />   
                   </div>
                 </div>
             </div>
-        ): <Redirect to={{ pathname: '/auth/login', state: { from: rest.location } }}/>}/>
+        ): (addFlashMessage({type : 'warning', text : 'please login to continue'}),
+          <Redirect to={{ pathname: '/auth/login', state: { from: rest.location } }}/> )}/>
     )
 };
  
 EventsLayout.propTypes = {
     isAuthenticated : PropTypes.bool.isRequired,
-    logout : PropTypes.func.isRequired
+    logout : PropTypes.func.isRequired,
+    addFlashMessage : PropTypes.func.isRequired
 };
 
 function mapStateToProps(state){
@@ -33,4 +36,4 @@ function mapStateToProps(state){
         username : getUsername(state.user.access_token)
     }
 }
-export default connect(mapStateToProps,{logout : actions.logout })(EventsLayout);
+export default connect(mapStateToProps,{logout : actions.logout, addFlashMessage })(EventsLayout);
