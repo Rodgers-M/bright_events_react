@@ -1,5 +1,6 @@
 import  React from 'react';
 import {Link} from 'react-router-dom';
+import  PropTypes from 'prop-types';
 
 const EventsNavBar = (props) => {
     
@@ -42,5 +43,11 @@ const EventsNavBar = (props) => {
             </div>
     </div>
 )};
+
+EventsNavBar.propTypes = {
+    logout : PropTypes.func.isRequired,
+    page : PropTypes.string.isRequired,
+    username : PropTypes.string.isRequired
+}
  
 export default EventsNavBar;
