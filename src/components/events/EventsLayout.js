@@ -7,7 +7,7 @@ import * as actions from '../../redux/actions/auth';
 import {addFlashMessage} from '../../redux/actions/flashMessages';
 import {isTokenExpired, getUsername} from '../helpers/helpers';
 
-const EventsLayout = ({component : Component, ...rest}) =>{
+export const EventsLayout = ({component : Component, ...rest}) =>{
     const {page,isAuthenticated,username, logout, addFlashMessage} = rest;
     return(
         <Route {...rest} render={matchProps => isAuthenticated ? (
