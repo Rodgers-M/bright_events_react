@@ -5,12 +5,12 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import  PropTypes from 'prop-types';
 import InLineError from '../messages/InLineError';
 
-const CreateEventForm = (props)=> {
+const EventForm = (props)=> {
     
     const { data, errors, loading } = props.state;
     return(
         <div className="ui grid">
-            <div className="twelve wide centered column">
+            <div className="ten twelve wide centered column">
             <Form onSubmit={props.onSubmit}loading={loading} >
                 {errors.message && <Message negative>
                     <Message.Header> Something went wrong </Message.Header>
@@ -73,8 +73,8 @@ const CreateEventForm = (props)=> {
     );
 }
 
-CreateEventForm.propTypes ={
+EventForm.propTypes ={
     onSubmit: PropTypes.func.isRequired
 };
 
-export default CreateEventForm;
+export default EventForm;
