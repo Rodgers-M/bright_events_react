@@ -21,7 +21,7 @@ const formatDate = eventDate => {
             return [year, month, day].join('-');
     }
 
-class CreateEventContainer extends Component{
+export class CreateEventContainer extends Component{
     state = {
         data: { 
             name: '',
@@ -76,7 +76,7 @@ class CreateEventContainer extends Component{
                     onChange={this.onChange}
                     handleDate={this.handleDate}
                     state={this.state}
-                    formType='Create Event'
+                    buttonText='Create'
                 />
             </div>
         );
@@ -88,7 +88,7 @@ CreateEventContainer.propTypes = {
         push: PropTypes.func.isRequired
     }).isRequired,
     create: PropTypes.func.isRequired,
-    addFlashMessage : PropTypes.func.isRequired
+    addFlashMessage : PropTypes.func.isRequired,
 }
 
 export default connect(null,{create, addFlashMessage} )(CreateEventContainer);
