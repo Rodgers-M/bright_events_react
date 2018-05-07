@@ -66,7 +66,7 @@ const EventForm = (props)=> {
                     />
                 {errors.date && <InLineError message={errors.date} /> }
                 </Form.Field>
-            <Button primary>Create</Button>
+            <Button primary>{props.buttonText}</Button>
             </Form>
         </div>
         </div>
@@ -74,7 +74,8 @@ const EventForm = (props)=> {
 }
 
 EventForm.propTypes ={
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    buttonText : PropTypes.string.isRequired
 };
 
 export default EventForm;
