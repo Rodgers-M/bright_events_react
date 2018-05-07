@@ -1,4 +1,3 @@
-import '../../helpers'
 import * as actions from '../../../src/redux/actions/flashMessages';
 import flashMessagesReducer from '../../../src/redux/reducers/flashMessages';
 

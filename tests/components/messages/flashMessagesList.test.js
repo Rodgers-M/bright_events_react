@@ -1,4 +1,3 @@
-import '../../helpers'
 import {FlashMessagesList} from '../../../src/components/messages/FlashMessagesList';
 
 const messages = [

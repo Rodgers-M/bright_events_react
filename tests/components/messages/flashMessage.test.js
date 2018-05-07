@@ -1,4 +1,3 @@
-import '../../helpers'
 import FlashMessage from '../../../src/components/messages/FlashMessage';
  
 const deleteFlashMessage = sinon.spy();

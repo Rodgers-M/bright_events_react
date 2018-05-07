@@ -1,4 +1,3 @@
-import '../../helpers'
 import * as actions from '../../../src/redux/actions/auth';
 import userReducer from '../../../src/redux/reducers/user';
 

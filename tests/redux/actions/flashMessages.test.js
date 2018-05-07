@@ -1,4 +1,3 @@
-import '../../helpers'
 import * as actions from '../../../src/redux/actions/flashMessages';
 import * as types from '../../../src/redux/actions/types';
 

@@ -1,4 +1,3 @@
-import '../../helpers'
 import {Landing} from '../../../src/components/home/landing';
 
 Enzyme.configure({ adapter: new Adapter() });

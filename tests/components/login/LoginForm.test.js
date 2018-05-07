@@ -1,4 +1,3 @@
-import '../../helpers'
 import LoginForm from '../../../src/components/login/LoginForm';
 import {validate} from '../../../src/components/login/LoginContainer';
     
