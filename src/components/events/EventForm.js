@@ -12,7 +12,7 @@ const EventForm = (props)=> {
         <div className="ui grid">
             <div className="ten twelve wide centered column">
             <Form onSubmit={props.onSubmit}loading={loading} >
-                {errors.message && <Message negative>
+                {errors.message && <Message negative onDismiss={props.handleDismiss}>
                     <Message.Header> Something went wrong </Message.Header>
                     <p> {errors.message} </p>
                 </Message>}
