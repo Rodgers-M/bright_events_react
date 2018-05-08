@@ -43,6 +43,11 @@ export class CreateEventContainer extends Component{
         data : {...this.state.data, event_date : date}
     })};
 
+    handleDismiss= () => {
+        this.setState({
+          errors : {} 
+        });
+    }
 
     onSubmit = () => {
         const errors = validate(this.state.data);
@@ -75,6 +80,7 @@ export class CreateEventContainer extends Component{
                     onSubmit={this.onSubmit} 
                     onChange={this.onChange}
                     handleDate={this.handleDate}
+                    handleDismiss={this.handleDismiss}
                     state={this.state}
                     buttonText='Create'
                 />
