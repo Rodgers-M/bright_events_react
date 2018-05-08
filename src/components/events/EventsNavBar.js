@@ -15,18 +15,18 @@ const EventsNavBar = (props) => {
                     <i className='home icon' /> Home 
                 </Link>
             </li>
-            <li className={page==="create"?'item active':'item'}>
+            <li className={page==='create'?'item active':'item'}>
                 <Link to='/events/create'>
                     Create Event
                 </Link>
             </li>
             
-            <li className={page==="myEvents"?'item active':'item'}>
+            <li className={page==='myEvents'?'item active':'item'}>
                 <Link to='/events/myEvents'>
                     My Events
                 </Link>
             </li>
-            <li className={page==="allEvents"?'item active':'item'}>
+            <li className={page==='allEvents'?'item active':'item'}>
                 <Link to='/events'>
                     View All Events
                 </Link>
@@ -36,13 +36,14 @@ const EventsNavBar = (props) => {
                    <i className='user icon' /> {username} 
                 </li>
                 <li className='item'>
-                   <Link to="/" className='logout'  onClick={()=> logout()}>
+                   <Link to='/' className='logout'  onClick={()=> logout()}>
                        Logout   <i className='sign out icon' />
                    </Link>
                 </li>
             </div>
-    </div>
-)};
+        </div>
+    );
+};
 
 EventsNavBar.propTypes = {
     logout : PropTypes.func.isRequired,

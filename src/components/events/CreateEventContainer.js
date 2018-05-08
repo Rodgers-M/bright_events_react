@@ -14,12 +14,14 @@ const validate=(data) => {
     if(Validator.isEmpty(data.category)) errors.category = 'category can\'t be blank';
     if(Validator.isEmpty(data.location)) errors.location = 'location can\'t be blank';
     return errors;
-}
+};
 const formatDate = eventDate => {
-        let date = new Date(eventDate);
-        var month = date.getMonth() + 1, day = date.getDate(), year = date.getFullYear();
-            return [year, month, day].join('-');
-    }
+    const date = new Date(eventDate);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return [year, month, day].join('-');
+};
 
 export class CreateEventContainer extends Component{
     state = {
@@ -36,42 +38,38 @@ export class CreateEventContainer extends Component{
 
     onChange = e => this.setState({
         data : {...this.state.data, [e.target.name]: e.target.value}
-        });
-
-    handleDate = date =>{
-        this.setState({
-        data : {...this.state.data, event_date : date}
-    })};
-
-    handleDismiss= () => {
-        this.setState({
-          errors : {} 
-        });
-    }
+    });
 
     onSubmit = () => {
         const errors = validate(this.state.data);
         this.setState({ errors });
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
-            var eventDetails = {...this.state.data, event_date : formatDate(this.state.data.event_date)};
+            const eventDetails = {...this.state.data, event_date : formatDate(this.state.data.event_date)};
             this.props.create(eventDetails)
-            .then(() => {
-                this.props.addFlashMessage({
-                    type : 'success',
-                    text : 'event created successfully' 
+                .then(() => {
+                    this.setState({loading : false});
+                    this.props.addFlashMessage({
+                        type : 'success',
+                        text : 'event created successfully' 
+                    });
+                    this.props.history.push('/events/create');
                 })
-                this.props.history.push("/")
-            })
-            .catch(err => {
-                if (err.request.status === 500){ 
-                    this.setState({errors: {message: "Service is unavailable, please try again later"},loading : false})
-                }else {
-                this.setState({errors: err.response.data, loading : false})
-            }
-            });
+                .catch(err => {
+                    if (err.request.status === 500){ 
+                        this.setState({errors: {message: 'Service is unavailable, please try again later'},loading : false});
+                    }else {
+                        this.setState({errors: err.response.data, loading : false});
+                    }
+                });
         }
     };
+
+    handleDismiss= () => {
+        this.setState({
+            errors : {} 
+        });
+    }
 
     render(){
         return(
@@ -79,7 +77,7 @@ export class CreateEventContainer extends Component{
                 <CreateEventForm
                     onSubmit={this.onSubmit} 
                     onChange={this.onChange}
-                    handleDate={this.handleDate}
+                    handleDate={formatDate}
                     handleDismiss={this.handleDismiss}
                     state={this.state}
                     buttonText='Create'
@@ -95,7 +93,7 @@ CreateEventContainer.propTypes = {
     }).isRequired,
     create: PropTypes.func.isRequired,
     addFlashMessage : PropTypes.func.isRequired,
-}
+};
 
 export default connect(null,{create, addFlashMessage} )(CreateEventContainer);
 
