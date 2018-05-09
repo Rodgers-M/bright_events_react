@@ -1,3 +1,5 @@
+/* eslint new-cap: ["error", { "newIsCap": false }] */
+/* eslint-disable react/no-unused-state */
 import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -9,28 +11,27 @@ import {addFlashMessage} from '../../redux/actions/flashMessages';
 
 const validpassword = new passwordValidator();
 validpassword.is().min(6)
-.is().max(20)
-.has().uppercase()
-.has().lowercase()
-.has().digits()
-.has().not().spaces()
+    .is().max(20)
+    .has().uppercase()
+    .has().lowercase()
+    .has().digits()
+    .has().not().spaces();
  
 export const validate=(data) => {
-        const errors = {};
-        if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
-        if(Validator.isNumeric(data.username)) errors.username = 'username can\'t be numbers';
-        if(!Validator.isAlphanumeric(data.username)) errors.username =
-            'username can only contain letters and numbers';
-        if(!Validator.isEmail(data.email) || Validator.isEmpty(data.email)) errors.email
-            = 'please provide a valid email';
-        if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
-        if(!validpassword.validate(data.password)) errors.password = 
-            `password should not have spaces, must be more than 6 characters contain
-             numbers and both lower and uppercase letters`;
-        if(!Validator.equals(data.password , data.confirm_password)) errors.password
-            = 'passwords do not match'
-        return errors;
-    }
+    const errors = {};
+    if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
+    if(Validator.isNumeric(data.username)) errors.username = 'username can\'t be numbers';
+    if(!Validator.isAlphanumeric(data.username)) errors.username =
+        'username can only contain letters and numbers';
+    if(!Validator.isEmail(data.email) || Validator.isEmpty(data.email)) errors.email
+        = 'please provide a valid email';
+    if(Validator.isEmpty(data.password)) errors.password = 'Password can\'t be blank';
+    if(!validpassword.validate(data.password)) errors.password = 
+        'password should not have spaces, must be more than 6 characters contain numbers and both lower and uppercase letters';
+    if(!Validator.equals(data.password , data.confirm_password)) errors.password
+        = 'passwords do not match';
+    return errors;
+};
  
 class SignupPage extends Component {
 
@@ -47,7 +48,7 @@ class SignupPage extends Component {
 
     onChange = e => this.setState({
         data : {...this.state.data, [e.target.name]: e.target.value}
-        });
+    });
 
     onSubmit = () => {
         const errors = validate(this.state.data);
@@ -58,27 +59,27 @@ class SignupPage extends Component {
                 this.props.addFlashMessage({
                     type : 'success',
                     text : data.message  
-                })
-                this.props.history.push("/auth/login")
+                });
+                this.props.history.push('/auth/login');
             })
-            .catch(err=> {
-                if (err.request.status === 500){ 
-                    this.setState({errors: {message: "Service is unavailable, please try again later"},loading : false})
-                }else {
-                this.setState({errors: err.response.data, loading : false})
-            }
-        });
+                .catch(err=> {
+                    if (err.request.status === 500){ 
+                        this.setState({errors: {message: 'Service is unavailable, please try again later'},loading : false});
+                    }else {
+                        this.setState({errors: err.response.data, loading : false});
+                    }
+                });
         }
     };
 
     render(){
         return(
             <div>
-              <SignupForm
-                 onSubmit={this.onSubmit}
-                 onChange={this.onChange} 
-                 state={this.state}
-            />
+                <SignupForm
+                    onSubmit={this.onSubmit}
+                    onChange={this.onChange} 
+                    state={this.state}
+                />
             </div>
         );
     }
@@ -90,6 +91,7 @@ SignupPage.propTypes = {
     }).isRequired,
     signup: PropTypes.func.isRequired,
     addFlashMessage : PropTypes.func.isRequired
-}
+};
 
 export default connect(null, {signup, addFlashMessage})(SignupPage);
+
