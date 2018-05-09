@@ -9,6 +9,6 @@ export const eventCreated = (createdEvent) => ({
  
 export const create = details => (dispatch) => 
     api.events.create(details).then(event =>{
-        console.log('this is the event from backend', event)
-        dispatch(eventCreated(event))
+        console.log('this is the event from backend', event);
+        dispatch(eventCreated(event));
     });
