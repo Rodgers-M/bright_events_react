@@ -1,4 +1,3 @@
-/*color #ae5856a */        
 import React from 'react';
 import  PropTypes from 'prop-types';
 
