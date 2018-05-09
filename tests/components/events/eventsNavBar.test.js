@@ -1,3 +1,11 @@
+/* global sinon :true */
+/* global React :true */
+/* global mount :true */
+/* global describe :true */
+/* global Enzyme Adapter options :true */
+/* global it :true */
+/* global expect :true */
+/* eslint no-undef: "error" */
 import EventsNavBar from '../../../src/components/events/EventsNavBar';
  
 Enzyme.configure({ adapter: new Adapter() });
@@ -5,7 +13,7 @@ Enzyme.configure({ adapter: new Adapter() });
 const fakeLogout = sinon.spy();
  
 function setup(){
-    let props = {
+    const props = {
         logout : fakeLogout,
         page : 'create',
         username : 'testUser'
