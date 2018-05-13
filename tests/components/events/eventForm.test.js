@@ -10,7 +10,9 @@ import moment from 'moment';
 import EventForm from '../../../src/components/events/EventForm';
  
 const fakeSubmit = sinon.spy();
+const fakeHandleDate = sinon.spy();
 const fakeOnChange = sinon.spy();
+const fakeDismiss = sinon.spy();
 
 const emptyErrorObject = {};
 const ErrorObject = {
@@ -37,6 +39,8 @@ function setup(errors){
         },
         onSubmit : fakeSubmit,
         onChange : fakeOnChange,
+        handleDismiss : fakeDismiss,
+        handleDate : fakeHandleDate,
         buttonText : 'Create'
     };
     return mount(
