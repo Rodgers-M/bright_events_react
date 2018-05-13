@@ -17,53 +17,57 @@ const EventForm = (props)=> {
                         <p> {errors.message} </p>
                     </Message>}
                     <Form.Field error={!!errors.name}>
-                        <label htmlFor='name' > name </label>
-                        <input type='text' name='name' id='name'
-                            placeholder='name'
-                            value={data.name}
-                            onChange={props.onChange}
-                        />
+                        <label htmlFor='name' > name 
+                            <input type='text' name='name' id='name'
+                                placeholder='name'
+                                value={data.name}
+                                onChange={props.onChange}
+                            />
+                        </label>
                         {errors.name && <InLineError message={errors.name} /> }
                     </Form.Field>
                     <Form.Field error={!!errors.name}>
-                        <label htmlFor='description' > Description </label>
-                        <textarea name='description' id='description' 
-                            value={data.description}
-                            onChange={props.onChange}
-                        >
-                        </textarea>
+                        <label htmlFor='description' > Description 
+                            <textarea name='description' id='description' 
+                                value={data.description}
+                                onChange={props.onChange}
+                            />
+                        </label>
                         {errors.description && <InLineError message={errors.description} /> }
                     </Form.Field>
                     <Form.Field error={!!errors.category}>
-                        <label htmlFor='category' > category </label>
-                        <input type='text' name='category' id='category'
-                            placeholder='category'
-                            value={data.category}
-                            onChange={props.onChange}
-                        />
+                        <label htmlFor='category' > category 
+                            <input type='text' name='category' id='category'
+                                placeholder='category'
+                                value={data.category}
+                                onChange={props.onChange}
+                            />
+                        </label>
                         {errors.category && <InLineError message={errors.category} /> }
                     </Form.Field>
                     <Form.Field error={!!errors.location}>
-                        <label htmlFor='location' > location </label>
-                        <input type='text' name='location' id='location'
-                            placeholder='location'
-                            value={data.location}
-                            onChange={props.onChange}
-                        />
+                        <label htmlFor='location' > location 
+                            <input type='text' name='location' id='location'
+                                placeholder='location'
+                                value={data.location}
+                                onChange={props.onChange}
+                            />
+                        </label>
                         {errors.location && <InLineError message={errors.location} /> }
                     </Form.Field>
                     <Form.Field error={!!errors.date}>
-                        <label htmlFor='date' > date </label>
-                        <DatePicker  name='date' id='date'
-                            dateFormat="YYYY/MM/DD"
-                            selected ={data.event_date}
-                            onChange={props.handleDate}
-                            minDate={data.event_date}
-                            showYearDropdown
-                            scrollableYearDropdown
-                            yearDropdownItemNumber={15}
-                            showMonthDropdown
-                        />
+                        <label htmlFor='date' > date 
+                            <DatePicker  name='date' id='date'
+                                dateFormat="YYYY/MM/DD"
+                                selected ={data.event_date}
+                                onChange={props.handleDate}
+                                minDate={data.event_date}
+                                showYearDropdown
+                                scrollableYearDropdown
+                                yearDropdownItemNumber={15}
+                                showMonthDropdown
+                            />
+                        </label>
                         {errors.date && <InLineError message={errors.date} /> }
                     </Form.Field>
                     <Button primary>{props.buttonText}</Button>
@@ -79,8 +83,7 @@ EventForm.propTypes ={
     handleDate: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     buttonText : PropTypes.string.isRequired,
-    state : PropTypes.shape({
-    })
+    state : PropTypes.shape({}).isRequired
 };
 
 export default EventForm;

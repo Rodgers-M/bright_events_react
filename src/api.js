@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: ["error", { "props": false }] */
 import axios from 'axios';
 
 const instance = axios.create({
@@ -8,20 +9,20 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config)=>{
-    const access_token = localStorage.getItem('brighteventsJWT');
-    config.headers.Authorization = `Bearer ${access_token}`;
+    const accessToken = localStorage.getItem('brighteventsJWT');
+    config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
 });
 
 export default{
     user : {
         login : (credentials)=> instance.post('/auth/login', credentials)
-        .then(res => res.data.user),
+            .then(res => res.data.user),
         signup : (credentials)=> instance.post('/auth/register', credentials)
-        .then(res => res.data)
+            .then(res => res.data)
     },
     events : {
         create : (details) => instance.post('/events/create', details)
-        .then(response => response.data)
+            .then(response => response.data)
     }
-}
+};

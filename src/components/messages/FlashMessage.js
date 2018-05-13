@@ -8,19 +8,23 @@ class FlashMessage extends React.Component {
     }
     render(){
         const { text, type} = this.props.message;
-        let  classname = `ui ${type} message`;
+        const  classname = `ui ${type} message`;
         return(
             <div className={classname}>
-                <i onClick={this.onClick} className='close icon'></i>
+                <i onClick={this.onClick} className='close icon' />
                 <p>{text}</p>
             </div>
-        )
+        );
     }
 }
 
 FlashMessage.propTypes = {
-    message : PropTypes.object.isRequired,
+    message : PropTypes.shape({
+        id : PropTypes.string,
+        text : PropTypes.string,
+        type : PropTypes.string
+    }).isRequired,
     deleteFlashMessage : PropTypes.func.isRequired
-}
+};
 
 export default FlashMessage;

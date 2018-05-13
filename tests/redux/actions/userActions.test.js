@@ -1,3 +1,8 @@
+/* global describe :true */
+/* global it :true */
+/* global expect :true */
+/* eslint no-undef: "error" */
+
 import * as actions from '../../../src/redux/actions/auth';
 import * as types from '../../../src/redux/actions/types';
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 import {Provider} from 'react-redux';
+import 'semantic-ui-css/semantic.min.css';
 import configureStore from './redux/store/configureStore';
 import {userLoggedIn} from './redux/actions/auth';
-import 'semantic-ui-css/semantic.min.css';
 import './stylesheets/index.css';
- import App from './components/app';   
+import App from './components/app';   
 import registerServiceWorker from './registerServiceWorker'; 
 
 const store = configureStore();

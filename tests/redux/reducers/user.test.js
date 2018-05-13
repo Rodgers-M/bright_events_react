@@ -1,3 +1,8 @@
+/* global describe :true */
+/* global it :true */
+/* global expect :true */
+/* eslint no-undef: "error" */
+
 import * as actions from '../../../src/redux/actions/auth';
 import userReducer from '../../../src/redux/reducers/user';
 
@@ -12,7 +17,6 @@ describe('user reducers', ()=> {
         expect(newState.email).toBe('test@test.com');
     });
     it('should remove a user when passed USER_LOGGED_OUT', ()=> {
-        const initialState = {email : 'test@test.com',  access_token : 'someLongSingedString'};
         const action = actions.userLoggedOut();
  
         const newState = userReducer({},action); 

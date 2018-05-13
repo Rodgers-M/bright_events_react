@@ -22,7 +22,7 @@ export const EventsLayout = ({component : Component, ...rest}) =>{
                 </div>
             </div>
         ): (addFlashMessage({type : 'warning', text : 'please login to continue'}),
-         <Redirect to={{ pathname: '/auth/login', state: { from: rest.location } }}/> )}/>);
+        <Redirect to={{ pathname: '/auth/login', state: { from: rest.location } }}/> )}/>);
 };
  
 EventsLayout.propTypes = {

@@ -33,12 +33,12 @@ const EventsNavBar = (props) => {
             </li>
             <div className='right menu'>
                 <li className='item'>
-                   <i className='user icon' /> {username} 
+                    <i className='user icon' /> {username} 
                 </li>
                 <li className='item'>
-                   <Link to='/' className='logout'  onClick={()=> logout()}>
+                    <Link to='/' className='logout'  onClick={()=> logout()}>
                        Logout   <i className='sign out icon' />
-                   </Link>
+                    </Link>
                 </li>
             </div>
         </div>
@@ -49,6 +49,6 @@ EventsNavBar.propTypes = {
     logout : PropTypes.func.isRequired,
     page : PropTypes.string.isRequired,
     username : PropTypes.string.isRequired
-}
+};
  
 export default EventsNavBar;

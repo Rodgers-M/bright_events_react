@@ -1,3 +1,8 @@
+/* global describe :true */
+/* global it :true */
+/* global expect :true */
+/* eslint no-undef: "error" */
+
 import * as actions from '../../../src/redux/actions/flashMessages';
 import flashMessagesReducer from '../../../src/redux/reducers/flashMessages';
 
