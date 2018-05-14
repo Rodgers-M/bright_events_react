@@ -1,4 +1,7 @@
-import '../../helpers'
+/* global describe :true */
+/* global it :true */
+/* global expect :true */
+/* eslint no-undef: "error" */
 import * as actions from '../../../src/redux/actions/flashMessages';
 import * as types from '../../../src/redux/actions/types';
 
@@ -18,7 +21,7 @@ describe('flashMessages', ()=> {
     });
     describe('delete flash Message creator',()=> {
         it('should create an action to delete a flash message', ()=> {
-            const id = 'ub123e' 
+            const id = 'ub123e';
             const expectedAction = {
                 type : types.DELETE_FLASH_MESSAGE,
                 id

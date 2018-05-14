@@ -13,11 +13,13 @@ export const userLoggedOut = () => ({
 export const login = credentials => (dispatch) => 
     api.user.login(credentials).then(user =>{
         localStorage.brighteventsJWT = user.access_token;
-        dispatch(userLoggedIn(user))});
+        dispatch(userLoggedIn(user));
+    });
 
 export const logout = () => (dispatch) => { 
-        localStorage.removeItem("brighteventsJWT") 
-        dispatch(userLoggedOut())};
+    localStorage.removeItem('brighteventsJWT');
+    dispatch(userLoggedOut());
+};
 
 export const signup = credentials => () => 
     api.user.signup(credentials).then(res =>res);
