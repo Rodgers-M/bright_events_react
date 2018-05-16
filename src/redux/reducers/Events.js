@@ -1,4 +1,4 @@
-import {EVENT_CREATED, EVENTS_FETCHED} from '../actions/types';
+import {EVENT_CREATED, ALL_EVENTS_FETCHED, MY_EVENTS_FETCHED} from '../actions/types';
    
 export default function events(state = [], action){
     switch(action.type){
@@ -6,7 +6,9 @@ export default function events(state = [], action){
         return [
             ...state, action.createdEvent
         ];
-    case EVENTS_FETCHED:
+    case ALL_EVENTS_FETCHED:
+        return action.events;
+    case MY_EVENTS_FETCHED:
         return action.events;
     default:
         return state;
