@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SingleEventCard = ({event}) => {
-    const {name, description, category, location} = event;
+    const {name, description, location} = event;
     return (
         <div className='ui card'>
             <div className='content'>
