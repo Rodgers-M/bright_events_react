@@ -24,7 +24,9 @@ export default{
     events : {
         create : (details) => instance.post('/events/create', details)
             .then(response => response.data),
-        fetch : () => instance.get('/events/all')
-            .then(respnse => respnse.data)
+        fetchAll : () => instance.get('/events/all')
+            .then(respnse => respnse.data),
+        fetchMyEvents :() => instance.get('/events/myevents') 
+            .then(response => response.data)
     }
 };
