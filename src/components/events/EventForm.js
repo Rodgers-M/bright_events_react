@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form, Button, Message } from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
+import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import  PropTypes from 'prop-types';
 import InLineError from '../messages/InLineError';
@@ -8,6 +9,7 @@ import InLineError from '../messages/InLineError';
 const EventForm = (props)=> {
     
     const { data, errors, loading } = props.state;
+    const minDate = moment();
     return(
         <div className="ui grid">
             <div className="ten twelve wide centered column">
@@ -61,7 +63,7 @@ const EventForm = (props)=> {
                                 dateFormat="YYYY/MM/DD"
                                 selected ={data.event_date}
                                 onChange={props.handleDate}
-                                minDate={data.event_date}
+                                minDate= {minDate}
                                 showYearDropdown
                                 scrollableYearDropdown
                                 yearDropdownItemNumber={15}
