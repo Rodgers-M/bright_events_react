@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SingleEventCard = ({event}) => {
+const SingleEventCard = ({event, pathName}) => {
     const {name, description, location} = event;
     return (
         <div className='ui card'>
@@ -18,19 +18,31 @@ const SingleEventCard = ({event}) => {
                     <p>{description}</p>
                 </div>
             </div>
-            <div className='extra content'>
-                <button className="ui teal basic button">
-                    <i className="calendar plus outline icon" />
-                    RSVP
-                </button>
-            </div>
+            {pathName === '/events/myEvents' ?
+                <div className='extra content'>
+                    <div className='ui three buttons'>
+                        <div className='ui basic green button'>Guests</div>
+                        <div className='ui basic teal button'>Edit</div>
+                        <div className='ui basic red button'>Delete</div>
+                    </div>
+                </div>
+                :
+                <div className='extra content'>
+                    <button className="ui teal basic button">
+                        <i className="calendar plus outline icon" />
+                        RSVP
+                    </button>
+                    we are at {pathName}
+                </div>
+            }
         </div>
     );
 };
 
 
 SingleEventCard.propTypes = {
-    event : PropTypes.shape({}).isRequired
+    event : PropTypes.shape({}).isRequired,
+    pathName : PropTypes.string.isRequired
 };
 
 export default SingleEventCard;
