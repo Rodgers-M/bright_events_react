@@ -7,6 +7,7 @@ import CreateEventContainer from './events/create/CreateEventContainer';
 import NotFound from './home/NotFound';
 import EventsLayout from './events/EventsLayout';
 import EventList from './events/view/EventList';
+import MyEvents from './events/view/MyEvents';
 
 const App = () => <div className='ui'>
     <Switch>
@@ -14,7 +15,7 @@ const App = () => <div className='ui'>
         <Route path='/auth/login' exact component={LoginContainer} />
         <Route path='/auth/signup' exact component={SignupContainer} />
         <EventsLayout path='/events/create' exact component={CreateEventContainer} page='create' />
-        <EventsLayout path='/events/myEvents' exact component={EventList} page='myEvents' />
+        <EventsLayout path='/events/myEvents' exact component={MyEvents} page='myEvents' />
         <EventsLayout path='/events' exact component={EventList} page='allEvents' />
         <Route component={NotFound} />
     </Switch>
