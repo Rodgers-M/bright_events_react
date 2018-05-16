@@ -5,9 +5,9 @@ import  PropTypes from 'prop-types';
 import  Validator from 'validator';
 import {connect} from 'react-redux';
 import moment from 'moment';
-import CreateEventForm from './EventForm';
-import {create} from '../../redux/actions/events';
-import {addFlashMessage} from '../../redux/actions/flashMessages';
+import CreateEventForm from '../EventForm';
+import {create} from '../../../redux/actions/events';
+import {addFlashMessage} from '../../../redux/actions/flashMessages';
 
 const validate=(data) => {
     const errors = {};
@@ -72,6 +72,9 @@ export class CreateEventContainer extends Component{
             errors : {} 
         });
     }
+    handleDate = date => this.setState({
+        data : {...this.state.data, event_date : date }
+    });
 
     render(){
         return(
@@ -79,7 +82,7 @@ export class CreateEventContainer extends Component{
                 <CreateEventForm
                     onSubmit={this.onSubmit} 
                     onChange={this.onChange}
-                    handleDate={formatDate}
+                    handleDate={this.handleDate}
                     handleDismiss={this.handleDismiss}
                     state={this.state}
                     buttonText='Create'
