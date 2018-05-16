@@ -30,3 +30,4 @@ export default{
             .then(response => response.data)
     }
 };
+
