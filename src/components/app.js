@@ -15,6 +15,7 @@ const App = () => <div className='ui'>
         <Route path='/auth/signup' exact component={SignupContainer} />
         <EventsLayout path='/events/create' exact component={CreateEventContainer} page='create' />
         <EventsLayout path='/events/myEvents' exact component={EventList} page='myEvents' />
+        <EventsLayout path='/events' exact component={EventList} page='allEvents' />
         <Route component={NotFound} />
     </Switch>
 </div>;
