@@ -2,28 +2,12 @@
 /* eslint-disable react/no-unused-state */
 import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
-import  Validator from 'validator';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import CreateEventForm from '../EventForm';
 import {create} from '../../../redux/actions/events';
 import {addFlashMessage} from '../../../redux/actions/flashMessages';
-
-const validate=(data) => {
-    const errors = {};
-    if(Validator.isEmpty(data.name)) errors.name = 'name can\'t be blank';
-    if(Validator.isEmpty(data.description)) errors.description = 'description can\'t be blank';
-    if(Validator.isEmpty(data.category)) errors.category = 'category can\'t be blank';
-    if(Validator.isEmpty(data.location)) errors.location = 'location can\'t be blank';
-    return errors;
-};
-const formatDate = eventDate => {
-    const date = new Date(eventDate);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear();
-    return [year, month, day].join('-');
-};
+import {formatDate, validateEventData} from '../../helpers/helpers';
 
 export class CreateEventContainer extends Component{
     state = {
@@ -43,7 +27,7 @@ export class CreateEventContainer extends Component{
     });
 
     onSubmit = () => {
-        const errors = validate(this.state.data);
+        const errors = validateEventData(this.state.data);
         this.setState({ errors });
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
