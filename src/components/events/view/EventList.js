@@ -5,29 +5,23 @@ import SingleEventCard  from './SingleEventCard';
 import {fetchEvents} from '../../../redux/actions/events';
 
 class EventList extends Component {
-    state = {
-        event : {name : 'holla event', description : 'holla there',
-        category : 'greeting', location : 'there', event_date : 'leo', created_by : 'me'} 
-    };
 
     componentDidMount() {
         this.callFetchEvent();
     };
 
-    callFetchEvent = () => this.props.fetchEvents()
+    callFetchEvent = () => this.props.fetchEvents();
 
     render() {
         return (
             <div className='ui three cards'>
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
-                <SingleEventCard event={this.state.event} />
+                {this.props.allEvents.map(event =>
+                    <SingleEventCard
+                        event={event}
+                        pathName={this.props.location.pathname}
+                        key={event.id}
+                    />
+                )}
             </div>
         );
     }
@@ -40,7 +34,10 @@ function mapStateToProps(state) {
 }
 EventList.propTypes = {
     allEvents :PropTypes.array.isRequired,
-    fetchEvents : PropTypes.func.isRequired
+    fetchEvents : PropTypes.func.isRequired,
+    location : PropTypes.shape({
+        pathname : PropTypes.string.isRequired
+    }).isRequired
 };
 
 export default connect(mapStateToProps, {fetchEvents})(EventList);
