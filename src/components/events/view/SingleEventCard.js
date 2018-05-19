@@ -28,12 +28,11 @@ const SingleEventCard = ({event, pathName}) => {
                     </div>
                 </div>
                 :
-                <div className='extra content'>
+                <div className='extra content' id='rsvp'>
                     <button className="ui teal basic button">
                         <i className="calendar plus outline icon" />
                         RSVP
                     </button>
-                    we are at {pathName}
                 </div>
             }
         </div>
