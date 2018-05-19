@@ -1,6 +1,6 @@
 /* global React :true */
 /* global shallow :true */
-/* global describe sinon :true */
+/* global describe :true */
 /* global it :true */
 /* global expect beforeEach:true */
 /* eslint no-undef: "error" */
