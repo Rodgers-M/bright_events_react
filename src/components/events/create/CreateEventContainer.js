@@ -39,7 +39,7 @@ export class CreateEventContainer extends Component{
                         type : 'success',
                         text : 'event created successfully' 
                     });
-                    this.props.history.push('/events/create');
+                    this.props.history.push('/events/myEvents');
                 })
                 .catch(err => {
                     if (err.request.status === 500){ 
