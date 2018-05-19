@@ -7,10 +7,10 @@ import {fetchEvents} from '../../../redux/actions/events';
 class EventList extends Component {
 
     componentDidMount() {
-        this.callFetchEvent();
+        this.callFetchEvents();
     };
 
-    callFetchEvent = () => this.props.fetchEvents();
+    callFetchEvents = () => this.props.fetchEvents();
 
     render() {
         return (
