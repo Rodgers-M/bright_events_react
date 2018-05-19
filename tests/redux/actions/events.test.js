@@ -1,9 +1,17 @@
 /* global describe :true */
 /* global it :true */
-/* global expect :true */
+/* global expect afterEach :true */
 /* eslint no-undef: "error" */
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import * as actions from '../../../src/redux/actions/events';
 import * as types from '../../../src/redux/actions/types';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+const mock = new MockAdapter(axios);
 
 describe('Events Actions', ()=> {
     describe('Event created action creator', ()=> {
@@ -34,6 +42,19 @@ describe('Events Actions', ()=> {
                 events 
             };
             expect(actions.myEventsFetched(events)).toEqual(expectedAction);
+        });
+    });
+    describe('Async actions', ()=> {
+        afterEach(()=> {
+            mock.reset();
+        });
+        it.skip('should dispacth ALL_EVENTS_FETCHED on success', ()=> {
+            mock.onGet('/events/all').reply(200, [{name : 'my event'}]);
+            const expectedAction = {type: actions.ALL_EVENTS_FETCHED, events: [{name: 'my event'}]}; 
+            const store = mockStore({ events: [] });
+            return store.dispatch(actions.fetchEvents()).then(()=> {
+                expect(store.getActions()).toEqual(expectedAction);
+            });
         });
     });
 });
