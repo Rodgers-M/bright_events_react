@@ -7,7 +7,7 @@ const SingleEventCard = ({event, pathName}) => {
     return (
         <div className='ui card'>
             <div className='content'>
-                <div className='header'>{name}</div> 
+                <div className='header' style={{textTransform: 'capitalize'}}>{name}</div> 
             </div>
             <div className='content'>
                 <h4 className="ui sub header">Host : {orgarniser}</h4>
