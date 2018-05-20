@@ -8,11 +8,8 @@ const EventsNavBar = (props) => {
     return (
         <div className='ui inverted menu'>
             <li className='item'>
-                 Bright Events
-            </li>
-            <li className='item'>
                 <Link to='/'>
-                    <i className='home icon' /> Home 
+                    <i className='home icon' /> Bright Events
                 </Link>
             </li>
             <li className={page==='create'?'item active':'item'}>
