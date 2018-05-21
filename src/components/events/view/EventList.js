@@ -9,7 +9,7 @@ class EventList extends Component {
 
     componentDidMount() {
         this.callFetchEvents();
-    };
+    }
 
     callFetchEvents = () => this.props.fetchEvents();
 

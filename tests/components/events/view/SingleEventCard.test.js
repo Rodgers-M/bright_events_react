@@ -20,7 +20,7 @@ function setup(path){
     return mount(
         <SingleEventCard event={event} pathName={pathName} />
     );
-};
+}
 
 describe('SingleEventCard component', ()=> {
     it('Should display the passed event in appropriate fields',()=> {

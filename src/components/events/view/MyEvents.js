@@ -9,7 +9,7 @@ class MyEvents extends Component {
 
     componentDidMount() {
         this.callFetchMyEvents();
-    };
+    }
 
     callFetchMyEvents = () => this.props.fetchMyEvents();
 
