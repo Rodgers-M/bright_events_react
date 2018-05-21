@@ -29,7 +29,6 @@ describe('EventList container', ()=> {
     });
 
     it('it should have one event in props', ()=> {
-        console.log(wrapper.props());
         expect(wrapper.props().allEvents.length).toEqual(1);
     });
     it('it should have one test event', ()=> {
