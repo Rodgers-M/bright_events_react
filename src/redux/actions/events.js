@@ -1,5 +1,5 @@
 import {EVENT_CREATED, ALL_EVENTS_FETCHED, MY_EVENTS_FETCHED} from './types';
-import api from '../../api';
+import {api} from '../../api';
 
 
 export const eventCreated = (createdEvent) => ({
