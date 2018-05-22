@@ -37,7 +37,7 @@ class LoginContainer extends Component{
             this.setState({loading : true});
             this.props.login(this.state.data)
                 .then(()=>{
-                    const {from} = this.props.location.state || {from: {pathname: '/events/create'}}
+                    const {from} = this.props.location.state || {from: {pathname: '/events'}};
                     this.props.history.push(from);
                 })
                 .catch(err=> {
@@ -68,7 +68,9 @@ LoginContainer.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
-
+    location : PropTypes.shape({
+        state : PropTypes.shape({})
+    }).isRequired,
     login: PropTypes.func.isRequired
 };
 

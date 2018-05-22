@@ -1,12 +1,14 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 import axios from 'axios';
 
-const instance = axios.create({
+export const instance = axios.create({
+    timeout : 10000,
     headers : {
         Accept : 'application/json',
         ContentType : 'application/json'
     }
 });
+
 
 instance.interceptors.request.use((config)=>{
     const accessToken = localStorage.getItem('brighteventsJWT');
@@ -14,7 +16,7 @@ instance.interceptors.request.use((config)=>{
     return config;
 });
 
-export default{
+export const api = {
     user : {
         login : (credentials)=> instance.post('/auth/login', credentials)
             .then(res => res.data.user),
@@ -23,6 +25,11 @@ export default{
     },
     events : {
         create : (details) => instance.post('/events/create', details)
+            .then(response => response.data),
+        fetchAll : () => instance.get('/events/all')
+            .then(respnse => respnse.data),
+        fetchMyEvents :() => instance.get('/events/myevents') 
             .then(response => response.data)
     }
 };
+

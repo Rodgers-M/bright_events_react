@@ -2,28 +2,12 @@
 /* eslint-disable react/no-unused-state */
 import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
-import  Validator from 'validator';
 import {connect} from 'react-redux';
 import moment from 'moment';
-import CreateEventForm from './EventForm';
-import {create} from '../../redux/actions/events';
-import {addFlashMessage} from '../../redux/actions/flashMessages';
-
-const validate=(data) => {
-    const errors = {};
-    if(Validator.isEmpty(data.name)) errors.name = 'name can\'t be blank';
-    if(Validator.isEmpty(data.description)) errors.description = 'description can\'t be blank';
-    if(Validator.isEmpty(data.category)) errors.category = 'category can\'t be blank';
-    if(Validator.isEmpty(data.location)) errors.location = 'location can\'t be blank';
-    return errors;
-};
-const formatDate = eventDate => {
-    const date = new Date(eventDate);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear();
-    return [year, month, day].join('-');
-};
+import CreateEventForm from '../EventForm';
+import {create} from '../../../redux/actions/events';
+import {addFlashMessage} from '../../../redux/actions/flashMessages';
+import {formatDate, validateEventData} from '../../helpers/helpers';
 
 export class CreateEventContainer extends Component{
     state = {
@@ -43,7 +27,7 @@ export class CreateEventContainer extends Component{
     });
 
     onSubmit = () => {
-        const errors = validate(this.state.data);
+        const errors = validateEventData(this.state.data);
         this.setState({ errors });
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
@@ -55,7 +39,7 @@ export class CreateEventContainer extends Component{
                         type : 'success',
                         text : 'event created successfully' 
                     });
-                    this.props.history.push('/events/create');
+                    this.props.history.push('/events/myEvents');
                 })
                 .catch(err => {
                     if (err.request.status === 500){ 
@@ -72,6 +56,9 @@ export class CreateEventContainer extends Component{
             errors : {} 
         });
     }
+    handleDate = date => this.setState({
+        data : {...this.state.data, event_date : date }
+    });
 
     render(){
         return(
@@ -79,7 +66,7 @@ export class CreateEventContainer extends Component{
                 <CreateEventForm
                     onSubmit={this.onSubmit} 
                     onChange={this.onChange}
-                    handleDate={formatDate}
+                    handleDate={this.handleDate}
                     handleDismiss={this.handleDismiss}
                     state={this.state}
                     buttonText='Create'
