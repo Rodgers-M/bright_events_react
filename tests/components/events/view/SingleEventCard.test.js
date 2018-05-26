@@ -25,7 +25,6 @@ function setup(path){
 
 describe('SingleEventCard component', ()=> {
     it('Should display the passed event in appropriate fields',()=> {
-        nkrfj dgjdfj
         const wrapper = setup('/events/myEvents');
         expect(wrapper.find('div.description').text()).toBe('event description');
     });
