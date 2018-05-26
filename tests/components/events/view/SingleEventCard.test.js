@@ -1,5 +1,5 @@
 /* global React :true */
-/* global mount :true */
+/* global mount options :true */
 /* global describe :true */
 /* global it :true */
 /* global expect :true */
@@ -18,7 +18,8 @@ function setup(path){
         orgarniser : 'tester'
     };
     return mount(
-        <SingleEventCard event={event} pathName={pathName} />
+        <SingleEventCard event={event} pathName={pathName} />,
+        options.get()
     );
 }
 
