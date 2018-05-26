@@ -29,8 +29,7 @@ function setup(){
         options.get()
 
     );
-};
-
+}
 
 describe('Login form component', () => {
     it('should have two input fields', ()=> {
