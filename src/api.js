@@ -29,7 +29,9 @@ export const api = {
         fetchAll : () => instance.get('/events/all')
             .then(respnse => respnse.data),
         fetchMyEvents :() => instance.get('/events/myevents') 
-            .then(response => response.data)
+            .then(response => response.data),
+        updateEvent : (event, eventId) => instance.put(`/events/${eventId}`, event)
+            .then(response => response.data.message)
     }
 };
 
