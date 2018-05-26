@@ -1,20 +1,25 @@
-import {EVENT_CREATED, ALL_EVENTS_FETCHED, MY_EVENTS_FETCHED} from './types';
+import * as types from './types';
 import {api} from '../../api';
 
 
 export const eventCreated = (createdEvent) => ({
-    type : EVENT_CREATED,
+    type : types.EVENT_CREATED,
     createdEvent  
 });
 
 export const eventsFetched = (events) => ({
-    type : ALL_EVENTS_FETCHED,
+    type : types.ALL_EVENTS_FETCHED,
     events  
 });
  
 export const myEventsFetched = (events) => ({
-    type : MY_EVENTS_FETCHED,
+    type : types.MY_EVENTS_FETCHED,
     events  
+});
+
+export const eventUpdated = (updatedEvent) => ({
+    type : types.EVENT_UPDATED,
+    updatedEvent
 });
 
 export const create = details => (dispatch) => 
@@ -31,3 +36,8 @@ export const fetchMyEvents = () => (dispatch) =>
     api.events.fetchMyEvents().then(events =>{
         dispatch(myEventsFetched(events));
     });
+
+export const updateEvent = (event, eventId)  => (dispatch ) =>
+    api.events.updateEvent(event, eventId).then(updatedEvent => {
+        dispatch(eventUpdated(updatedEvent));
+    }).catch(err => console.log(err));
