@@ -3,7 +3,7 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SingleEventCard  from './SingleEventCard';
-import {fetchMyEvents} from '../../../redux/actions/events';
+import {fetchMyEvents, onDelete} from '../../../redux/actions/events';
 
 class MyEvents extends Component {
 
@@ -20,6 +20,7 @@ class MyEvents extends Component {
                     <SingleEventCard
                         event={event}
                         pathName={this.props.location.pathname}
+                        onDelete={this.props.onDelete}
                         key={event.id}
                     />
                 )}
@@ -34,11 +35,11 @@ function mapStateToProps(state) {
     };
 }
 MyEvents.propTypes = {
-    MyEvents :PropTypes.array.isRequired,
+    MyEvents :PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     fetchMyEvents : PropTypes.func.isRequired,
     location : PropTypes.shape({
         pathname : PropTypes.string.isRequired
     }).isRequired
 };
 
-export default connect(mapStateToProps, {fetchMyEvents})(MyEvents);
+export default connect(mapStateToProps, {fetchMyEvents, onDelete})(MyEvents);
