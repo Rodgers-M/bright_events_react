@@ -1,5 +1,6 @@
 import * as types from './types';
 import {api} from '../../api';
+import { addFlashMessage } from './flashMessages';
 
 
 export const eventCreated = (createdEvent) => ({
@@ -17,9 +18,13 @@ export const myEventsFetched = (events) => ({
     events  
 });
 
-export const eventUpdated = (updatedEvent) => ({
-    type : types.EVENT_UPDATED,
-    updatedEvent
+export const eventUpdated = () => ({
+    type : types.EVENT_UPDATED
+});
+
+export const eventDeleted = (eventId) => ({
+    type : types.EVENT_DELETED,
+    eventId
 });
 
 export const create = details => (dispatch) => 
@@ -38,6 +43,13 @@ export const fetchMyEvents = () => (dispatch) =>
     });
 
 export const updateEvent = (event, eventId)  => (dispatch ) =>
-    api.events.updateEvent(event, eventId).then(updatedEvent => {
-        dispatch(eventUpdated(updatedEvent));
+    api.events.updateEvent(event, eventId).then(message => {
+        dispatch(eventUpdated());
+        return message;
     }).catch(err => console.log(err));
+
+export const onDelete = eventId => (dispatch) =>
+    api.events.deleteEvent(eventId).then(message => {
+        dispatch(eventDeleted(eventId));
+        dispatch(addFlashMessage({ type : 'success', text : message}));
+    });
