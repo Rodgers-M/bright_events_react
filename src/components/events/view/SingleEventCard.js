@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const SingleEventCard = ({event, pathName}) => {
+const SingleEventCard = ({event, pathName, onDelete}) => {
     const {name, description, location, orgarniser} = event;
     const eventDate = event.event_date.split('00')[0];
     const url = `/events/${event.id}/edit`;
+    const handleDelete = () => {
+        onDelete(event.id);
+    };
     return (
         <div className='ui card'>
             <div className='content'>
@@ -26,9 +29,9 @@ const SingleEventCard = ({event, pathName}) => {
                     <div className='ui three buttons'>
                         <div className='ui basic green button'>Guests</div>
                         <div className='ui basic teal button'>
-                            <Link to={url}>Edit </Link>
+                            <Link className='ui' to={url}>Edit </Link>
                         </div>
-                        <div className='ui basic red button'>Delete</div>
+                        <button onClick={handleDelete} className="ui negative basic button">Delete</button>
                     </div>
                 </div>
                 :
@@ -46,7 +49,8 @@ const SingleEventCard = ({event, pathName}) => {
 
 SingleEventCard.propTypes = {
     event : PropTypes.shape({}).isRequired,
-    pathName : PropTypes.string.isRequired
+    pathName : PropTypes.string.isRequired,
+    onDelete : PropTypes.func.isRequired
 };
 
 export default SingleEventCard;
