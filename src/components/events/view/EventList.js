@@ -3,7 +3,7 @@ import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SingleEventCard  from './SingleEventCard';
-import {fetchEvents} from '../../../redux/actions/events';
+import { fetchEvents } from '../../../redux/actions/events';
 
 class EventList extends Component {
 
@@ -34,9 +34,9 @@ function mapStateToProps(state) {
     };
 }
 EventList.propTypes = {
-    allEvents :PropTypes.array.isRequired,
-    fetchEvents : PropTypes.func.isRequired,
-    location : PropTypes.shape({
+    allEvents: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    fetchEvents: PropTypes.func.isRequired,
+    location: PropTypes.shape({
         pathname : PropTypes.string.isRequired
     }).isRequired
 };
