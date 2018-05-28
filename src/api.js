@@ -24,13 +24,15 @@ export const api = {
             .then(res => res.data)
     },
     events : {
-        create : (details) => instance.post('/events/create', details)
+        create: (details) => instance.post('/events/create', details)
             .then(response => response.data),
-        fetchAll : () => instance.get('/events/all')
+        fetchAll: () => instance.get('/events/all')
             .then(respnse => respnse.data),
-        fetchMyEvents :() => instance.get('/events/myevents') 
+        fetchMyEvents: () => instance.get('/events/myevents') 
             .then(response => response.data),
-        updateEvent : (event, eventId) => instance.put(`/events/${eventId}`, event)
+        updateEvent: (event, eventId) => instance.put(`/events/${eventId}`, event)
+            .then(response => response.data.message),
+        deleteEvent: (eventId)  => instance.delete(`/events/${eventId}`)
             .then(response => response.data.message)
     }
 };
