@@ -20,7 +20,7 @@ function setup(){
     return mount(
         <FlashMessagesList messages={messages} deleteFlashMessage={deleteFlashMessage} />
     );
-};
+}
 
 describe('FlashMessagesList component', ()=> {
     it('should have four  div elements when displaying 3 messages', ()=> {
