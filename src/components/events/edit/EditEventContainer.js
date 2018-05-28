@@ -6,7 +6,9 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import CreateEventForm from '../EventForm';
 import { updateEvent } from '../../../redux/actions/events';
+import { addFlashMessage } from '../../../redux/actions/flashMessages';
 import { formatDate, validateEventData } from '../../helpers/helpers';
+import FlashMessagesList from '../../messages/FlashMessagesList';
 
 export class EditEventContainer extends Component{
     state = {
@@ -47,8 +49,12 @@ export class EditEventContainer extends Component{
             this.setState({loading : true});
             const eventDetails = {...this.state.data, event_date : formatDate(this.state.data.event_date)};
             this.props.updateEvent(eventDetails, this.state.data.id)
-                .then(() =>{
+                .then((message) =>{
                     this.setState({loading : false});
+                    this.props.addFlashMessage({
+                        type : 'success',
+                        text : message  
+                    });
                     this.props.history.push('/events/myEvents');
                 })
                 .catch(err => {
@@ -73,6 +79,7 @@ export class EditEventContainer extends Component{
     render(){
         return(
             <div >
+                <FlashMessagesList />
                 <CreateEventForm
                     onSubmit={this.onSubmit} 
                     onChange={this.onChange}
@@ -96,8 +103,9 @@ function mapStateToProps(state) {
 
 EditEventContainer.propTypes = {
     events: PropTypes.array.isRequired,
-    updateEvent: PropTypes.func.isRequired
+    updateEvent: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps,{ updateEvent } )(EditEventContainer);
+export default connect(mapStateToProps,{ updateEvent, addFlashMessage } )(EditEventContainer);
 
