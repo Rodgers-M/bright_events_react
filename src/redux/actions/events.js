@@ -53,3 +53,8 @@ export const onDelete = eventId => (dispatch) =>
         dispatch(eventDeleted(eventId));
         dispatch(addFlashMessage({ type : 'success', text : message}));
     });
+
+export const rsvp = eventId => (dispatch) =>
+    api.events.rsvp(eventId).then(message => {
+        dispatch(addFlashMessage({type: 'success', text: message}));
+    });
