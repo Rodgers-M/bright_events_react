@@ -33,6 +33,8 @@ export const api = {
         updateEvent: (event, eventId) => instance.put(`/events/${eventId}`, event)
             .then(response => response.data.message),
         deleteEvent: (eventId)  => instance.delete(`/events/${eventId}`)
+            .then(response => response.data.message),
+        rsvp: (eventId) => instance.post(`/events/${eventId}/rsvp`)
             .then(response => response.data.message)
     }
 };
