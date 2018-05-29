@@ -15,10 +15,11 @@ function setup(path){
         category: 'testin',
         location: 'testPlace',
         event_date : 'Thu, 03 May 2018 00:00:00 GMT',
-        orgarniser : 'tester'
+        orgarniser : 'tester',
+        rsvp_list : ['user1', 'user2']
     };
     return mount(
-        <SingleEventCard event={event} pathName={pathName} />,
+        <SingleEventCard event={event} pathName={pathName} username='username' />,
         options.get()
     );
 }
