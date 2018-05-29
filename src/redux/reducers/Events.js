@@ -7,7 +7,8 @@ export default function events(state = [], action){
             ...state, action.createdEvent
         ];
     case types.EVENT_UPDATED:
-        return state;
+        return state.map(event => event.id === action.updatedEvent.id ?
+            {...event, ...action.updatedEvent} : event);
     case types.EVENT_DELETED:
         return state.filter(event => event.id !== action.eventId );
     case types.ALL_EVENTS_FETCHED:
