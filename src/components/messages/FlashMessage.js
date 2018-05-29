@@ -3,9 +3,16 @@ import  PropTypes from 'prop-types';
 
 class FlashMessage extends React.Component {
 
+    componentDidMount(){
+        setTimeout(()=>{
+            this.props.deleteFlashMessage(this.props.message.id);
+        },5000);
+    }
+
     onClick = () =>{
         this.props.deleteFlashMessage(this.props.message.id);
     }
+
     render(){
         const { text, type} = this.props.message;
         const  classname = `ui ${type} message`;
