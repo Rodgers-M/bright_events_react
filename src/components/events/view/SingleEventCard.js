@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const SingleEventCard = ({event, pathName, onDelete}) => {
+const SingleEventCard = ({event, pathName, onDelete, rsvp}) => {
     const {name, description, location, orgarniser} = event;
     const eventDate = event.event_date.split('00')[0];
     const url = `/events/${event.id}/edit`;
     const handleDelete = () => {
         onDelete(event.id);
+    };
+    const handleRsvp = () => {
+        rsvp(event.id);
     };
     return (
         <div className='ui card'>
@@ -27,16 +30,16 @@ const SingleEventCard = ({event, pathName, onDelete}) => {
             {pathName === '/events/myEvents' ?
                 <div className='extra content'>
                     <div className='ui three buttons'>
-                        <div className='ui basic green button'>Guests</div>
+                        <button className="ui green basic button">Guests</button>
                         <div className='ui basic teal button'>
                             <Link className='ui' to={url}>Edit </Link>
                         </div>
-                        <button onClick={handleDelete} className="ui negative basic button">Delete</button>
+                        <button onClick={handleDelete} className="ui red basic button">Delete</button>
                     </div>
                 </div>
                 :
                 <div className='extra content' id='rsvp'>
-                    <button className="ui teal basic button">
+                    <button onClick={handleRsvp} className="ui teal basic button">
                         <i className="calendar plus outline icon" />
                         RSVP
                     </button>
@@ -50,7 +53,8 @@ const SingleEventCard = ({event, pathName, onDelete}) => {
 SingleEventCard.propTypes = {
     event : PropTypes.shape({}).isRequired,
     pathName : PropTypes.string.isRequired,
-    onDelete : PropTypes.func.isRequired
+    onDelete : PropTypes.func,
+    rsvp : PropTypes.func
 };
 
 export default SingleEventCard;
