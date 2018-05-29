@@ -27,6 +27,7 @@ export class EditEventContainer extends Component{
 
     componentWillMount(){
         const events = this.props.events;
+        // eslint-disable-next-line
         const filteredEvent = events.filter(event=>event.id == this.props.match.params.id);
         const event = filteredEvent[0];
         this.setState({
