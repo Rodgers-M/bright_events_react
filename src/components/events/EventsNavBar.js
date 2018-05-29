@@ -5,8 +5,14 @@ import  PropTypes from 'prop-types';
 const EventsNavBar = (props) => {
     
     const {page, username, logout} = props;
+    const sticky = {
+        position : 'fixed',
+        zIndex : '9',
+        width : '100%',
+        paddingTop : '1%',
+    };
     return (
-        <div className='ui inverted menu'>
+        <div className='ui inverted menu' style={sticky}>
             <li className='item'>
                 <Link to='/'>
                     <i className='home icon' /> Bright Events
