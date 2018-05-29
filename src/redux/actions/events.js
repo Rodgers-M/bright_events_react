@@ -18,8 +18,9 @@ export const myEventsFetched = (events) => ({
     events  
 });
 
-export const eventUpdated = () => ({
-    type : types.EVENT_UPDATED
+export const eventUpdated = (updatedEvent) => ({
+    type : types.EVENT_UPDATED,
+    updatedEvent
 });
 
 export const eventDeleted = (eventId) => ({
@@ -43,9 +44,9 @@ export const fetchMyEvents = () => (dispatch) =>
     });
 
 export const updateEvent = (event, eventId)  => (dispatch ) =>
-    api.events.updateEvent(event, eventId).then(message => {
-        dispatch(eventUpdated());
-        return message;
+    api.events.updateEvent(event, eventId).then(data => {
+        dispatch(eventUpdated(data.event));
+        return data.message;
     }).catch(err => console.log(err));
 
 export const onDelete = eventId => (dispatch) =>
@@ -55,6 +56,8 @@ export const onDelete = eventId => (dispatch) =>
     });
 
 export const rsvp = eventId => (dispatch) =>
-    api.events.rsvp(eventId).then(message => {
-        dispatch(addFlashMessage({type: 'success', text: message}));
+    api.events.rsvp(eventId).then(data => {
+        console.log(data.event);
+        dispatch(eventUpdated(data.event));
+        dispatch(addFlashMessage({type: 'success', text: data.message}));
     });
