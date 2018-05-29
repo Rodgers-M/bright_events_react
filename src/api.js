@@ -31,11 +31,11 @@ export const api = {
         fetchMyEvents: () => instance.get('/events/myevents') 
             .then(response => response.data),
         updateEvent: (event, eventId) => instance.put(`/events/${eventId}`, event)
-            .then(response => response.data.message),
+            .then(response => response.data),
         deleteEvent: (eventId)  => instance.delete(`/events/${eventId}`)
             .then(response => response.data.message),
         rsvp: (eventId) => instance.post(`/events/${eventId}/rsvp`)
-            .then(response => response.data.message)
+            .then(response => response.data)
     }
 };
 
