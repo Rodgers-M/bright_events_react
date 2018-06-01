@@ -1,7 +1,7 @@
 import * as types from './types';
 import {api} from '../../api';
 import { addFlashMessage } from './flashMessages';
-
+import { closeModal } from './modals';
 
 export const eventCreated = (createdEvent) => ({
     type : types.EVENT_CREATED,
@@ -46,6 +46,7 @@ export const fetchMyEvents = () => (dispatch) =>
 export const updateEvent = (event, eventId)  => (dispatch ) =>
     api.events.updateEvent(event, eventId).then(data => {
         dispatch(eventUpdated(data.event));
+        dispatch(closeModal());
         return data.message;
     }).catch(err => console.log(err));
 
