@@ -8,7 +8,6 @@ import CreateEventForm from '../EventForm';
 import { updateEvent } from '../../../redux/actions/events';
 import { addFlashMessage } from '../../../redux/actions/flashMessages';
 import { formatDate, validateEventData } from '../../helpers/helpers';
-import FlashMessagesList from '../../messages/FlashMessagesList';
 
 export class EditEventContainer extends Component{
     state = {
@@ -25,17 +24,18 @@ export class EditEventContainer extends Component{
     };
 
 
-    componentWillMount(){
-        const events = this.props.events;
-        // eslint-disable-next-line
-        const filteredEvent = events.filter(event=>event.id == this.props.match.params.id);
-        const event = filteredEvent[0];
+    updateState = () =>{
+        const event = this.props.event;
         this.setState({
             data : {
                 ...this.state.data, id: event.id, name: event.name, category: event.category,
                 description: event.description, location : event.location
             } 
         });
+    }
+
+    componentDidMount(){
+        this.updateState();
     }
 
     onChange = e => this.setState({
@@ -56,14 +56,6 @@ export class EditEventContainer extends Component{
                         type : 'success',
                         text : message  
                     });
-                    this.props.history.push('/events/myEvents');
-                })
-                .catch(err => {
-                    if (err.request.status === 500){ 
-                        this.setState({errors: {message: 'Service is unavailable, please try again later'},loading : false});
-                    }else {
-                        this.setState({errors: err.response.data, loading : false});
-                    }
                 });
         }
     };
@@ -80,7 +72,6 @@ export class EditEventContainer extends Component{
     render(){
         return(
             <div >
-                <FlashMessagesList />
                 <CreateEventForm
                     onSubmit={this.onSubmit} 
                     onChange={this.onChange}
@@ -95,18 +86,11 @@ export class EditEventContainer extends Component{
 }
 
 
-
-function mapStateToProps(state) {
-    return {
-        events :  state.events
-    };
-}
-
 EditEventContainer.propTypes = {
-    events: PropTypes.array.isRequired,
+    event: PropTypes.shape({}).isRequired,
     updateEvent: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps,{ updateEvent, addFlashMessage } )(EditEventContainer);
+export default connect(null,{ updateEvent, addFlashMessage } )(EditEventContainer);
 
