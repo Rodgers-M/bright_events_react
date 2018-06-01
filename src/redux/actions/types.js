@@ -7,4 +7,6 @@ export const ALL_EVENTS_FETCHED = 'ALL_EVENTS_FETCHED';
 export const MY_EVENTS_FETCHED = 'MY_EVENTS_FETCHED';
 export const EVENT_UPDATED = 'EVENT_UPDATED';
 export const EVENT_DELETED = 'EVENT_DELETED';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
