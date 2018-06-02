@@ -50,21 +50,7 @@ body {
     padding : 1%;
     color: white;
 }
-
-.test-button{
-  font-size: 20px;
-  color: gray;
-  padding: 5px;
-  margin: 20px;
-}
-.modals {
-  position: fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height: 300px;
-}
-.modal-wrapper{
+.custom-modal-wrapper{
   position: absolute;
   bottom:0;
   left:0;
@@ -76,7 +62,7 @@ body {
   justify-content: center;
   padding: 20px;
 }
-.modal {
+.custom-modal {
   width: 200px;
   background: #fff;
   border-radius: 5px;
@@ -84,22 +70,6 @@ body {
   position: fixed;
   padding: 2% 0;
 
-}
-.text {
-  font-weight: bold;
-  font-size: 20px;
-  margin: 20px 0;
-}
-.buttons {
-  margin: 10px 0;
-  display: flex;
-  justify-content: space-around;
-}
-.modal-button {
-  font-size: 15px;
-  color: gray;
-  padding: 5px;
-  border-radius: 5px;
 }
 .close {
   position: absolute;
@@ -110,12 +80,4 @@ body {
   border: none;
   font-size: 2em;
   cursor: pointer;
-}
-.modal-content {
-  background:  rgba(193, 29, 29,0.5);
-  color: #fff;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
