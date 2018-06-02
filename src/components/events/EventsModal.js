@@ -13,8 +13,8 @@ class EventsModal extends Component {
 
     render() {
         return (
-            <div className='modal-wrapper'>
-                <div className='modal'>
+            <div className='custom-modal-wrapper'>
+                <div className='custom-modal'>
                     <button className="close" onClick={this.onClose}>&times;</button>
                     <div className=''>{this.props.children}</div>
                 </div> 
