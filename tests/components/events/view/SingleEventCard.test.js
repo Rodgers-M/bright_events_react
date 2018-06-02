@@ -32,7 +32,7 @@ describe('SingleEventCard component', ()=> {
     it('should show Edit and delete buttons when on myevents page',()=> {
         const wrapper = setup('/events/myEvents');
         expect(wrapper.find('button.ui.basic.red.button').text()).toBe('Delete');
-        expect(wrapper.find('div.ui.teal.basic.button').text()).toBe('Edit ');
+        expect(wrapper.find('button.ui.teal.basic.button').text()).toBe('Edit');
     });
     it('should show rsvp button when in all events page',()=> {
         const wrapper = setup('/events/all');
