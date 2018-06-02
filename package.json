@@ -13,6 +13,7 @@
     "password-validator": "^4.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.32.1",
     "react-datepicker": "^1.4.1",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
@@ -28,7 +29,8 @@
     "semantic-ui-react": "^0.78.3",
     "shortid": "^2.2.8",
     "sinon": "^4.5.0",
-    "validator": "^9.4.1"
+    "validator": "^9.4.1",
+    "violet-paginator": "^3.0.0-beta-6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,7 +54,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "expect": "^22.4.3",
