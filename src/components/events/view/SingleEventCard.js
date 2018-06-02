@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Popover, OverlayTrigger, Modal } from 'react-bootstrap';
 
 const SingleEventCard = (props) => {
     const { event, pathName, onDelete, rsvp, handleErrors, username } = props;
@@ -14,13 +15,27 @@ const SingleEventCard = (props) => {
         rsvp(event.id).catch(()=> handleErrors());
     };
 
+    const title =`Your Guests for this event (${event.rsvp_list.length})`;
+    const popoverLeft = (
+        <Popover id="popover-trigger-click-root-close" title={title}>
+            {event.rsvp_list.length !==0?
+                event.rsvp_list.map(name => <div key={event.id}><span >{name}</span><br /> </div> )
+                :
+                <strong> No guests yet</strong> 
+            }
+        </Popover>
+    );
+
     return (
         <div className='ui card'>
             <div className='content'>
                 <div className='header' style={{textTransform: 'capitalize'}}>{name}</div> 
             </div>
             <div className='content'>
-                <h4 className="ui sub header">Host : {host}</h4>
+                {pathName !== '/events/myEvents' ?
+                    <h4 className="ui sub header">Host : {host}</h4>
+                    : null
+                }
                 <div className='meta'>
                     <span>Location : {location}</span> <br/>
                     <span>Date : {eventDate}</span> 
@@ -32,9 +47,11 @@ const SingleEventCard = (props) => {
             {pathName === '/events/myEvents' ?
                 <div className='extra content'>
                     <div className='ui three buttons'>
-                        <button className="ui green basic button">
-                            Guests
-                        </button>
+                         <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={popoverLeft}>
+                <button className="ui green basic button">
+                Guests
+                </button>
+    </OverlayTrigger>
                         <button onClick={()=>props.openModal(event.id)} className="ui teal basic button">
                             Edit
                         </button>
