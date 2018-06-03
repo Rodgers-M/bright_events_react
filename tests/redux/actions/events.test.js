@@ -52,12 +52,12 @@ describe('Events Actions', ()=> {
         });
         describe('ALL_EVENTS_FETCHED action', ()=> {
             it('should dispacth ALL_EVENTS_FETCHED on success', ()=> {
-                const events = [{name: 'all events'}];
+                const data = { event_list : [{name: 'all events'}]};
                 moxios.wait(()=> {
                     const request = moxios.requests.mostRecent();
                     request.respondWith({
                         status : 200,
-                        response : events
+                        response : data
                     });
                 });
                 const expectedAction = [{type: types.ALL_EVENTS_FETCHED, events: [{name: 'all events'}]}]; 
@@ -69,12 +69,12 @@ describe('Events Actions', ()=> {
         });
         describe('MY_EVENTS_FETCHED action', ()=> {
             it('should dispatch MY_EVENTS_FETCHED on success', ()=> {
-                const events = [{name: 'my event'}];
+                const data = {event_list: [{name: 'my event'}]};
                 moxios.wait(()=> {
                     const request = moxios.requests.mostRecent();
                     request.respondWith({
                         status : 200,
-                        response : events
+                        response : data
                     });
                 });
                 const expectedAction = [{type: types.MY_EVENTS_FETCHED, events: [{name: 'my event'}]}]; 
