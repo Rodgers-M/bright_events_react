@@ -1,12 +1,13 @@
-/* eslint react/forbid-prop-types: 0 */ 
 import React, { Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SingleEventCard  from './SingleEventCard';
 import {fetchMyEvents, onDelete} from '../../../redux/actions/events';
-import {openModal, closeModal} from '../../../redux/actions/modals';
+import {openModal,openConfirmModal, closeModal} from '../../../redux/actions/modals';
 import EventsModal from '../EventsModal';
 import EditEventContainer from '../edit/EditEventContainer';
+import NoEventsMessage from '../NoEventsMessage';
+import ConfirmDelete from './ConfirmDelete';
 
 class MyEvents extends Component {
 
@@ -18,14 +19,23 @@ class MyEvents extends Component {
 
 
     renderModal = () => {
-
-        if (this.props.modal.open){
-           const  filteredEvent = this.props.MyEvents.filter(event=>event.id == this.props.modal.id);
+        const {modal,myEvents,closeModal, onDelete} = this.props;
+        if (modal.open && modal.type === 'edit'){
+            const  filteredEvent = myEvents.filter(event=>event.id == modal.id);
             const event = filteredEvent[0];
-            console.log('here is the event', event);
             return(
-                <EventsModal onClose={this.props.closeModal} >
+                <EventsModal onClose={closeModal} >
                     <EditEventContainer event={event} />
+                </EventsModal>
+            );
+        }else if(modal.open && modal.type === 'confirm') {
+            return (
+                <EventsModal onClose={closeModal}>
+                    <ConfirmDelete
+                        closeModal={closeModal}
+                        onDelete={onDelete}
+                        eventId={modal.id}
+                    />
                 </EventsModal>
             );
         }
@@ -33,18 +43,21 @@ class MyEvents extends Component {
     };
 
     render() {
+        const {myEvents,location,openModal,openConfirmModal} = this.props;
         return (
-            <div className='ui three cards' style={{overFlow: 'hidden'}}>
-                {this.props.MyEvents.map(event =>
-                    <SingleEventCard
-                        event={event}
-                        pathName={this.props.location.pathname}
-                        onDelete={this.props.onDelete}
-                        key={event.id}
-                        openModal={this.props.openModal}
-                    />
-                )}
-                        {this.renderModal()}
+            <div className='ui three cards'>
+                {myEvents.length !== 0 ?
+                    myEvents.map(event =>
+                        <SingleEventCard
+                            event={event}
+                            pathName={location.pathname}
+                            key={event.id}
+                            openModal={openModal}
+                            openConfirmModal={openConfirmModal}
+                        />
+                    )
+                    : <NoEventsMessage username={this.props.username}/>                }
+                {this.renderModal()}
             </div>
         );
     }
@@ -52,16 +65,22 @@ class MyEvents extends Component {
 
 function mapStateToProps(state) {
     return {
-        MyEvents:  state.events,
+        myEvents:  state.events,
         modal: state.modal
     };
 }
 MyEvents.propTypes = {
-    MyEvents :PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    myEvents :PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     fetchMyEvents : PropTypes.func.isRequired,
+    onDelete : PropTypes.func.isRequired,
+    openModal : PropTypes.func.isRequired,
+    closeModal : PropTypes.func.isRequired,
+    openConfirmModal : PropTypes.func.isRequired,
     location : PropTypes.shape({
         pathname : PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    username: PropTypes.string.isRequired,
+    modal: PropTypes.shape({}).isRequired
 };
 
-export default connect(mapStateToProps, {fetchMyEvents, onDelete, openModal, closeModal})(MyEvents);
+export default connect(mapStateToProps, {fetchMyEvents, onDelete, openModal,openConfirmModal, closeModal})(MyEvents);
