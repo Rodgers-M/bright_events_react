@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Popover, OverlayTrigger, Modal } from 'react-bootstrap';
+import shortid from 'shortid';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 const SingleEventCard = (props) => {
-    const { event, pathName, onDelete, rsvp, handleErrors, username } = props;
+    const { event, pathName, rsvp, handleErrors, username } = props;
     const { name, description, location, orgarniser } = event;
 
     const eventDate = event.event_date.split('00')[0];
-    const handleDelete = () => {
-        onDelete(event.id);
-    };
     const host = orgarniser === username ? 'Me' : orgarniser;
     const handleRsvp = () => {
         rsvp(event.id).catch(()=> handleErrors());
@@ -19,7 +17,10 @@ const SingleEventCard = (props) => {
     const popoverLeft = (
         <Popover id="popover-trigger-click-root-close" title={title}>
             {event.rsvp_list.length !==0?
-                event.rsvp_list.map(name => <div key={event.id}><span >{name}</span><br /> </div> )
+                event.rsvp_list.map(name => {
+                    const id = shortid.generate();
+                    return <div key={id}><span >{name}</span><br /> </div>;
+                } )
                 :
                 <strong> No guests yet</strong> 
             }
@@ -47,15 +48,17 @@ const SingleEventCard = (props) => {
             {pathName === '/events/myEvents' ?
                 <div className='extra content'>
                     <div className='ui three buttons'>
-                         <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={popoverLeft}>
-                <button className="ui green basic button">
-                Guests
-                </button>
-    </OverlayTrigger>
+                        <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={popoverLeft}>
+                            <button className="ui green basic button">
+                            Guests
+                            </button>
+                        </OverlayTrigger>
                         <button onClick={()=>props.openModal(event.id)} className="ui teal basic button">
                             Edit
                         </button>
-                        <button onClick={handleDelete} className="ui red basic button">Delete</button>
+                        <button onClick={()=> props.openConfirmModal(event.id)} className="ui red basic button">
+                            Delete
+                        </button>
                     </div>
                 </div>
                 :
@@ -87,8 +90,9 @@ const SingleEventCard = (props) => {
 SingleEventCard.propTypes = {
     event: PropTypes.shape({}).isRequired,
     pathName: PropTypes.string.isRequired,
-    onDelete: PropTypes.func,
     handleErrors: PropTypes.func,
+    openConfirmModal: PropTypes.func,
+    openModal: PropTypes.func,
     rsvp: PropTypes.func
 };
 
