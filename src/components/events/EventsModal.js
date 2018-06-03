@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 
 class EventsModal extends Component {
 
-
-    constructor(props) {
-        super(props);
-    }
     onClose = () => {
         this.props.onClose();
     }
@@ -23,4 +19,7 @@ class EventsModal extends Component {
     }
 }
 
+EventsModal.propTypes = {
+    onClose : PropTypes.func.isRequired
+};
 export default EventsModal;
