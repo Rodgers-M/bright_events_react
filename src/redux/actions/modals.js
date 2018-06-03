@@ -10,8 +10,11 @@ export const modalClosed = (modalState) => ({
     modalState
 });
 
-export const openModal = (modalId) => (dispatch) =>
-    dispatch(modalOpened({open: true, id: modalId}));
+export const openModal = (modalId, modalType='edit') => (dispatch) =>
+    dispatch(modalOpened({open: true, id: modalId, type: modalType}));
+
+export const openConfirmModal = (modalId, modalType='confirm') => (dispatch) =>
+    dispatch(modalOpened({open: true, id: modalId, type: modalType}));
 
 export const closeModal = () => (dispatch) =>
     dispatch(modalClosed({open: false}));
