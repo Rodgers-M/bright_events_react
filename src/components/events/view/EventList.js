@@ -50,7 +50,8 @@ EventList.propTypes = {
     rsvp: PropTypes.func.isRequired,
     location: PropTypes.shape({
         pathname : PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    username: PropTypes.string.isRequired
 };
 
 export default connect(mapStateToProps, { fetchEvents, rsvp, addFlashMessage })(EventList);
