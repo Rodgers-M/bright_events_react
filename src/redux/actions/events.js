@@ -34,13 +34,13 @@ export const create = details => (dispatch) =>
     });
 
 export const fetchEvents = () => (dispatch) => 
-    api.events.fetchAll().then(events =>{
-        dispatch(eventsFetched(events));
+    api.events.fetchAll().then(data =>{
+        dispatch(eventsFetched(data.event_list));
     });
 
 export const fetchMyEvents = () => (dispatch) => 
-    api.events.fetchMyEvents().then(events =>{
-        dispatch(myEventsFetched(events));
+    api.events.fetchMyEvents().then(data =>{
+        dispatch(myEventsFetched(data.event_list));
     });
 
 export const updateEvent = (event, eventId)  => (dispatch ) =>
@@ -53,6 +53,7 @@ export const updateEvent = (event, eventId)  => (dispatch ) =>
 export const onDelete = eventId => (dispatch) =>
     api.events.deleteEvent(eventId).then(message => {
         dispatch(eventDeleted(eventId));
+        dispatch(closeModal());
         dispatch(addFlashMessage({ type : 'success', text : message}));
     });
 
