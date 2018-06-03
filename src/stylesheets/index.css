@@ -56,9 +56,10 @@ body {
   left:0;
   right:0;
   top: 0;
-  height: 100vh;
+  height: 100%;
   background: rgba(0,0,0,0.3);
   display: flex;
+  position : absolute;
   justify-content: center;
   padding: 20px;
 }
@@ -67,6 +68,7 @@ body {
   background: #fff;
   border-radius: 5px;
   width: 60%;
+  text-align : center;
   position: fixed;
   padding: 2% 0;
 
