@@ -4,13 +4,18 @@ import shortid from 'shortid';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 const SingleEventCard = (props) => {
-    const { event, pathName, rsvp, handleErrors, username } = props;
+    const { event, pathName, rsvp,deleteRsvp, handleErrors, username } = props;
     const { name, description, location, orgarniser } = event;
 
     const eventDate = event.event_date.split('00')[0];
     const host = orgarniser === username ? 'Me' : orgarniser;
+
     const handleRsvp = () => {
         rsvp(event.id).catch(()=> handleErrors());
+    };
+
+    const handleDeleteRsvp = () => {
+        deleteRsvp(event.id).catch(()=> handleErrors());
     };
 
     const title =`Your Guests for this event (${event.rsvp_list.length})`;
@@ -69,8 +74,9 @@ const SingleEventCard = (props) => {
                         <span>
                             {event.rsvp_list.includes(username)?
                                 <div className='ui two buttons'>
-                                    <div className="ui green basic button">Attending</div>
-                                    <button  className="ui brown basic button">Cancel RSVP</button>
+                                    <button onClick={handleDeleteRsvp} className='fluid ui brown basic button'>
+                                        Cancel RSVP
+                                    </button>
                                 </div>
                                 :
                                 <button onClick={handleRsvp} className="ui teal basic button">
@@ -93,7 +99,8 @@ SingleEventCard.propTypes = {
     handleErrors: PropTypes.func,
     openConfirmModal: PropTypes.func,
     openModal: PropTypes.func,
-    rsvp: PropTypes.func
+    rsvp: PropTypes.func,
+    deleteRsvp: PropTypes.func
 };
 
 export default SingleEventCard;
