@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import  PropTypes from 'prop-types';
-import InLineError from '../messages/InLineError';
+import InLineError from '../../messages/InLineError';
 
 const EventForm = (props)=> {
     

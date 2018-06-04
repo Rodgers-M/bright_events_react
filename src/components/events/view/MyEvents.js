@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import SingleEventCard  from './SingleEventCard';
 import {fetchMyEvents, onDelete} from '../../../redux/actions/events';
 import {openModal,openConfirmModal, closeModal} from '../../../redux/actions/modals';
-import EventsModal from '../EventsModal';
+import EventsModal from '../common/EventsModal';
 import EditEventContainer from '../edit/EditEventContainer';
-import NoEventsMessage from '../NoEventsMessage';
+import NoEventsMessage from '../common/NoEventsMessage';
 import ConfirmDelete from './ConfirmDelete';
 
 class MyEvents extends Component {
@@ -21,7 +21,7 @@ class MyEvents extends Component {
     renderModal = () => {
         const {modal,myEvents,closeModal, onDelete} = this.props;
         if (modal.open && modal.type === 'edit'){
-            const  filteredEvent = myEvents.filter(event=>event.id == modal.id);
+            const  filteredEvent = myEvents.filter(event=>event.id === modal.id);
             const event = filteredEvent[0];
             return(
                 <EventsModal onClose={closeModal} >
@@ -56,7 +56,10 @@ class MyEvents extends Component {
                             openConfirmModal={openConfirmModal}
                         />
                     )
-                    : <NoEventsMessage username={this.props.username}/>                }
+                    : <NoEventsMessage
+                        username={this.props.username}
+                        pathName={location.pathname}
+                    />                }
                 {this.renderModal()}
             </div>
         );

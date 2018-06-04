@@ -68,7 +68,6 @@ body {
   background: #fff;
   border-radius: 5px;
   width: 60%;
-  text-align : center;
   position: fixed;
   padding: 2% 0;
 
@@ -82,4 +81,8 @@ body {
   border: none;
   font-size: 2em;
   cursor: pointer;
+}
+.confirm-modal{
+    text-align: center;
+    font-size: 18px;
 }

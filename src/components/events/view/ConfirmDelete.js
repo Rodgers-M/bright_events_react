@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function ConfirmDelete(props) {
     const{closeModal, onDelete, eventId} = props;
     return (
-        <div className='ui grid confirm-modal'>
+        <div className='ui grid confirm-modal' style={{textAlign: 'center'}}>
             <div className='ten wide column'>
                 <p>
                     are you sure you want to delete this event?
@@ -25,7 +25,7 @@ function ConfirmDelete(props) {
 ConfirmDelete.propTypes = {
     closeModal: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    eventId: PropTypes.string.isRequired
+    eventId: PropTypes.number.isRequired
 };
 
 export default ConfirmDelete;

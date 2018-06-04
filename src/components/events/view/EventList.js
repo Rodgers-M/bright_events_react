@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {addFlashMessage} from '../../../redux/actions/flashMessages';
 import SingleEventCard  from './SingleEventCard';
 import { fetchEvents, rsvp, deleteRsvp } from '../../../redux/actions/events';
-import NoEventsMessage from '../NoEventsMessage';
+import NoEventsMessage from '../common/NoEventsMessage';
 
 class EventList extends Component {
 

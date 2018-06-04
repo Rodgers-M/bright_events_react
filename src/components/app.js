@@ -6,7 +6,7 @@ import SignupContainer from './signup/SignupContainer';
 import CreateEventContainer from './events/create/CreateEventContainer';
 import EditEventContainer from './events/edit/EditEventContainer';
 import NotFound from './home/NotFound';
-import EventsLayout from './events/EventsLayout';
+import EventsLayout from './events/common/EventsLayout';
 import EventList from './events/view/EventList';
 import MyEvents from './events/view/MyEvents';
 

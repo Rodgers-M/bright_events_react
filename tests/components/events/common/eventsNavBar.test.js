@@ -6,7 +6,7 @@
 /* global it :true */
 /* global expect :true */
 /* eslint no-undef: "error" */
-import EventsNavBar from '../../../src/components/events/EventsNavBar';
+import EventsNavBar from '../../../../src/components/events/common/EventsNavBar';
  
 Enzyme.configure({ adapter: new Adapter() });
  

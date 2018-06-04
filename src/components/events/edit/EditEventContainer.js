@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import CreateEventForm from '../EventForm';
+import CreateEventForm from '../common/EventForm';
 import { updateEvent } from '../../../redux/actions/events';
 import { addFlashMessage } from '../../../redux/actions/flashMessages';
 import { formatDate, validateEventData } from '../../helpers/helpers';

@@ -20,7 +20,7 @@ const SingleEventCard = (props) => {
 
     const title =`Your Guests for this event (${event.rsvp_list.length})`;
     const popoverLeft = (
-        <Popover id="popover-trigger-click-root-close" title={title}>
+        <Popover id="popover-trigger-hover-focus" title={title}>
             {event.rsvp_list.length !==0?
                 event.rsvp_list.map(name => {
                     const id = shortid.generate();
@@ -53,15 +53,20 @@ const SingleEventCard = (props) => {
             {pathName === '/events/myEvents' ?
                 <div className='extra content'>
                     <div className='ui three buttons'>
-                        <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={popoverLeft}>
-                            <button className="ui green basic button">
+                        <OverlayTrigger
+                            trigger={['hover', 'focus']}
+                            rootClose placement='top'
+                            overlay={popoverLeft}>
+                            <button className='ui green basic button'>
                             Guests
                             </button>
                         </OverlayTrigger>
-                        <button onClick={()=>props.openModal(event.id)} className="ui teal basic button">
+                        <button onClick={()=>props.openModal(event.id)}
+                            className='ui teal basic button'>
                             Edit
                         </button>
-                        <button onClick={()=> props.openConfirmModal(event.id)} className="ui red basic button">
+                        <button onClick={()=> props.openConfirmModal(event.id)}
+                            className='ui red basic button'>
                             Delete
                         </button>
                     </div>
