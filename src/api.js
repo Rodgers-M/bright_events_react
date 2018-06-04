@@ -2,8 +2,9 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-    timeout : 10000,
+    timeout : 20000,
     headers : {
+        AccessControlAllowOrigin: 'http://localhost:7000/api/v2',
         Accept : 'application/json',
         ContentType : 'application/json'
     }
