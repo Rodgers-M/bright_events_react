@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 function ConfirmDelete(props) {
     const{closeModal, onDelete, eventId} = props;
     return (
-        <div className='ui grid'>
+        <div className='ui grid confirm-modal'>
             <div className='ten wide column'>
-                <p>are you sure you want to delete this event?</p>
+                <p>
+                    are you sure you want to delete this event?
+                </p>
             </div>
             <div className='four wide column'>
                 <div className='ui buttons'>
