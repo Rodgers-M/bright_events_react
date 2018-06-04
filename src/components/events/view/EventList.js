@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import {addFlashMessage} from '../../../redux/actions/flashMessages';
 import SingleEventCard  from './SingleEventCard';
 import { fetchEvents, rsvp } from '../../../redux/actions/events';
+import NoEventsMessage from '../NoEventsMessage';
 
 class EventList extends Component {
 
@@ -20,19 +21,25 @@ class EventList extends Component {
     }) 
 
     render() {
+        const{ allEvents, location, username } = this.props;
         return (
-            <div className='ui three cards'>
-                {this.props.allEvents.map(event =>
-                    <SingleEventCard
-                        rsvp={this.props.rsvp}
-                        event={event}
-                        pathName={this.props.location.pathname}
-                        key={event.id}
-                        dismissMessage={this.handleDismiss}
-                        handleErrors={this.handleErrors}
-                        username={this.props.username}
-                    />
-                )}
+            <div>
+                {allEvents.length !== 0 ?
+                    <div className='ui three cards'>
+                        {this.props.allEvents.map(event =>
+                            <SingleEventCard
+                                rsvp={this.props.rsvp}
+                                event={event}
+                                pathName={location.pathname}
+                                key={event.id}
+                                dismissMessage={this.handleDismiss}
+                                handleErrors={this.handleErrors}
+                                username={username}
+                            />
+                        )}
+                    </div>
+                    : <NoEventsMessage username={username} pathName={location.pathname}/>
+                }
             </div>
         );
     }
