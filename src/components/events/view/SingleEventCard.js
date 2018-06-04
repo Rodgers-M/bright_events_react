@@ -5,7 +5,7 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 const SingleEventCard = (props) => {
     const { event, pathName, rsvp,deleteRsvp, handleErrors, username } = props;
-    const { name, description, location, orgarniser } = event;
+    const { name, description, location, orgarniser, category } = event;
 
     const eventDate = event.event_date.split('00')[0];
     const host = orgarniser === username ? 'Me' : orgarniser;
@@ -43,8 +43,9 @@ const SingleEventCard = (props) => {
                     : null
                 }
                 <div className='meta'>
+                    <span>Date : {eventDate}</span> <br/>
                     <span>Location : {location}</span> <br/>
-                    <span>Date : {eventDate}</span> 
+                    <span>Category : {category}</span> 
                 </div>
                 <div className='description'>
                     <p>{description}</p>
