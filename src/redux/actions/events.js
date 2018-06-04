@@ -66,7 +66,6 @@ export const rsvp = eventId => (dispatch) =>
 
 export const deleteRsvp = eventId => (dispatch) =>
     api.events.deleteRsvp(eventId).then(data => {
-        console.log(data.event);
         dispatch(eventUpdated(data.event));
         dispatch(addFlashMessage({type: 'success', text: data.message}));
     });
