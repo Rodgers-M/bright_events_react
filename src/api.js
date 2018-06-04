@@ -35,6 +35,8 @@ export const api = {
         deleteEvent: (eventId)  => instance.delete(`/events/${eventId}`)
             .then(response => response.data.message),
         rsvp: (eventId) => instance.post(`/events/${eventId}/rsvp`)
+            .then(response => response.data),
+        deleteRsvp: (eventId) => instance.delete(`/events/${eventId}/rsvp`)
             .then(response => response.data)
     }
 };
