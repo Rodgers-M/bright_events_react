@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "NODE_ENV=test testEnvironment=node nyc  mocha --require babel-core/register  --reporter spec tests/helpers.js --require mock-local-storage --require ignore-styles  \"tests/**/*.test.js\"",
+    "test": "NODE_ENV=test  nyc  mocha --require babel-core/register  --reporter spec tests/helpers.js --require mock-local-storage --require ignore-styles  \"tests/**/*.test.js\"",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/**; exit 0",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
