@@ -2,9 +2,10 @@
 import axios from 'axios';
 
 export const instance = axios.create({
+    // baseURL: 'http://0.0.0.0:7000/api/v2',
+    baseURL: 'https://rodgerbrighteventsapi.herokuapp.com/api/v2',
     timeout : 20000,
     headers : {
-        AccessControlAllowOrigin: 'http://localhost:7000/api/v2',
         Accept : 'application/json',
         ContentType : 'application/json'
     }
