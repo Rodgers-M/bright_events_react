@@ -12,7 +12,7 @@ export const userLoggedOut = () => ({
 
 export const login = credentials => (dispatch) => 
     api.user.login(credentials).then(user =>{
-        localStorage.brighteventsJWT = user.access_token;
+        localStorage.setItem("brighteventsJWT", user.access_token);
         dispatch(userLoggedIn(user));
     });
 
