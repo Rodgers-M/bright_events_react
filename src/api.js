@@ -2,19 +2,20 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-    baseURL: 'http://127.0.0.1:7000/api/v2',
-    //baseURL: 'https://rodgerbrighteventsapi.herokuapp.com/',
+    baseURL: 'https://rodgerbrighteventsapi.herokuapp.com/api/v2',
     timeout : 20000,
     headers : {
         Accept : 'application/json',
-        ContentType : 'application/json'
+        ContentType : 'application/json',
     }
 });
 
 
 instance.interceptors.request.use((config)=>{
     const accessToken = localStorage.getItem('brighteventsJWT');
-    config.headers.Authorization = `Bearer ${accessToken}`;
+    if(accessToken){
+        config.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return config;
 });
 
@@ -26,14 +27,10 @@ export const api = {
             .then(res => res.data)
     },
     events : {
-        create: (details) => instance.post('http://127.0.0.1:7000/api/v2/events/create',
-    {
-            Authorization : `Bearer ${localStorage.getItem('brighteventsJWT')}`,
-            Accept : 'application/json',
-            ContentType : 'application/json'}, details)
+        create: (details) => instance.post('/events/create', details)
             .then(response => response.data),
         fetchAll: () => instance.get('/events/all')
-            .then(respnse => respnse.data),
+            .then(response => response.data),
         fetchMyEvents: () => instance.get('/events/myevents') 
             .then(response => response.data),
         updateEvent: (event, eventId) => instance.put(`/events/${eventId}`, event)
