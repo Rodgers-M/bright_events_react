@@ -81,12 +81,13 @@ const SingleEventCard = (props) => {
                             {event.rsvp_list.includes(username)?
                                 <div className='ui two buttons'>
                                     <button onClick={handleDeleteRsvp} className='fluid ui brown basic button'>
+                                    <i className="times icon" />
                                         Cancel RSVP
                                     </button>
                                 </div>
                                 :
-                                <button onClick={handleRsvp} className="ui teal basic button">
-                                    <i className="calendar plus outline icon" />
+                                <button onClick={handleRsvp} className="fluid ui teal basic button">
+                                    <i className="heart icon" />
                                 RSVP
                                 </button>
                             }
