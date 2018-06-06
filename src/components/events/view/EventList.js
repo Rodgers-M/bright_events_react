@@ -28,7 +28,6 @@ class EventList extends Component {
 
     updateSearch = event =>{
         this.setState({ search: event.target.value});
-        console.log(event.target.value);
     }
 
     render() {
