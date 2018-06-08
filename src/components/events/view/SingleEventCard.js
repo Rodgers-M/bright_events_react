@@ -20,7 +20,7 @@ const SingleEventCard = (props) => {
 
     const title =`Your Guests for this event (${event.rsvp_list.length})`;
     const popoverLeft = (
-        <Popover id="popover-trigger-hover-focus" title={title}>
+        <iPopover id="popover-trigger-hover-focus" title={title}>
             {event.rsvp_list.length !==0?
                 event.rsvp_list.map(name => {
                     const id = shortid.generate();
@@ -81,7 +81,7 @@ const SingleEventCard = (props) => {
                             {event.rsvp_list.includes(username)?
                                 <div className='ui two buttons'>
                                     <button onClick={handleDeleteRsvp} className='fluid ui brown basic button'>
-                                    <i className="times icon" />
+                                        <i className="times icon" />
                                         Cancel RSVP
                                     </button>
                                 </div>
@@ -103,6 +103,7 @@ const SingleEventCard = (props) => {
 SingleEventCard.propTypes = {
     event: PropTypes.shape({}).isRequired,
     pathName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     handleErrors: PropTypes.func,
     openConfirmModal: PropTypes.func,
     openModal: PropTypes.func,
