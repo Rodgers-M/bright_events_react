@@ -48,7 +48,7 @@ describe('Events Actions', ()=> {
             moxios.install(instance);
         });
         afterEach(()=> {
-            moxios.install(instance);
+            moxios.uninstall(instance);
         });
         describe('ALL_EVENTS_FETCHED action', ()=> {
             it('should dispacth ALL_EVENTS_FETCHED on success', ()=> {
