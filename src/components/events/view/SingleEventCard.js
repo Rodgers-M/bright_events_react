@@ -20,7 +20,7 @@ const SingleEventCard = (props) => {
 
     const title =`Your Guests for this event (${event.rsvp_list.length})`;
     const popoverLeft = (
-        <iPopover id="popover-trigger-hover-focus" title={title}>
+        <Popover id="popover-trigger-hover-focus" title={title}>
             {event.rsvp_list.length !==0?
                 event.rsvp_list.map(name => {
                     const id = shortid.generate();
