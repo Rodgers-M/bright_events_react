@@ -13,7 +13,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('Events Actions', ()=> {
-    describe('Event created action creator', ()=> {
+    describe('EVENT_CREATED action creator', ()=> {
         it('should return an event and action type', ()=> {
             const createdEvent = { eventInfo : 'some event information', testing : 'yes we are just testing'};
             const expectedAction = {
@@ -41,6 +41,26 @@ describe('Events Actions', ()=> {
                 events 
             };
             expect(actions.myEventsFetched(events)).toEqual(expectedAction);
+        });
+    });
+    describe('EVENT_UPDATED action creator', ()=> {
+        it('should return an action of type EVENT_UPDATED and the updated event', ()=> {
+            const updatedEvent = { eventInfo : 'some event information', testing : 'yes we are just testing'};
+            const expectedAction = {
+                type : types.EVENT_UPDATED,
+                updatedEvent 
+            };
+            expect(actions.eventUpdated(updatedEvent)).toEqual(expectedAction);
+        });
+    });
+    describe('EVENT_DELETED action creator', ()=> {
+        it('should return an action of type EVENT_DELETED and the deleted event Id', ()=> {
+            const eventId = 2;
+            const expectedAction = {
+                type : types.EVENT_DELETED,
+                eventId
+            };
+            expect(actions.eventDeleted(eventId)).toEqual(expectedAction);
         });
     });
     describe('Async actions', ()=> {
