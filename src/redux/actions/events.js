@@ -48,7 +48,7 @@ export const updateEvent = (event, eventId)  => (dispatch ) =>
         dispatch(eventUpdated(data.event));
         dispatch(closeModal());
         return data.message;
-    }).catch(err => console.log(err));
+    });
 
 export const onDelete = eventId => (dispatch) =>
     api.events.deleteEvent(eventId).then(message => {
@@ -59,7 +59,6 @@ export const onDelete = eventId => (dispatch) =>
 
 export const rsvp = eventId => (dispatch) =>
     api.events.rsvp(eventId).then(data => {
-        console.log(data.event);
         dispatch(eventUpdated(data.event));
         dispatch(addFlashMessage({type: 'success', text: data.message}));
     });
