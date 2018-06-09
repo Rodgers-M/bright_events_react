@@ -121,5 +121,44 @@ describe('Events Actions', ()=> {
                 });
             });
         });
+        describe('EVENT_UPDATED action', ()=> {
+            it('should dispatch EVENT_UPDATED on success', ()=> {
+                const data  = {event: {id : 1, name: 'updated event'}};
+                const initialState = [{id : 1, name: 'new event'}, {id : 2, name: 'old event'}];
+                moxios.wait(()=> {
+                    const request = moxios.requests.mostRecent();
+                    request.respondWith({
+                        status : 201,
+                        response : data
+                    });
+                });
+                const expectedAction = [{type: types.EVENT_UPDATED, updatedEvent: { id : 1, name: 'updated event'}},
+                    {modalState: {open: false}, type: 'CLOSE_MODAL'}]; 
+                const store = mockStore({ events: initialState});
+                return store.dispatch(actions.updateEvent(data.event, 1)).then(()=> {
+                    expect(store.getActions()).toEqual(expectedAction);
+                });
+            });
+        });
+        describe('EVENT_DELETED action', ()=> {
+            it('should dispatch EVENT_DELETED on success', ()=> {
+                const message = 'event deleted';
+                const initialState = [{id : 1, name: 'new event'}, {id : 2, name: 'old event'}];
+                moxios.wait(()=> {
+                    const request = moxios.requests.mostRecent();
+                    request.respondWith({
+                        status : 200,
+                        response : message
+                    });
+                });
+                const expectedAction = [{type: types.EVENT_DELETED },
+                    {'modalState': {'open': false}, 'type': 'CLOSE_MODAL'},
+                    {message: {text: 'event deleted', type: 'success'}, type: 'ADD_FLASH_MEASSAGE'}]; 
+                const store = mockStore({ events: initialState});
+                return store.dispatch(actions.onDelete(1)).then(()=> {
+                    expect(store.getActions().length).toEqual(expectedAction.length);
+                });
+            });
+        });
     });
 });
