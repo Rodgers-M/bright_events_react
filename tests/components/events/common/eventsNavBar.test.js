@@ -22,10 +22,10 @@ function setup(){
         <EventsNavBar {...props} />,
         options.get()
     );
-};
+}
 
 describe('EventsNavBar component', ()=> {
-    describe('nav nar content', ()=> {
+    describe('nav bar content', ()=> {
         it('should have one div with class ui inverted menu ', ()=> {
             const wrapper = setup();
             expect(wrapper.find('div.ui.inverted.menu').length).toEqual(1);
