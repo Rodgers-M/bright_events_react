@@ -9,17 +9,15 @@ import NoEventsMessage from '../common/NoEventsMessage';
 import SearchComponent from '../common/SearchComponent';
 import NoResults from '../common/NoResults';
 
-class EventList extends Component {
+export class EventList extends Component {
 
     state={
         search: ''
     }
 
     componentDidMount() {
-        this.callFetchEvents();
+        this.props.fetchEvents();
     }
-
-    callFetchEvents = () => this.props.fetchEvents();
 
     handleErrors = () => this.props.addFlashMessage({
         type : 'warning',
