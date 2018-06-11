@@ -11,7 +11,7 @@ const SingleEventCard = (props) => {
     const host = orgarniser === username ? 'Me' : orgarniser;
 
     const handleRsvp = () => {
-        rsvp(event.id).catch(()=> handleErrors());
+        rsvp(event.id);
     };
 
     const handleDeleteRsvp = () => {
