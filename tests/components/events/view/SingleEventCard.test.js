@@ -19,7 +19,7 @@ function setup(path){
         rsvp_list : ['user1', 'user2']
     };
     return mount(
-        <SingleEventCard event={event} pathName={pathName} username='username' />,
+        <SingleEventCard event={ event } pathName={ pathName } username='username' />,
         options.get()
     );
 }

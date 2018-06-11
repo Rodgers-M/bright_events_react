@@ -44,9 +44,9 @@ function setup(errors){
         buttonText : 'Create'
     };
     return mount(
-        <EventForm {...props} />
+        <EventForm { ...props } />
     );
-};
+}
 
 describe('Event form component', ()=> {
     describe('form content', ()=> {

@@ -17,7 +17,7 @@ function setup(){
         onChange : mockOnchange
     };
     return mount(
-        <SearchComponent {...props} />
+        <SearchComponent { ...props } />
     );
 }
 
