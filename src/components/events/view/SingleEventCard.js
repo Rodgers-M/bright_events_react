@@ -20,11 +20,11 @@ const SingleEventCard = (props) => {
 
     const title =`Your Guests for this event (${event.rsvp_list.length})`;
     const popoverLeft = (
-        <Popover id="popover-trigger-hover-focus" title={title}>
+        <Popover id="popover-trigger-hover-focus" title={ title }>
             {event.rsvp_list.length !==0?
                 event.rsvp_list.map(name => {
                     const id = shortid.generate();
-                    return <div key={id}><span >{name}</span><br /> </div>;
+                    return <div key={ id }><span >{ name }</span><br /> </div>;
                 } )
                 :
                 <strong> No guests yet</strong> 
@@ -35,7 +35,7 @@ const SingleEventCard = (props) => {
     return (
         <div className='ui card'>
             <div className='content'>
-                <div className='header' style={{textTransform: 'capitalize'}}>{name}</div> 
+                <div className='header' style={ { textTransform: 'capitalize' } }>{name}</div> 
             </div>
             <div className='content'>
                 {pathName !== '/events/myEvents' ?
@@ -55,18 +55,18 @@ const SingleEventCard = (props) => {
                 <div className='extra content'>
                     <div className='ui three buttons'>
                         <OverlayTrigger
-                            trigger={['hover', 'focus']}
+                            trigger={ ['hover', 'focus'] }
                             rootClose placement='top'
-                            overlay={popoverLeft}>
+                            overlay={ popoverLeft }>
                             <button className='ui green basic button'>
                             Guests
                             </button>
                         </OverlayTrigger>
-                        <button onClick={()=>props.openModal(event.id)}
+                        <button onClick={ ()=>props.openModal(event.id) }
                             className='ui teal basic button'>
                             Edit
                         </button>
-                        <button onClick={()=> props.openConfirmModal(event.id)}
+                        <button onClick={ ()=> props.openConfirmModal(event.id) }
                             className='ui red basic button'>
                             Delete
                         </button>
@@ -80,13 +80,13 @@ const SingleEventCard = (props) => {
                         <span>
                             {event.rsvp_list.includes(username)?
                                 <div className='ui two buttons'>
-                                    <button onClick={handleDeleteRsvp} className='fluid ui brown basic button'>
+                                    <button onClick={ handleDeleteRsvp } className='fluid ui brown basic button'>
                                         <i className="times icon" />
                                         Cancel RSVP
                                     </button>
                                 </div>
                                 :
-                                <button onClick={handleRsvp} className="fluid ui teal basic button">
+                                <button onClick={ handleRsvp } className="fluid ui teal basic button">
                                     <i className="heart icon" />
                                 RSVP
                                 </button>

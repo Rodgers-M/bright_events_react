@@ -15,7 +15,7 @@ function setup(){
         pathName : '/events/myEvents'
     };
     return mount(
-        <NoEventsMessage {...props} />,
+        <NoEventsMessage { ...props } />,
         options.get()
     );
 }
