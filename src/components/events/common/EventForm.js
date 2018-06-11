@@ -13,64 +13,64 @@ const EventForm = (props)=> {
     return(
         <div className="ui grid">
             <div className="ten twelve wide centered column">
-                <Form onSubmit={props.onSubmit}loading={loading} >
-                    {errors.message && <Message negative onDismiss={props.handleDismiss}>
+                <Form onSubmit={ props.onSubmit }loading={ loading } >
+                    { errors.message && <Message negative onDismiss={ props.handleDismiss }>
                         <Message.Header> Something went wrong </Message.Header>
-                        <p> {errors.message} </p>
-                    </Message>}
-                    <Form.Field error={!!errors.name}>
+                        <p> { errors.message } </p>
+                    </Message> }
+                    <Form.Field error={ !!errors.name }>
                         <label htmlFor='name' > name 
                             <input type='text' name='name' id='name'
                                 placeholder='name'
-                                value={data.name}
-                                onChange={props.onChange}
+                                value={ data.name }
+                                onChange={ props.onChange }
                             />
                         </label>
-                        {errors.name && <InLineError message={errors.name} /> }
+                        { errors.name && <InLineError message={ errors.name } /> }
                     </Form.Field>
-                    <Form.Field error={!!errors.name}>
+                    <Form.Field error={ !!errors.name }>
                         <label htmlFor='description' > Description 
                             <textarea name='description' id='description' 
-                                value={data.description}
-                                onChange={props.onChange}
+                                value={ data.description }
+                                onChange={ props.onChange }
                             />
                         </label>
-                        {errors.description && <InLineError message={errors.description} /> }
+                        { errors.description && <InLineError message={ errors.description } /> }
                     </Form.Field>
-                    <Form.Field error={!!errors.category}>
+                    <Form.Field error={ !!errors.category }>
                         <label htmlFor='category' > category 
                             <input type='text' name='category' id='category'
                                 placeholder='category'
-                                value={data.category}
-                                onChange={props.onChange}
+                                value={ data.category }
+                                onChange={ props.onChange }
                             />
                         </label>
-                        {errors.category && <InLineError message={errors.category} /> }
+                        { errors.category && <InLineError message={ errors.category } /> }
                     </Form.Field>
-                    <Form.Field error={!!errors.location}>
+                    <Form.Field error={ !!errors.location }>
                         <label htmlFor='location' > location 
                             <input type='text' name='location' id='location'
                                 placeholder='location'
-                                value={data.location}
-                                onChange={props.onChange}
+                                value={ data.location }
+                                onChange={ props.onChange }
                             />
                         </label>
-                        {errors.location && <InLineError message={errors.location} /> }
+                        { errors.location && <InLineError message={ errors.location } /> }
                     </Form.Field>
-                    <Form.Field error={!!errors.date}>
+                    <Form.Field error={ !!errors.date }>
                         <label htmlFor='date' > date 
                             <DatePicker  name='date' id='date'
                                 dateFormat="YYYY/MM/DD"
-                                selected ={data.event_date}
-                                onChange={props.handleDate}
-                                minDate= {minDate}
+                                selected ={ data.event_date }
+                                onChange={ props.handleDate }
+                                minDate= { minDate }
                                 showYearDropdown
                                 scrollableYearDropdown
-                                yearDropdownItemNumber={15}
+                                yearDropdownItemNumber={ 15 }
                                 showMonthDropdown
                             />
                         </label>
-                        {errors.date && <InLineError message={errors.date} /> }
+                        {errors.date && <InLineError message={ errors.date } /> }
                     </Form.Field>
                     <Button primary>{props.buttonText}</Button>
                 </Form>

@@ -64,11 +64,11 @@ export class CreateEventContainer extends Component{
         return(
             <div >
                 <CreateEventForm
-                    onSubmit={this.onSubmit} 
-                    onChange={this.onChange}
-                    handleDate={this.handleDate}
-                    handleDismiss={this.handleDismiss}
-                    state={this.state}
+                    onSubmit={ this.onSubmit } 
+                    onChange={ this.onChange }
+                    handleDate={ this.handleDate }
+                    handleDismiss={ this.handleDismiss }
+                    state={ this.state }
                     buttonText='Create'
                 />
             </div>

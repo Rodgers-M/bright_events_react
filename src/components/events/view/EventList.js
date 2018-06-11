@@ -39,23 +39,23 @@ class EventList extends Component {
         });
         return (
             <div>
-                <SearchComponent onChange={this.updateSearch} />
+                <SearchComponent onChange={ this.updateSearch } />
                 {allEvents.length === 0?
                     //show a message if no events exist in the app
-                    <NoEventsMessage username={username} pathName={location.pathname}/>
+                    <NoEventsMessage username={ username } pathName={ location.pathname }/>
                     :filteredEvents.length !== 0 ?
                     //filteredEvents holds either all events or search results
                         <div className='ui three cards'>
                             {filteredEvents.map(event =>
                                 <SingleEventCard
-                                    rsvp={rsvp}
-                                    deleteRsvp={deleteRsvp}
-                                    event={event}
-                                    pathName={location.pathname}
-                                    key={event.id}
-                                    dismissMessage={this.handleDismiss}
-                                    handleErrors={this.handleErrors}
-                                    username={username}
+                                    rsvp={ rsvp }
+                                    deleteRsvp={ deleteRsvp }
+                                    event={ event }
+                                    pathName={ location.pathname }
+                                    key={ event.id }
+                                    dismissMessage={ this.handleDismiss }
+                                    handleErrors={ this.handleErrors }
+                                    username={ username }
                                 />
                             )}
                         </div>

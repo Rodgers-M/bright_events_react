@@ -12,9 +12,9 @@ function ConfirmDelete(props) {
             </div>
             <div className='four wide column'>
                 <div className='ui buttons'>
-                    <button onClick={closeModal} className='ui primary button'>Cancel</button>
+                    <button onClick={ closeModal } className='ui primary button'>Cancel</button>
                     <div className="or" />
-                    <button onClick={()=>onDelete(eventId)} className='ui red button'>Delete</button>
+                    <button onClick={ ()=>onDelete(eventId) } className='ui red button'>Delete</button>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function NoEventsMessage(props) {
     const { username, pathName } = props;
     return (
-        <div style={{marginTop : '10%', fontSize : '16px'}}>
+        <div style={ { marginTop : '10%', fontSize : '16px' } }>
             <div className="ui centered raised card">
                 <div className="content">
                     <div className='header'>

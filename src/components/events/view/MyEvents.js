@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SingleEventCard  from './SingleEventCard';
@@ -24,17 +24,17 @@ class MyEvents extends Component {
             const  filteredEvent = myEvents.filter(event=>event.id === modal.id);
             const event = filteredEvent[0];
             return(
-                <EventsModal onClose={closeModal} >
-                    <EditEventContainer event={event} />
+                <EventsModal onClose={ closeModal } >
+                    <EditEventContainer event={ event } />
                 </EventsModal>
             );
         }else if(modal.open && modal.type === 'confirm') {
             return (
-                <EventsModal onClose={closeModal}>
+                <EventsModal onClose={ closeModal }>
                     <ConfirmDelete
-                        closeModal={closeModal}
-                        onDelete={onDelete}
-                        eventId={modal.id}
+                        closeModal={ closeModal }
+                        onDelete={ onDelete }
+                        eventId={ modal.id }
                     />
                 </EventsModal>
             );
@@ -43,22 +43,23 @@ class MyEvents extends Component {
     };
 
     render() {
-        const {myEvents,location,openModal,openConfirmModal} = this.props;
+        const {myEvents,location,openModal,openConfirmModal, username} = this.props;
         return (
             <div className='ui three cards'>
                 {myEvents.length !== 0 ?
                     myEvents.map(event =>
                         <SingleEventCard
-                            event={event}
-                            pathName={location.pathname}
-                            key={event.id}
-                            openModal={openModal}
-                            openConfirmModal={openConfirmModal}
+                            event={ event }
+                            pathName={ location.pathname }
+                            key={ event.id }
+                            openModal={ openModal }
+                            openConfirmModal={ openConfirmModal }
+                            username={ username }
                         />
                     )
                     : <NoEventsMessage
-                        username={this.props.username}
-                        pathName={location.pathname}
+                        username={ this.props.username }
+                        pathName={ location.pathname }
                     />                }
                 {this.renderModal()}
             </div>

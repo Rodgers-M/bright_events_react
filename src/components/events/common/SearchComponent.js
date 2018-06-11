@@ -7,7 +7,7 @@ function SearchComponent(props) {
             <div className='six wide centered column'>
                 <div className='fluid ui icon input'>
                     <input
-                        onChange={props.onChange}
+                        onChange={ props.onChange }
                         type='text' name='search' placeholder='search...'
                     />
                     <i className='search icon' />

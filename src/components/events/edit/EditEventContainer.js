@@ -23,8 +23,7 @@ export class EditEventContainer extends Component{
         errors: {}
     };
 
-
-    updateState = () =>{
+    componentWillMount(){
         const event = this.props.event;
         this.setState({
             data : {
@@ -32,10 +31,6 @@ export class EditEventContainer extends Component{
                 description: event.description, location : event.location
             } 
         });
-    }
-
-    componentDidMount(){
-        this.updateState();
     }
 
     onChange = e => this.setState({
@@ -73,11 +68,11 @@ export class EditEventContainer extends Component{
         return(
             <div >
                 <CreateEventForm
-                    onSubmit={this.onSubmit} 
-                    onChange={this.onChange}
-                    handleDate={this.handleDate}
-                    handleDismiss={this.handleDismiss}
-                    state={this.state}
+                    onSubmit={ this.onSubmit } 
+                    onChange={ this.onChange }
+                    handleDate={ this.handleDate }
+                    handleDismiss={ this.handleDismiss }
+                    state={ this.state }
                     buttonText='Update'
                 />
             </div>

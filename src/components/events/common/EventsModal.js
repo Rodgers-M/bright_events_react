@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class EventsModal extends Component {
@@ -11,8 +11,8 @@ class EventsModal extends Component {
         return (
             <div className='custom-modal-wrapper'>
                 <div className='custom-modal'>
-                    <button className="close" onClick={this.onClose}>&times;</button>
-                    <div className=''>{this.props.children}</div>
+                    <button className="close" onClick={ this.onClose }>&times;</button>
+                    <div className=''>{ this.props.children }</div>
                 </div> 
             </div>
         );
@@ -20,6 +20,7 @@ class EventsModal extends Component {
 }
 
 EventsModal.propTypes = {
-    onClose : PropTypes.func.isRequired
+    onClose : PropTypes.func.isRequired,
+    children : PropTypes.shape({}).isRequired
 };
 export default EventsModal;
