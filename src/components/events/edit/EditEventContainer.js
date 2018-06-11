@@ -2,16 +2,17 @@
 /* eslint-disable react/no-unused-state */
 import React, {Component} from 'react';
 import  PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import CreateEventForm from '../common/EventForm';
-import {create} from '../../../redux/actions/events';
-import {addFlashMessage} from '../../../redux/actions/flashMessages';
-import {formatDate, validateEventData} from '../../helpers/helpers';
+import { updateEvent } from '../../../redux/actions/events';
+import { addFlashMessage } from '../../../redux/actions/flashMessages';
+import { formatDate, validateEventData } from '../../helpers/helpers';
 
-export class CreateEventContainer extends Component{
+export class EditEventContainer extends Component{
     state = {
         data: { 
+            id : '',
             name: '',
             description: '',
             category: '',
@@ -22,9 +23,20 @@ export class CreateEventContainer extends Component{
         errors: {}
     };
 
+    componentWillMount(){
+        const event = this.props.event;
+        this.setState({
+            data : {
+                ...this.state.data, id: event.id, name: event.name, category: event.category,
+                description: event.description, location : event.location
+            } 
+        });
+    }
+
     onChange = e => this.setState({
         data : {...this.state.data, [e.target.name]: e.target.value}
     });
+
 
     onSubmit = () => {
         const errors = validateEventData(this.state.data);
@@ -32,21 +44,13 @@ export class CreateEventContainer extends Component{
         if(Object.keys(errors).length===0){
             this.setState({loading : true});
             const eventDetails = {...this.state.data, event_date : formatDate(this.state.data.event_date)};
-            this.props.create(eventDetails)
-                .then(() => {
+            this.props.updateEvent(eventDetails, this.state.data.id)
+                .then((message) =>{
                     this.setState({loading : false});
                     this.props.addFlashMessage({
                         type : 'success',
-                        text : 'event created successfully' 
+                        text : message  
                     });
-                    this.props.history.push('/events/myEvents');
-                })
-                .catch(err => {
-                    if (err.request.status === 500){ 
-                        this.setState({errors: {message: 'Service is unavailable, please try again later'},loading : false});
-                    }else {
-                        this.setState({errors: err.response.data, loading : false});
-                    }
                 });
         }
     };
@@ -69,20 +73,19 @@ export class CreateEventContainer extends Component{
                     handleDate={ this.handleDate }
                     handleDismiss={ this.handleDismiss }
                     state={ this.state }
-                    buttonText='Create'
+                    buttonText='Update'
                 />
             </div>
         );
     }
 }
 
-CreateEventContainer.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
-    create: PropTypes.func.isRequired,
-    addFlashMessage : PropTypes.func.isRequired,
+
+EditEventContainer.propTypes = {
+    event: PropTypes.shape({}).isRequired,
+    updateEvent: PropTypes.func.isRequired,
+    addFlashMessage: PropTypes.func.isRequired
 };
 
-export default connect(null,{create, addFlashMessage} )(CreateEventContainer);
+export default connect(null,{ updateEvent, addFlashMessage } )(EditEventContainer);
 

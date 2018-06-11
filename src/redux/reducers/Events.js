@@ -1,14 +1,19 @@
-import {EVENT_CREATED, ALL_EVENTS_FETCHED, MY_EVENTS_FETCHED} from '../actions/types';
+import * as types from '../actions/types';
    
 export default function events(state = [], action){
     switch(action.type){
-    case EVENT_CREATED:
+    case types.EVENT_CREATED:
         return [
             ...state, action.createdEvent
         ];
-    case ALL_EVENTS_FETCHED:
+    case types.EVENT_UPDATED:
+        return state.map(event => event.id === action.updatedEvent.id ?
+            {...event, ...action.updatedEvent} : event);
+    case types.EVENT_DELETED:
+        return state.filter(event => event.id !== action.eventId );
+    case types.ALL_EVENTS_FETCHED:
         return action.events;
-    case MY_EVENTS_FETCHED:
+    case types.MY_EVENTS_FETCHED:
         return action.events;
     default:
         return state;

@@ -6,7 +6,7 @@
 /* global it :true */
 /* global expect :true */
 /* eslint no-undef: "error" */
-import EventsNavBar from '../../../src/components/events/EventsNavBar';
+import EventsNavBar from '../../../../src/components/events/common/EventsNavBar';
  
 Enzyme.configure({ adapter: new Adapter() });
  
@@ -22,10 +22,10 @@ function setup(){
         <EventsNavBar {...props} />,
         options.get()
     );
-};
+}
 
 describe('EventsNavBar component', ()=> {
-    describe('nav nar content', ()=> {
+    describe('nav bar content', ()=> {
         it('should have one div with class ui inverted menu ', ()=> {
             const wrapper = setup();
             expect(wrapper.find('div.ui.inverted.menu').length).toEqual(1);

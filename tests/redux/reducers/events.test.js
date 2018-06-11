@@ -13,6 +13,7 @@ describe('eventsReducer', ()=> {
         const action = actions.eventCreated(event);
         const newState = eventsReducer(initialState, action);
         expect(newState.length).toEqual(2);
+        expect(newState[0].name).toEqual('some name');
     });
     it('should add all events to the store when ALL_EVENTS_FETCHED is fired', ()=> {
         const initialState = [];

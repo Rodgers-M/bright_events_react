@@ -7,7 +7,7 @@
 /* eslint no-undef: "error" */
 
 import moment from 'moment';
-import EventForm from '../../../src/components/events/EventForm';
+import EventForm from '../../../../src/components/events/common/EventForm';
  
 const fakeSubmit = sinon.spy();
 const fakeHandleDate = sinon.spy();
@@ -44,9 +44,9 @@ function setup(errors){
         buttonText : 'Create'
     };
     return mount(
-        <EventForm {...props} />
+        <EventForm { ...props } />
     );
-};
+}
 
 describe('Event form component', ()=> {
     describe('form content', ()=> {
