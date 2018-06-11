@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - stable
+
+install:
+  - npm install
+
+script:
+  - npm run test
+
+after_success:
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token 
+  - npm run coveralls
