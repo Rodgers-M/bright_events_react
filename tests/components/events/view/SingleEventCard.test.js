@@ -1,4 +1,4 @@
-/* global React :true */
+/* global React sinon :true */
 /* global mount options :true */
 /* global describe :true */
 /* global it :true */
@@ -7,9 +7,12 @@
 
 import SingleEventCard from '../../../../src/components/events/view/SingleEventCard';
 
+const mockRsvp = sinon.spy();
+const mockDeleteRsvp = sinon.spy();
 function setup(path){
     const pathName = path;
     const event = {
+        id: 1,
         name: 'testEvent',
         description: 'event description',
         category: 'testin',
@@ -19,7 +22,11 @@ function setup(path){
         rsvp_list : ['user1', 'user2']
     };
     return mount(
-        <SingleEventCard event={ event } pathName={ pathName } username='username' />,
+        <SingleEventCard
+            event={ event } pathName={ pathName }
+            username='username' rsvp={ mockRsvp }
+            deleteRsvp={ mockDeleteRsvp }
+        />,
         options.get()
     );
 }
@@ -35,7 +42,12 @@ describe('SingleEventCard component', ()=> {
         expect(wrapper.find('button.ui.teal.basic.button').text()).toBe('Edit');
     });
     it('should show rsvp button when in all events page',()=> {
-        const wrapper = setup('/events/all');
+        const wrapper = setup('/events');
         expect(wrapper.find('#rsvp').find('button').text()).toBe('RSVP');
+    });
+    it('should call mockRsvp when rsvp button is clicked', ()=> {
+        const wrapper = setup('/events');
+        expect(wrapper.find('#rsvp').find('button').simulate('click'));
+        expect(mockRsvp.called).toBe(true);
     });
 });
