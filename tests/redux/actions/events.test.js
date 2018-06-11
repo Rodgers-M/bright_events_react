@@ -160,5 +160,51 @@ describe('Events Actions', ()=> {
                 });
             });
         });
+        describe('RSVP action', ()=> {
+            it('should dispatch EVENT_UPDATED and ADD_FLASH_MEASSAGE on success', ()=> {
+                const initialState = [{id : 1, name: 'my event', rsvp_list: []}];
+                const data  = {event: {id : 1, name: 'my event', rsvp_list: ['guest1']},
+                    message: 'rsvp success'
+                };
+                moxios.wait(()=> {
+                    const request = moxios.requests.mostRecent();
+                    request.respondWith({
+                        status : 200,
+                        response : data
+                    });
+                });
+                const expectedAction = [
+                    {'type': 'EVENT_UPDATED', 'updatedEvent': {'id': 1, 'name': 'my event', 'rsvp_list': ['guest1']}},
+                    {'message': {'text': 'rsvp success', 'type': 'success'}, 'type': 'ADD_FLASH_MEASSAGE'}
+                ];
+                const store = mockStore({ events: initialState});
+                return store.dispatch(actions.rsvp(1)).then(()=> {
+                    expect(store.getActions()).toEqual(expectedAction);
+                });
+            });
+        });
+        describe('Delete RSVP  action', ()=> {
+            it('should dispatch EVENT_UPDATED and ADD_FLASH_MEASSAGE on success', ()=> {
+                const initialState = [{id : 1, name: 'my event', rsvp_list: ['guest1']}];
+                const data  = {event: {id : 1, name: 'my event', rsvp_list: []},
+                    message: 'rsvp removal success'
+                };
+                moxios.wait(()=> {
+                    const request = moxios.requests.mostRecent();
+                    request.respondWith({
+                        status : 200,
+                        response : data
+                    });
+                });
+                const expectedAction = [
+                    {'type': 'EVENT_UPDATED', 'updatedEvent': {'id': 1, 'name': 'my event', 'rsvp_list': []}},
+                    {'message': {'text': 'rsvp removal success', 'type': 'success'}, 'type': 'ADD_FLASH_MEASSAGE'}
+                ];
+                const store = mockStore({ events: initialState});
+                return store.dispatch(actions.deleteRsvp(1)).then(()=> {
+                    expect(store.getActions()).toEqual(expectedAction);
+                });
+            });
+        });
     });
 });
