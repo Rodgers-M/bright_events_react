@@ -6,11 +6,11 @@ import {deleteFlashMessage} from '../../redux/actions/flashMessages';
 
 export const FlashMessagesList = (props) => {
     const messages = props.messages.map(message =>
-        <FlashMessage key={message.id} message={message} deleteFlashMessage={props.deleteFlashMessage} />
+        <FlashMessage key={ message.id } message={ message } deleteFlashMessage={ props.deleteFlashMessage } />
     );
     return(
         <div >
-            {messages}
+            { messages }
         </div>
     );
 };
@@ -22,7 +22,7 @@ function mapStateToProps(state){
 }
 
 FlashMessagesList.propTypes = {
-    messages : PropTypes.array.isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
     deleteFlashMessage : PropTypes.func.isRequired
 };
 
