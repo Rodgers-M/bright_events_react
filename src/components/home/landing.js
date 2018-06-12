@@ -29,7 +29,7 @@ export const Landing = ({isAuthenticated, logout }) => (
                 };
                 {isAuthenticated ?
                     <li className='item'>
-                        <a href="#logout" className='logout'  onClick={()=> logout()}>
+                        <a href="#logout" className='logout'  onClick={ ()=> logout() }>
                            Logout   <i className='sign out icon' />
                         </a>
                     </li>

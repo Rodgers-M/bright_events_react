@@ -54,9 +54,9 @@ class LoginContainer extends Component{
         return(
             <div>
                 <LoginForm 
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    state ={this.state}
+                    onSubmit={ this.onSubmit }
+                    onChange={ this.onChange }
+                    state ={ this.state }
                 />
                 <FlashMessagesList />
             </div>

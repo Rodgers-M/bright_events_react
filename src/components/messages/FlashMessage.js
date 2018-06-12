@@ -17,9 +17,9 @@ class FlashMessage extends React.Component {
         const { text, type} = this.props.message;
         const  classname = `ui ${type} message`;
         return(
-            <div className={classname}>
-                <i onClick={this.onClick} className='close icon' />
-                <p>{text}</p>
+            <div className={ classname }>
+                <i onClick={ this.onClick } className='close icon' />
+                <p>{ text }</p>
             </div>
         );
     }
