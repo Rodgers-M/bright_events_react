@@ -6,8 +6,8 @@
 /* global expect :true */
 /* eslint no-undef: "error" */
 
-import LoginForm from '../../../src/components/login/LoginForm';
-import {validate} from '../../../src/components/login/LoginContainer';
+import LoginForm from '../../../src/components/users/login/LoginForm';
+import { validate } from '../../../src/components/users/login/LoginContainer';
     
 Enzyme.configure({ adapter: new Adapter() });
 
