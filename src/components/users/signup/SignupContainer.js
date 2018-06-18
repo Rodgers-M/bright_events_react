@@ -1,13 +1,13 @@
 /* eslint new-cap: ["error", { "newIsCap": false }] */
 /* eslint-disable react/no-unused-state */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import  PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import  Validator from 'validator';
 import passwordValidator from 'password-validator';
 import SignupForm from './SignupForm';
-import {signup} from '../../redux/actions/auth';
-import {addFlashMessage} from '../../redux/actions/flashMessages';
+import { signup } from '../../../redux/actions/auth';
+import { addFlashMessage } from '../../../redux/actions/flashMessages';
 
 const validpassword = new passwordValidator();
 validpassword.is().min(6)
