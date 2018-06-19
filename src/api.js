@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-    baseURL: 'https://rodgerbrighteventsapi.herokuapp.com/api/v2',
+    baseURL: 'http://127.0.0.1:7000/api/v2',
+    //baseURL: 'https://rodgerbrighteventsapi.herokuapp.com/api/v2',
     timeout : 20000,
     headers : {
         Accept : 'application/json',
@@ -20,13 +21,19 @@ instance.interceptors.request.use((config)=>{
 });
 
 export const api = {
-    user : {
+    user: {
         login : (credentials)=> instance.post('/auth/login', credentials)
             .then(res => res.data.user),
-        signup : (credentials)=> instance.post('/auth/register', credentials)
-            .then(res => res.data)
+        signup: (credentials)=> instance.post('/auth/register', credentials)
+            .then(res => res.data),
+        submitEmail: (email)=> instance.post('/auth/gettoken', email)
+            .then(res => res.data),
+        confirmToken: (token)=> instance.get(`/auth/confirm/${token} `)
+            .then(res => res.data),
+        submitPassword : (data)=> instance.put('/auth/resetpass', data)
+            .then(res => res.data.message)
     },
-    events : {
+    events: {
         create: (details) => instance.post('/events/create', details)
             .then(response => response.data),
         fetchAll: () => instance.get('/events/all')
