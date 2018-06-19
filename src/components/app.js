@@ -4,6 +4,7 @@ import Landing from './home/landing';
 import LoginContainer from './users/login/LoginContainer';
 import SignupContainer from './users/signup/SignupContainer';
 import ResetPasswordContainer from './users/resetPassword/ResetPasswordContainer';
+import ConfirmToken from './users/resetPassword/ConfirmToken';
 import CreateEventContainer from './events/create/CreateEventContainer';
 import EditEventContainer from './events/edit/EditEventContainer';
 import NotFound from './home/NotFound';
@@ -16,8 +17,9 @@ const App = () => <div className='ui'>
         <Route path='/' exact component={ Landing } />
         <Route path='/auth/login' exact component={ LoginContainer } />
         <Route path='/auth/signup' exact component={ SignupContainer } />
-        <Route path='/auth/forgortpass' exact component={ ResetPasswordContainer } />
+        <Route path='/auth/newpass/:token' exact component={ ResetPasswordContainer } />
         <Route path='/auth/reset' exact component={ ResetPasswordContainer } />
+        <Route path='/auth/confirm/:token' exact component={ ConfirmToken } />
         <EventsLayout path='/events/create' exact component={ CreateEventContainer } page='create' />
         <EventsLayout path='/events/myEvents' exact component={ MyEvents } page='myEvents' />
         <EventsLayout path='/events/:id/edit' exact component={ EditEventContainer } page='edit' />
