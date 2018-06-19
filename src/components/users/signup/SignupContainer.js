@@ -4,19 +4,11 @@ import React, { Component } from 'react';
 import  PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import  Validator from 'validator';
-import passwordValidator from 'password-validator';
 import SignupForm from './SignupForm';
 import { signup } from '../../../redux/actions/auth';
 import { addFlashMessage } from '../../../redux/actions/flashMessages';
+import { validpassword } from '../../helpers/helpers';
 
-const validpassword = new passwordValidator();
-validpassword.is().min(6)
-    .is().max(20)
-    .has().uppercase()
-    .has().lowercase()
-    .has().digits()
-    .has().not().spaces();
- 
 export const validate=(data) => {
     const errors = {};
     if(data.username.length < 3) errors.username = 'username must be at least 3 characters';
