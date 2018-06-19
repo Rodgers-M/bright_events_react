@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {Form, Button, Message } from 'semantic-ui-react';
 import InLineError from '../../messages/InLineError';
+import FlashMessagesList from '../../messages/FlashMessagesList';
 
 const formInputStyle = {
     color : 'white',
@@ -15,10 +16,11 @@ const GetUserEmail = (props) => {
     return (
         <div id='backgroundimg'>
             <div className='ui grid'>
-                <div className='four wide column centered formBackground'>
+                <div className='five wide column centered formBackground'>
                     <h3> Enter your email to reset passorwd </h3>
+                    <FlashMessagesList />
                     <Form onSubmit={ props.onSubmit } loading={ loading }>
-                        {errors.message && <Message negative>
+                        {errors.message && <Message negative onDismiss={ props.handleDismiss }>
                             <Message.Header> Something went wrong </Message.Header>
                             <p> {errors.message} </p>
                         </Message>}
@@ -47,6 +49,7 @@ const GetUserEmail = (props) => {
 GetUserEmail.propTypes = {
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    handleDismiss: PropTypes.func.isRequired,
     state : PropTypes.shape({}).isRequired
 };
 
