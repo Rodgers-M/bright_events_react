@@ -22,4 +22,13 @@ export const logout = () => (dispatch) => {
 };
 
 export const signup = credentials => () => 
-    api.user.signup(credentials).then(res =>res);
+    api.user.signup(credentials).then(data =>data);
+
+export const submitEmail = email => () => 
+    api.user.submitEmail(email).then(data =>data);
+
+export const confirmToken = (token) => () => 
+    api.user.confirmToken(token).then(data =>data);
+
+export const submitPassword = data => () => 
+    api.user.submitPassword(data).then(message => message);
