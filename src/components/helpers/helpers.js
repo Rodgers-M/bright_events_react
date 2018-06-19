@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import  Validator from 'validator';
+import passwordValidator from 'password-validator';
  
 export const isTokenExpired = token => {
     const currentTime = new Date() / 1000;
@@ -33,3 +34,11 @@ export const validateEventData=(data) => {
     if(Validator.isEmpty(data.location)) errors.location = 'location can\'t be blank';
     return errors;
 };
+
+export const validpassword = new passwordValidator();
+validpassword.is().min(6)
+    .is().max(20)
+    .has().uppercase()
+    .has().lowercase()
+    .has().digits()
+    .has().not().spaces();
