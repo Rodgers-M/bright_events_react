@@ -33,10 +33,10 @@ function setup(){
         onChange : fakeOnChange
     };
     return mount(
-        <SignupForm {...props} />,
+        <SignupForm { ...props } />,
         options.get()
     );
-};
+}
 
 describe('SingupForm Component', ()=> {
     describe('form content', () => {
