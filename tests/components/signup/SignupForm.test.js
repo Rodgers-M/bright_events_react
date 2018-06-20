@@ -9,7 +9,6 @@
 import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 import SignupForm from '../../../src/components/users/signup/SignupForm';
 import { validate } from '../../../src/components/users/signup/SignupContainer';
-    
  
 Enzyme.configure({ adapter: new Adapter() });
 
