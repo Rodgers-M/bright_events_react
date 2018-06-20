@@ -11,7 +11,7 @@ const formInputStyle = {
     letterSpacing : '1px'
 };
 
-const GetUserEmail = (props) => {
+export const GetUserEmail = (props) => {
     const { data, errors, loading} = props.state;
     return (
         <div id='backgroundimg'>
@@ -25,7 +25,7 @@ const GetUserEmail = (props) => {
                             <p> {errors.message} </p>
                         </Message>}
                         <Form.Field error={ !!errors.email } >
-                            <label htmlFor='email' style={ formInputStyle }> Email 
+                            <label htmlFor='email' style={ formInputStyle }>Email 
                                 <input type='email' name='email' id='email'
                                     placeholder='example@example.com'
                                     value={ data.email }

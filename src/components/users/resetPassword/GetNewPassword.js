@@ -10,7 +10,7 @@ const formInputStyle = {
     letterSpacing : '1px'
 };
 
-const GetNewPassword = (props) => {
+export const GetNewPassword = (props) => {
     const { data, loading, errors } = props.state;
     return (
         <div id='backgroundimg'>
