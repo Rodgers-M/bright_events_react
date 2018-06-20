@@ -31,7 +31,7 @@ function setup(){
 }
 
 describe('GetUserEmail component', ()=> {
-    describe('GetUserEmail content', ()=> {
+    describe('component content', ()=> {
         const wrapper = setup();
         it('should have one input field with email id ', ()=> {
             expect(wrapper.find('#email').length).toEqual(1);
