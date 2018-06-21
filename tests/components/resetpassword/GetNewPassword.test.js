@@ -1,4 +1,3 @@
-
 /* global React :true */
 /* global shallow Enzyme Adapter :true */
 /* global describe :true */
