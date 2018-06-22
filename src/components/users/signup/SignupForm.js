@@ -20,7 +20,7 @@ const SignupForm = (props) =>{
                 <div className="six wide column formBackground">
                     <h1>Signup Page </h1>
                     <Form onSubmit={ props.onSubmit } loading={ loading }>
-                        {errors.message && <Message negative>
+                        {errors.message && <Message negative onDismiss={ props.handleDismiss }>
                             <Message.Header> Something went wrong </Message.Header>
                             <p> {errors.message} </p>
                         </Message>}
@@ -78,6 +78,7 @@ const SignupForm = (props) =>{
 SignupForm.propTypes ={
     onSubmit: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
+    handleDismiss: PropTypes.func.isRequired,
     state : PropTypes.shape({}).isRequired
 };
 

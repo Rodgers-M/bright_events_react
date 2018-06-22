@@ -64,6 +64,12 @@ class SignupPage extends Component {
         }
     };
 
+    handleDismiss= () => {
+        this.setState({
+            errors : {} 
+        });
+    }
+
     render(){
         return(
             <div>
@@ -71,6 +77,7 @@ class SignupPage extends Component {
                     onSubmit={ this.onSubmit }
                     onChange={ this.onChange } 
                     state={ this.state }
+                    handleDismiss={ this.handleDismiss }
                 />
             </div>
         );
