@@ -55,7 +55,7 @@ class SignupPage extends Component {
                 this.props.history.push('/auth/login');
             })
                 .catch(err=> {
-                    if (err.request.status === 500){ 
+                    if (String(err).includes('Network Error')){ 
                         this.setState({errors: {message: 'Service is unavailable, please try again later'},loading : false});
                     }else {
                         this.setState({errors: err.response.data, loading : false});

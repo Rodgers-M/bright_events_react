@@ -53,7 +53,7 @@ class ResetPasswordContainer extends Component {
                 });
                 this.setState({loading: false});
             }).catch(error => {
-                if (error.request.status === 500){
+                if (String(error).includes('Network Error')){
                     this.setState({errors: {message: 'Service is unavailable, please try again later'},loading: false});
                 }else{
                     this.setState({errors: error.response.data, loading : false});
@@ -76,7 +76,7 @@ class ResetPasswordContainer extends Component {
                 this.setState({loading: false});
                 this.props.history.push('/auth/login');
             }).catch(error =>{
-                if (error.request.status === 500){
+                if (String(error).includes('Network Error')){
                     this.setState({errors: {message: 'Service is unavailable, please try again later'},loading: false});
                 }else{
                     this.setState({errors: error.response.data, loading : false});
