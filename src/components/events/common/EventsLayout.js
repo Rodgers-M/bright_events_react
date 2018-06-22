@@ -14,9 +14,9 @@ export const EventsLayout = ({component : Component, ...rest}) =>{
         <Route { ...rest } render={ matchProps => isAuthenticated ? (
             <div >
                 <EventsNavBar page={ page } username={ username } logout={ logout }/>
+            <FlashMessagesList />
                 <div className='ui grid' style={ { backgroundColor : '#f1f1f1' } }>
                     <div className="twelve wide centered column" style={ { marginTop:'4%' } }>
-                        <FlashMessagesList />
                         <Component  { ...matchProps } username={ username }/>   
                     </div>
                 </div>

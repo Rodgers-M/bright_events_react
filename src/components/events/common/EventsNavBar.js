@@ -6,10 +6,9 @@ const EventsNavBar = (props) => {
     
     const {page, username, logout} = props;
     const sticky = {
-        position : 'fixed',
-        zIndex : '9',
-        width : '100%',
-        paddingTop : '1%',
+        position : 'sticky',
+        zIndex : '3',
+        top : 0
     };
     return (
         <div className='ui inverted menu' style={ sticky }>
