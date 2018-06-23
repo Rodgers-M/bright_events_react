@@ -7,9 +7,8 @@
 /* eslint no-undef: "error" */
 
 import ReactRouterEnzymeContext from 'react-router-enzyme-context';
-import SignupForm from '../../../src/components/signup/SignupForm';
-import {validate} from '../../../src/components/signup/SignupContainer';
-    
+import SignupForm from '../../../src/components/users/signup/SignupForm';
+import { validate } from '../../../src/components/users/signup/SignupContainer';
  
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -33,10 +32,10 @@ function setup(){
         onChange : fakeOnChange
     };
     return mount(
-        <SignupForm {...props} />,
+        <SignupForm { ...props } />,
         options.get()
     );
-};
+}
 
 describe('SingupForm Component', ()=> {
     describe('form content', () => {

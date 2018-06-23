@@ -5,8 +5,8 @@ import  PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import  Validator from 'validator';
 import LoginForm from './LoginForm';
-import {login} from '../../redux/actions/auth';
-import FlashMessagesList from '../messages/FlashMessagesList';
+import { login } from '../../../redux/actions/auth';
+import FlashMessagesList from '../../messages/FlashMessagesList';
 
 export const validate = data => {
     const errors = {};
@@ -34,14 +34,14 @@ class LoginContainer extends Component{
         const errors = validate(this.state.data);
         this.setState({ errors });
         if(Object.keys(errors).length===0){
-            this.setState({loading : true});
+            this.setState({ loading : true });
             this.props.login(this.state.data)
                 .then(()=>{
-                    const {from} = this.props.location.state || {from: {pathname: '/events'}};
+                    const { from } = this.props.location.state || { from: { pathname: '/events' } };
                     this.props.history.push(from);
                 })
                 .catch(err=> {
-                    if (err.request.status === 500){ 
+                    if (String(err).includes('Network Error')){ 
                         this.setState({errors: {message: 'Service is unavailable, please try again later'},loading : false});
                     }else {
                         this.setState({errors: err.response.data, loading : false});
@@ -50,13 +50,20 @@ class LoginContainer extends Component{
         }
     };
 
+    handleDismiss= () => {
+        this.setState({
+            errors : {} 
+        });
+    }
+
     render(){
         return(
             <div>
                 <LoginForm 
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    state ={this.state}
+                    onSubmit={ this.onSubmit }
+                    onChange={ this.onChange }
+                    state ={ this.state }
+                    handleDismiss={ this.handleDismiss }
                 />
                 <FlashMessagesList />
             </div>
@@ -74,4 +81,5 @@ LoginContainer.propTypes = {
     login: PropTypes.func.isRequired
 };
 
-export default connect(null, {login})(LoginContainer);
+export default connect(null, { login })(LoginContainer);
+

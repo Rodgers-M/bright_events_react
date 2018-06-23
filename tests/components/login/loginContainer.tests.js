@@ -6,7 +6,7 @@
 /* global expect :true */
 /* eslint no-undef: "error" */
 
-import {LoginContainer} from '../../../src/components/login/LoginContainer';
+import { LoginContainer } from '../../../src/components/users/login/LoginContainer';
 import configureStore from '../../../src/redux/store/configureStore';
 
 Enzyme.configure({ adapter: new Adapter() });

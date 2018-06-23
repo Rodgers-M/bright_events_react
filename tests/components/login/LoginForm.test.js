@@ -2,14 +2,17 @@
 /* global shallow :true */
 /* global describe :true */
 /* global Enzyme Adapter options :true */
-/* global it :true */
+/* global it sinon :true */
 /* global expect :true */
 /* eslint no-undef: "error" */
 
-import LoginForm from '../../../src/components/login/LoginForm';
-import {validate} from '../../../src/components/login/LoginContainer';
+import LoginForm from '../../../src/components/users/login/LoginForm';
+import { validate } from '../../../src/components/users/login/LoginContainer';
     
 Enzyme.configure({ adapter: new Adapter() });
+
+const mockSubmit = sinon.spy();
+const mockChange = sinon.spy();
 
 function setup(){
     const props = {
@@ -21,11 +24,11 @@ function setup(){
             loading: false,
             errors: {}
         },
-        onSubmit : () => {},
-        onChange : () => {}
+        onSubmit : mockSubmit,
+        onChange : mockChange
     };
     return shallow(
-        <LoginForm {...props} /> ,
+        <LoginForm { ...props } /> ,
         options.get()
 
     );
@@ -49,6 +52,14 @@ describe('Login form component', () => {
     it.skip('should have a submit prop', ()=> {
         const wrapper = setup();
         expect(wrapper.prop('onSubmit')).toBeDefined();
+    });
+});
+
+describe('login form behavior', ()=>{
+    it('should call onchange when user types a value', ()=> {
+        const wrapper = setup();
+        wrapper.find('#username').simulate('change');
+        expect(mockChange.called).toBe(true);
     });
 });
 
