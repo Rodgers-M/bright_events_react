@@ -9,7 +9,7 @@ export const FlashMessagesList = (props) => {
         <FlashMessage key={ message.id } message={ message } deleteFlashMessage={ props.deleteFlashMessage } />
     );
     return(
-        <div style= { {position : 'sticky', top: '5%', zIndex: 3} } >
+        <div style= { {position : 'sticky',textAlign: 'center', top: '5%', zIndex: 3} } >
             { messages }
         </div>
     );
